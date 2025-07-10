@@ -1,3 +1,6 @@
+// por hacer: mensaje de error
+// evitar que se repitan los tags
+
 let caracteres_permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_ ";
 let tag_permitido = true;
 
@@ -8,12 +11,13 @@ let insert_tags = document.getElementById("insert-tags");
 let tags_input = document.getElementById("tags-input");
 let titulo_input = document.getElementById("titulo-input")
 let enviar = document.getElementById("btn-enviar");
+// let mensaje_error = document.getElementById("error-msj");
 
 let formulario = document.getElementById("formulario-subir");
 
 function introducirTag(tag){
     tag_permitido = true;
-    if ((tag.length <= 20) && (tags_introducidos < 4) && (tag != "") && (/\S/.test(tag) && (tag != null))){
+    if ((tag.length <= 20) && (tags_introducidos < 4) && (tag != "") && (/\S/.test(tag) && (tag != null) && (tag.length >= 4))){
         for (let i = 0; i < tag.length; i++) {
             if (caracteres_permitidos.includes(tag[i]) == false) {
                 tag_permitido = false;

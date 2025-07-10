@@ -282,6 +282,12 @@ header h1{
     margin-left: 0.2em;
 }
 
+#post-comentarios-comentar{
+    color: white;
+    margin-left: 0.2em;
+    margin: 0.2em;
+}
+
 #post-descripcion{
     background-color: #191b1b;
     color: rgb(214, 212, 212);
@@ -329,11 +335,26 @@ header h1{
     color: white;
 }
 
+
+.post-comentarios-comentar{
+    display: flex;
+    margin-left: 0.3em;
+    padding: 1em;
+    background-color: #282b2b;
+    margin-bottom: 1em;
+}
+
+
+.post-comentarios-comentar form{
+    display: block;
+    width: 100%;
+}
+
 #post-comentarios-textarea{
+    display: block;
     width: 100%;
     height: 60px;
     resize: none;
-    margin-left: 0.2em;
     box-sizing: border-box;
     background-color: #191b1b;
     border: 2px solid #282b2b;
@@ -341,6 +362,35 @@ header h1{
     font-size: 16px;
     border-radius: 6px;
     transition: all 200ms;
+    margin-left: 0.3em;
+}
+
+#post-comentarios-enviar{
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color: rgb(20, 20, 19);
+    color: rgb(211, 199, 199);
+    border: none;
+    font-size: 16px;
+    transition: all 200ms;
+    border-radius: 8px;
+    margin-left: 0.3em;
+    margin-top: 0.5em;
+}
+
+#post-comentarios-enviar:not([disabled]):hover{
+    background-color: rgb(27, 26, 26);
+    color: rgb(255, 255, 255);
+    box-shadow: 5px 1px 30px rgb(54, 53, 53);
+    cursor: pointer;
+    opacity: .6;
+    transform: scale(1.05);
+}
+
+#post-comentarios-enviar:disabled{
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 #post-comentarios-textarea:focus{
@@ -461,7 +511,7 @@ header h1{
 .contenido-subir-formulario-fila1{
     display: flex;
     margin-top: 1em;
-    gap: 5em;
+    gap: 2.5em;
 }
 
 .contenido-subir-formulario-fila1-input{
@@ -529,6 +579,7 @@ header h1{
     color: rgb(211, 199, 199);
     padding: 1em;
     padding-top: 0;
+    min-width: 250px;
 }
 
 .galeria-herramientas{

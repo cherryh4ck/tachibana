@@ -10,8 +10,7 @@
         header("Location: error.php?id=2");
     }
 
-    //todo: mejores tags - caja de comentarios - like y dislikes - mejor preview (?)
-    // evitar que se estire el avatar XD
+    //todo: mejores tags - like y dislikes - mejor preview (?)
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="js/post/comentar.js" defer></script>
 </head>
 <body>
     <nav>
@@ -70,9 +70,14 @@
                     <p><b>User</b><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae accusamus quidem voluptatum eius. In sunt numquam sequi error vel fugit, consequatur, nesciunt temporibus commodi corporis reiciendis, excepturi sapiente. Facere, debitis.</p>
                 </div>
             </div>
-            <form action="" method="post">
-                <textarea name="" id="post-comentarios-textarea" rows="2" required></textarea>
-            </form>
+            <h2 id="post-comentarios-comentar">Comentar</h2>
+            <div class="post-comentarios-comentar">
+                <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
+                <form action="" method="post">
+                    <textarea name="" id="post-comentarios-textarea" rows="2" required></textarea>
+                    <input type="submit" value="Comentar" id="post-comentarios-enviar" disabled>
+                </form>
+            </div>
             </div>
         </div>
     </header>

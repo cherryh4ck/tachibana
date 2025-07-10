@@ -54,7 +54,7 @@
                     <span id="input-tag">dark souls</span>
                     <span id="input-tag">left 4 dead 2</span>
                     <span id="input-tag">bocchi the rock</span>
-                    <span id="input-tag">walfwalsgág´pñap´gapgwáwp´g</span>
+                    <span id="input-tag">asfafasgasgagasfasf</span>
                     <span id="input-tag">counter strike 2</span>
                 </div>
             </div>
@@ -64,10 +64,10 @@
                 <?php
                     $imagenes = scandir("galeria/");
                     if (file_exists("galeria/Test.txt")){
-                        $end_id = count($imagenes) - 3;
+                        $end_id = count($imagenes) - 4;
                     }
                     else{
-                        $end_id = count($imagenes) - 2;
+                        $end_id = count($imagenes) - 3;
                     }
 
                     for ($i = 0; $i < 12; $i++){
