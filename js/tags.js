@@ -1,4 +1,4 @@
-// por hacer: mensaje de error
+// por hacer: mensaje de error - borrar tags
 
 let caracteres_permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_ ";
 let tag_permitido = true;
