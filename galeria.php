@@ -49,13 +49,13 @@
                 <input type="text">
                 <h4>Tags populares</h4>
                 <div class="galeria-tags-populares">
-                    <span id="input-tag">csgo</span>
-                    <span id="input-tag">counter strike</span>
-                    <span id="input-tag">dark souls</span>
-                    <span id="input-tag">left 4 dead 2</span>
-                    <span id="input-tag">bocchi the rock</span>
-                    <span id="input-tag">asfafasgasgagasfasf</span>
-                    <span id="input-tag">counter strike 2</span>
+                    <span id="input-tag">csgo<b>7</b></span>
+                    <span id="input-tag">counter strike<b>6</b></span>
+                    <span id="input-tag">dark souls<b>5</b></span>
+                    <span id="input-tag">left 4 dead 2<b>4</b></span>
+                    <span id="input-tag">bocchi the rock<b>3</b></span>
+                    <span id="input-tag">asfafasgasgagasfasf<b>2</b></span>
+                    <span id="input-tag">counter strike 2<b>1</b></span>
                 </div>
             </div>
         </div>
