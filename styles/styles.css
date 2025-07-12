@@ -551,6 +551,12 @@ header h1{
     white-space: nowrap; 
 }
 
+#input-tag b{
+    color: rgb(56, 56, 54);
+    font-size: 11px;
+    margin-left: 0.5em;
+}
+
 #error, #disculpas{
     text-align: center;
     color: white;
@@ -685,7 +691,7 @@ header h1{
 }
 
 .contenido-bloque:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     opacity: 1;
     box-shadow: 5px 1px 40px rgb(65, 64, 64);
 }
