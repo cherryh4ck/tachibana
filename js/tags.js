@@ -1,8 +1,8 @@
 // por hacer: mensaje de error
-// evitar que se repitan los tags
 
 let caracteres_permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_ ";
 let tag_permitido = true;
+let tags = [];
 
 export let tags_introducidos = 0;
 import {req1, req2, req3} from "./archivos.js";
@@ -16,8 +16,9 @@ let enviar = document.getElementById("btn-enviar");
 let formulario = document.getElementById("formulario-subir");
 
 function introducirTag(tag){
+    tag = tag.trim()
     tag_permitido = true;
-    if ((tag.length <= 20) && (tags_introducidos < 4) && (tag != "") && (/\S/.test(tag) && (tag != null) && (tag.length >= 4))){
+    if ((tag.length <= 20) && (tags_introducidos < 4) && (tag != "") && (/\S/.test(tag) && (tag != null) && (tag.length >= 4) && (!tags.includes(tag)))){
         for (let i = 0; i < tag.length; i++) {
             if (caracteres_permitidos.includes(tag[i]) == false) {
                 tag_permitido = false;
@@ -26,6 +27,7 @@ function introducirTag(tag){
         }
         if (tag_permitido){
             tags_introducidos++;
+            tags.push(tag)
             let span = document.createElement("span");
             span.className = "input-tag";
             span.id = "input-tag";
