@@ -26,7 +26,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir</title>
+    <title>Galería</title>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/archivos.js" defer></script>
     <script src="js/tags.js" defer></script>
