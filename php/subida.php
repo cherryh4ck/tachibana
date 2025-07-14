@@ -104,6 +104,7 @@
         <ul>
             <li><a href="../galeria.php?pag=1">Galería</a></li>
             <li><a href="../subir.html">Subir</a></li>
+            <li><a href="perfiles.php">Usuarios</a></li>
         </ul>
         <div class="nav-cuenta">
             <a href="php/cuenta.php" id="cuenta">Invitado</a>
