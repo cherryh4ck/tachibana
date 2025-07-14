@@ -10,6 +10,8 @@
         header("Location: error.php?id=2");
     }
 
+    $post_titulo = "Sin nombre"; // se debe conseguir a través de una base de datos
+
     //todo: mejores tags - like y dislikes - mejor preview (?)
 ?>
 
@@ -18,7 +20,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post</title>
+    <?php
+        echo "<title>" . $post_titulo . "</title>";
+    ?>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/post/comentar.js" defer></script>
 </head>
