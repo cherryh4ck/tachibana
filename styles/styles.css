@@ -704,3 +704,66 @@ header h1{
     background-color: rgba(41, 40, 40, 0.233);
     color: rgb(241, 236, 236);
 }
+
+.contenido-menu{
+    display: block;  
+    min-width: 200px;
+    max-width: 300px;
+    min-height: 250px;
+    padding: 1.5em;
+    background-color: rgb(24, 23, 23);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    border-radius: 6px;
+}
+
+.contenido-menu p{
+    color: rgb(241, 236, 236);
+    font-size: 20px;
+}
+
+.contenido-menu input[type=text], .contenido-menu input[type=password]{
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    border: 0;
+    border-radius: 8px;
+    background-color: rgb(51, 51, 49);
+    color: white;
+    padding: 1em;
+}
+
+.contenido-menu input[type=submit]{
+    display: block;
+    width: 150px;
+    height: 50px;
+    background-color: rgb(20, 20, 19);
+    color: rgb(211, 199, 199);
+    border: none;
+    font-size: 20px;
+    transition: all 200ms;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+}
+
+#registrate{
+    font-size: 16px;
+    text-align: center;
+}
+
+#registrate a{
+    color: rgb(49, 168, 79);
+    text-decoration: none;
+    transition: all 200ms;
+}
+
+#registrate a:hover{
+    color: rgb(34, 119, 56);
+    cursor: pointer;
+}
