@@ -723,7 +723,7 @@ header h1{
     font-size: 20px;
 }
 
-.contenido-menu input[type=text], .contenido-menu input[type=password]{
+.contenido-menu input[type=text], .contenido-menu input[type=password], .contenido-perfiles input[type=text]{
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -752,6 +752,15 @@ header h1{
     margin-bottom: 2em;
 }
 
+.contenido-menu input[type=submit]:hover{
+    background-color: rgb(27, 26, 26);
+    color: rgb(255, 255, 255);
+    box-shadow: 5px 1px 30px rgb(54, 53, 53);
+    cursor: pointer;
+    opacity: .6;
+    transform: scale(1.05);
+}
+
 #registrate{
     font-size: 16px;
     text-align: center;
@@ -766,4 +775,67 @@ header h1{
 #registrate a:hover{
     color: rgb(34, 119, 56);
     cursor: pointer;
+}
+
+.contenido-perfiles{
+    display: block;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contenido-perfiles p, .contenido-perfiles-usuarios p{
+    color: rgb(241, 236, 236);
+    font-size: 20px;
+    text-align: center;
+}
+
+.contenido-perfiles-usuarios{
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contenido-perfiles-usuarios p{
+    font-size: 18px;
+}
+
+.contenido-perfiles-usuarios-lista{
+    display: grid;
+    margin-top: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+}
+
+.contenido-perfil-bloque{
+    display: flex;
+    background-color: rgb(24, 23, 23);
+    min-width: 200px;
+    min-height: 120px;
+    border-radius: 6px;
+    align-items: center;
+}
+
+.contenido-perfil-bloque img{
+    display: block;
+    width: 60px;
+    max-height: 60px;
+    margin: 0;
+    background-color: gray;
+    margin-left: 1em;
+}
+
+.contenido-perfil-bloque-info{
+    display: block;
+    margin-left: 1em;
+}
+
+.contenido-perfil-bloque-info p b{
+    font-size: 18px;
+}
+
+.contenido-perfil-bloque-info p{
+    font-size: 14px;
+    text-align: left;
 }
