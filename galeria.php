@@ -1,7 +1,7 @@
 <?php
     // TODO: Sistema de busqueda ?
     // Sistema de indexado (Yo creo que estaría feo mostrar las imágenes borradas como inaccesibles)
-    // Arreglar lo de que si el ID 1 no existe, colapsa todo el sistema xd
+    // Añadir un mensaje de que no hay contenido en la página 1
     if (!isset($_GET["pag"])){
         $pagina = 1;
     }
@@ -14,10 +14,6 @@
             header("Location: error.php?id=2");
             exit();
         }
-    }
-    else if (file_exists("galeria/" . 1 + (12*($pagina-1)) . ".jpg") == false){
-        header("Location: error.php?id=1");
-        exit();
     }
 ?>
 
@@ -91,21 +87,25 @@
             <div class="galeria-botones">
                 <div class="galeria-botones-izquierda">
                     <?php
-                        if ($pagina > 1){
-                            echo "<a class='boton' href='galeria.php?pag=" . $pagina-1 . "'>Anterior Pág.</a>";
-                        }
-                        else{
-                            echo "<button class='boton' disabled>Anterior Pág.</button>";
+                        if (file_exists("galeria/" . 1 + (12*($pagina-1)) . ".jpg")){
+                            if ($pagina > 1){
+                                echo "<a class='boton' href='galeria.php?pag=" . $pagina-1 . "'>Anterior Pág.</a>";
+                            }
+                            else{
+                                echo "<button class='boton' disabled>Anterior Pág.</button>";
+                            }
                         }
                     ?>
                 </div>
                 <div class="galeria-botones-derecha">
                     <?php
-                        if (file_exists("galeria/" . 1 + (12*($pagina)) . ".jpg")){
-                            echo "<a class='boton' href='galeria.php?pag=" . $pagina+1 . "'>Siguiente Pág.</a>";      
-                        }
-                        else{
-                            echo "<button class='boton' disabled>Siguiente Pág.</button>";
+                        if (file_exists("galeria/" . 1 + (12*($pagina-1)) . ".jpg")){
+                            if (file_exists("galeria/" . 1 + (12*($pagina)) . ".jpg")){
+                                echo "<a class='boton' href='galeria.php?pag=" . $pagina+1 . "'>Siguiente Pág.</a>";      
+                            }
+                            else{
+                                echo "<button class='boton' disabled>Siguiente Pág.</button>";
+                            }
                         }
                     ?>
                 </div>
