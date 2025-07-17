@@ -815,6 +815,14 @@ header h1{
     min-height: 120px;
     border-radius: 6px;
     align-items: center;
+    transition: all 200ms;
+}
+
+.contenido-perfil-bloque:hover{
+    margin: 0.5em;
+    background-color: rgb(34, 33, 33);
+    cursor: pointer;
+    box-shadow: 5px 1px 40px rgb(56, 55, 55);
 }
 
 .contenido-perfil-bloque img{
