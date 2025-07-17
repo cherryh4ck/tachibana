@@ -1,7 +1,7 @@
 <?php
     $errores = [
         "No hay contenido en esta página.",
-        "No se ha encontrado el contenido solicitado.",
+        "No se ha encontrado el contenido solicitado.", // Ya no se usa!
         "La imagen está corrupta o no es válida.",
         "No se ha encontrado el contenido solicitado porque fue eliminado por el usuario.",
         "No se ha encontrado el contenido solicitado porque fue moderado."
@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir</title>
+    <title>Error</title>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/archivos.js" defer></script>
 </head>
