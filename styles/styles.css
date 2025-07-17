@@ -619,6 +619,12 @@ header h1{
     background-color: rgb(51, 51, 49);
     color: white;
     padding: 1em;
+    transition: all 200ms;
+}
+
+.galeria-herramientas input:hover{
+    background-color: rgb(64, 63, 63);
+    box-shadow: 5px 1px 40px rgb(43, 42, 42);
 }
 
 .galeria-tags-populares{
@@ -735,6 +741,12 @@ header h1{
     background-color: rgb(51, 51, 49);
     color: white;
     padding: 1em;
+    transition: all 200ms;
+}
+
+.contenido-menu input[type=text]:hover, .contenido-menu input[type=password]:hover, .contenido-perfiles input[type=text]:hover{
+    background-color: rgb(64, 63, 63);
+    box-shadow: 5px 1px 40px rgb(53, 52, 52);
 }
 
 .contenido-menu input[type=submit]{
