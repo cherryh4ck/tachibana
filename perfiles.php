@@ -30,7 +30,7 @@
     <div class="contenido-perfiles-usuarios">
         <p>Usuarios</p>
         <div class="contenido-perfiles-usuarios-lista">
-            <div class="contenido-perfil-bloque">
+            <div class="contenido-perfil-bloque" onclick="location.href='perfil.php?id=1'">
                 <img src="resources/avatar.png" alt="">
                 <div class="contenido-perfil-bloque-info">
                     <p><b>Usuario</b></p>
