@@ -28,7 +28,7 @@
     </nav>
     <div class="contenido-menu">
         <form action="php/login.php" method="post">
-            <p>Iniciar sesión</p>
+            <p id="texto-centrado">Iniciar sesión</p>
             <input type="text" name="user" placeholder="Nombre de usuario" required>
             <input type="password" name="password" placeholder="Contraseña" required>
             <input type="submit" value="Iniciar sesión">
