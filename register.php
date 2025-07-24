@@ -30,7 +30,7 @@
     </nav>
     <div class="contenido-menu">
         <form action="php/register.php" method="post" id="formulario">
-            <p>Registrarse</p>
+            <p id="texto-centrado">Registrarse</p>
             <input type="text" name="user" placeholder="Nombre de usuario" required>
             <input type="password" name="password" placeholder="Contraseña" id="contraseña" required>
             <input type="password" name="verifyPassword" placeholder="Repetir contraseña" id="repetirContraseña" required>
