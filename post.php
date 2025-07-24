@@ -56,6 +56,13 @@
                 echo "<span id='input-tag2'>test tes test t eststst</span>";
                 echo "<span id='input-tag2'>test tes test t eststst</span>";
                 echo "</div>";
+                echo "<div class='post-autor'>";
+                echo "<img src='resources/avatar.png' alt='Avatar' id='post-autor-avatar'>";
+                echo "<div class='post-autor-info'>";
+                echo "<p><b>Autor</b><br>";
+                echo "<p>Publicado el 24-07-2025 a las 5:04 AM</p>";
+                echo "</div>";
+                echo "</div>";
                 echo "<h2 id='post-titulo-descripcion'>Descripción</h2>";
                 echo "<p id='post-descripcion'>Descripción. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium aspernatur alias harum velit laborum perspiciatis quisquam autem voluptatum ducimus deleniti. Placeat fugiat veniam provident, blanditiis quos voluptatum aliquam cupiditate ullam.</p>";
                 echo "</div>";
