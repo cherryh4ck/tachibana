@@ -33,8 +33,9 @@
             <div class="contenido-perfil-bloque" onclick="location.href='perfil.php?id=1'">
                 <img src="resources/avatar.png" alt="">
                 <div class="contenido-perfil-bloque-info">
-                    <p><b>Usuario</b></p>
-                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf (recortar texto).</p>
+                    <p><b>Display name</b></p>
+                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
+                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
                 </div>
             </div>
             <div class="contenido-perfil-bloque">
