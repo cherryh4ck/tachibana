@@ -4,7 +4,8 @@
         "No se ha encontrado el contenido solicitado.", // Ya no se usa!
         "La imagen está corrupta o no es válida.",
         "No se ha encontrado el contenido solicitado porque fue eliminado por el usuario.",
-        "No se ha encontrado el contenido solicitado porque fue moderado."
+        "No se ha encontrado el contenido solicitado porque fue moderado.",
+        "No se ha encontrado la cuenta solicitada."
     ];
 ?>
 
