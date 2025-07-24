@@ -1,9 +1,8 @@
 # Galería de Imágenes Extendida
 
 ## Descripción
-Tablón de imágenes con autenticación (no anónimo) donde los usuarios pueden subir imágenes junto a un título, tags y una descripción breve.
-
-Los usuarios pueden ver los posteos a través de la página de inicio.
+Tablón de imágenes con autenticación (no anónimo) donde los usuarios pueden crear una cuenta y subir imágenes con datos como: título, descripción y tags de búsqueda.
+Los posteos se pueden ver en la página de inicio, donde también se puede comentar y calificarlos.
 
 Este repositorio es una versión extendida del siguiente proyecto: [Galería de Imágenes](https://github.com/hddtomas/galeria-img)
 
