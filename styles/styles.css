@@ -831,7 +831,7 @@ header h1{
 }
 
 .contenido-perfil-bloque:hover{
-    margin: 0.5em;
+    margin: 0.15em;
     background-color: rgb(34, 33, 33);
     cursor: pointer;
     box-shadow: 5px 1px 40px rgb(56, 55, 55);
@@ -856,6 +856,12 @@ header h1{
 }
 
 .contenido-perfil-bloque-info p{
-    font-size: 14px;
+    font-size: 13px;
     text-align: left;
+}
+
+#contenido-perfil-bloque-info-username{
+    color: rgb(98, 100, 98);
+    font-size: 14px;
+    margin-bottom: 0.30em;
 }
