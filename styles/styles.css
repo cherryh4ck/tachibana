@@ -773,6 +773,10 @@ header h1{
     transform: scale(1.05);
 }
 
+#texto-centrado{
+    text-align: center;
+}
+
 #registrate{
     font-size: 16px;
     text-align: center;
