@@ -276,6 +276,36 @@ header h1{
     margin-bottom: 0.8em;
 }
 
+.post-autor{
+    margin-top: 1em;
+    display: flex;
+}
+
+.post-autor img{
+    display: block;
+    width: 45px;
+    max-height: 45px;
+    margin: 0;
+    background-color: gray;
+    margin-left: 0.3em;
+}
+
+.post-autor-info{
+    display: block;
+    margin-left: 0.5em;
+}
+
+.post-autor-info p b{
+    color: rgb(241, 236, 236);
+    font-size: 18px;
+}
+
+.post-autor-info p{
+    color: rgb(136, 131, 131);
+    font-size: 14px;
+    margin-top: 0.1em;
+}
+
 #post-titulo-descripcion, #post-comentarios-titulo{
     color: white;
     margin-top: 0.5em;
