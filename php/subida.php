@@ -1,15 +1,12 @@
 <?php
     // TODO TOTAL:
     // - más chequeos de sanidad (tamaño mínimo)
-    // - mostrar mensajes de error más claros
     // - soporte para gifs
 
     error_reporting(E_ERROR | E_PARSE);
 
     $renombrado = "";
     $archivos = scandir("../galeria/");
-
-    $mensaje = ""; // mensaje para el final
     
     // Por si existe el test.txt o no
     if (file_exists("../galeria/Test.txt")){
@@ -29,6 +26,7 @@
     $nombregenerado = strval(rand(0, 100000000000)) . ".jpg";
     if (!isset($archivo)){
         header("Location: ../error.php?id=3");
+        exit();
     }
     // chequeos de sanidad
     list($x, $y) = getimagesize($archivo["tmp_name"]);
@@ -43,6 +41,7 @@
         }
         if (!$imagen){
             header("Location: ../error.php?id=3");
+            exit();
         }
         else{
             $miniatura_w = 400;
@@ -75,45 +74,19 @@
                             $nueva_width, $nueva_height,
                             $width, $height);
             imagejpeg($miniatura, $dir . $renombrado , 80);
-            $mensaje = "Imagen subida con éxito";
             $fullsizeimg = imagejpeg($imagen, $fullsize . $renombrado);
+            header("Location: ../post.php?id=" . strval($total_archivos));
+            exit();
         }
     }
     else{
         if ($x < 400 or $y < 300){
-            $mensaje = "La imagen debe tener una resolución mínima de 300x300 píxeles";
+            header("Location: ../error.php?id=7");
         }
         else if ($tamaño > 5228792){
-            $mensaje = "El tamaño de la imagen debe ser menor a 5.2 MBs";
+            header("Location: ../error.php?id=8");
         }
+        exit();
     }
     // chdir("../galeria/");
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-</head>
-<body>
-    <nav>
-        <h1>test</h1>
-        <ul>
-            <li><a href="../galeria.php?pag=1">Galería</a></li>
-            <li><a href="../subir.html">Subir</a></li>
-            <li><a href="perfiles.php">Usuarios</a></li>
-        </ul>
-        <div class="nav-cuenta">
-            <a href="php/cuenta.php" id="cuenta">Invitado</a>
-        </div>
-    </nav>
-    <header>
-        <?php
-            echo "<h1>" . $mensaje . "</h1>";
-        ?>
-    </header>
-</body>
-</html>
