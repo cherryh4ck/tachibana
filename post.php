@@ -25,6 +25,7 @@
     ?>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/post/comentar.js" defer></script>
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
     <nav>
