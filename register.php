@@ -15,6 +15,7 @@
     <title>Registrarse</title>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/register/verify.js" defer></script>
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
     <nav>
