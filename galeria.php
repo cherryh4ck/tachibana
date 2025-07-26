@@ -1,7 +1,7 @@
 <?php
     // TODO: Sistema de busqueda ?
     // Sistema de indexado (Yo creo que estaría feo mostrar las imágenes borradas como inaccesibles)
-    // Añadir un mensaje de que no hay contenido en la página 1
+    // Arreglar lo de que si el ID 1 no existe, colapsa todo el sistema xd
     if (!isset($_GET["pag"])){
         $pagina = 1;
     }
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/archivos.js" defer></script>
     <script src="js/tags.js" defer></script>
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body class="galerias">
     <nav>
