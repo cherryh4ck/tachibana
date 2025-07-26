@@ -2,12 +2,21 @@
     if (isset($_GET["id"]) && is_numeric($_GET["id"])){
         $id = $_GET["id"];
         if (!file_exists("galeria/fullsize/" . $id . ".jpg")){
-            header("Location: error.php?id=2");
-            exit();
+            if (file_exists("galeria/fullsize/" . $id . ".gif")){
+                $ext = "gif";
+            }
+            else{
+                header("Location: error.php?id=2");
+                exit();
+            }
+        }
+        else{
+            $ext = "jpg";
         }
     }
     else{
         header("Location: error.php?id=2");
+        exit();
     }
 
     $post_titulo = "Sin nombre"; // se debe conseguir a través de una base de datos
@@ -42,7 +51,7 @@
     <header>
         <div class="contenido-post">
             <?php
-                echo "<img src='galeria/fullsize/" . $id . ".jpg'>";
+                echo "<img src='galeria/fullsize/" . $id . "." . $ext ."'>";
                 echo "<div class='post-contenido'>";
                 echo "<div class='post-contenido-titulo'>";
                 echo "<h1 id='post-titulo'>Título</h1>";
