@@ -17,6 +17,7 @@
     <title>Error</title>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/archivos.js" defer></script>
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
     <nav>
