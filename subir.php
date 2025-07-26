@@ -47,7 +47,7 @@
                         </div>
                         <div class="contenido-subir-preview-requisitos-requisito">
                             <span class="requisito1" id="requisito3"></span>
-                            <p>Tamaño menor a 5.2MB</p>
+                            <p id="texto-size">Tamaño menor a 5.2MB</p>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
             <div class="contenido-subir-divisores">
                 <div class="contenido-subir-formulario">
                     <form action="php/subida.php" method="POST" enctype="multipart/form-data" id="formulario-subir" onkeydown="if (event.keyCode === 13) {return false;}">
-                        <input type="file" accept=".png, .jpg, .jpeg" name="archivo" id="archivo-file" required>
+                        <input type="file" accept=".png, .jpg, .jpeg, .gif" name="archivo" id="archivo-file" required>
                         <div class="contenido-subir-formulario-fila1">
                             <div class="contenido-subir-formulario-fila1-input">
                                 <p>Título</p>
