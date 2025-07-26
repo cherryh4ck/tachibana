@@ -3,6 +3,8 @@
     // - más chequeos de sanidad (tamaño mínimo)
     // - soporte para gifs
 
+    $maxSize = 6228792;
+
     error_reporting(E_ERROR | E_PARSE);
 
     $renombrado = "";
@@ -16,12 +18,19 @@
         $total_archivos = count($archivos) - 2;
     }
 
+    $archivo = $_FILES["archivo"];
+    $info = pathinfo($archivo["name"]);
+
     $renombrado = strval($total_archivos) . ".jpg";
+    if ($info["extension"] == "gif"){
+        $fullRenombrado = strval($total_archivos) . ".gif";
+    }
+    else{
+        $fullRenombrado = $renombrado;
+    }
     $dir = "../galeria/";
     $fullsize = "../galeria/fullsize/";
 
-    $archivo = $_FILES["archivo"];
-    $info = pathinfo($archivo["name"]);
 
     $nombregenerado = strval(rand(0, 100000000000)) . ".jpg";
     if (!isset($archivo)){
@@ -32,18 +41,27 @@
     list($x, $y) = getimagesize($archivo["tmp_name"]);
     $tamaño = filesize($archivo["tmp_name"]);
 
-    if ($x >= 400 and $y >= 300 and $tamaño < 5228792){
+    if ($x >= 400 and $y >= 300){
         if ($info["extension"] == "png"){
             $imagen = imagecreatefrompng($archivo["tmp_name"]);
         }
-        else{
+        else if ($info["extension"] == "jpg" or $info["extension"] == "jpeg"){
             $imagen = imagecreatefromjpeg($archivo["tmp_name"]);
         }
+        else if ($info["extension"] == "gif"){
+            $imagen = imagecreatefromgif($archivo["tmp_name"]);
+            $maxSize = 26228792;
+        }
+
         if (!$imagen){
             header("Location: ../error.php?id=3");
             exit();
         }
         else{
+            if (!($tamaño < $maxSize)){
+                header("Location: ../error.php?id=8");
+                exit();
+            }
             $miniatura_w = 400;
             $miniatura_h = 300;
 
@@ -74,18 +92,18 @@
                             $nueva_width, $nueva_height,
                             $width, $height);
             imagejpeg($miniatura, $dir . $renombrado , 80);
-            $fullsizeimg = imagejpeg($imagen, $fullsize . $renombrado);
+            if ($info["extension"] == "gif"){
+                rename($archivo["tmp_name"], $fullsize . $fullRenombrado);
+            }
+            else{
+                $fullsizeimg = imagejpeg($imagen, $fullsize . $fullRenombrado);
+            }
             header("Location: ../post.php?id=" . strval($total_archivos));
             exit();
         }
     }
     else{
-        if ($x < 400 or $y < 300){
-            header("Location: ../error.php?id=7");
-        }
-        else if ($tamaño > 5228792){
-            header("Location: ../error.php?id=8");
-        }
+        header("Location: ../error.php?id=7");
         exit();
     }
     // chdir("../galeria/");
