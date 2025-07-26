@@ -1,12 +1,18 @@
 <?php
+    // No empieza en 0, sino en 1
     $errores = [
         "No hay contenido en esta página.",
         "No se ha encontrado el contenido solicitado.", // Ya no se usa!
         "La imagen está corrupta o no es válida.",
         "No se ha encontrado el contenido solicitado porque fue eliminado por el usuario.",
         "No se ha encontrado el contenido solicitado porque fue moderado.",
-        "No se ha encontrado la cuenta solicitada."
+        "No se ha encontrado la cuenta solicitada.",
+        "La imagen debe tener una resolución mínima de 300x300 píxeles.",
+        "El tamaño de la imagen debe ser menor a 5.2 MBs."
     ];
+    if (!isset($_GET["id"])){
+        header("Location: galeria.php?pag=1");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +40,7 @@
     <header>
         <h1>Ups, hubo un problema...</h1>
         <?php
-            if ((isset($_GET["id"])) && (is_numeric($_GET["id"]) && ($_GET["id"] > 0) && ($_GET["id"] < (count($errores) + 1)))) {
+            if ((is_numeric($_GET["id"]) && ($_GET["id"] > 0) && ($_GET["id"] < (count($errores) + 1)))) {
                 echo "<p id='error'>" . $errores[$_GET["id"] - 1] . "</p>";
             }
         ?>
