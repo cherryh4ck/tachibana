@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/archivos.js" type="module" defer></script>
     <script src="js/tags.js" type="module" defer></script>
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
     <nav>
