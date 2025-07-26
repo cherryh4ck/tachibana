@@ -10,7 +10,7 @@
         "La imagen debe tener una resolución mínima de 300x300 píxeles.",
         "El tamaño de la imagen debe ser menor a 5.2 MBs."
     ];
-    if (!isset($_GET["id"])){
+    if ((!isset($_GET["id"])) || (!is_numeric($_GET["id"])) || ($_GET["id"] < 1) || ($_GET["id"] > count($errores))) {
         header("Location: galeria.php?pag=1");
     }
 ?>
@@ -40,9 +40,7 @@
     <header>
         <h1>Ups, hubo un problema...</h1>
         <?php
-            if ((is_numeric($_GET["id"]) && ($_GET["id"] > 0) && ($_GET["id"] < (count($errores) + 1)))) {
-                echo "<p id='error'>" . $errores[$_GET["id"] - 1] . "</p>";
-            }
+            echo "<p id='error'>" . $errores[$_GET["id"] - 1] . "</p>";
         ?>
         <p id="disculpas"><b>Pedimos disculpas.</b></p>
     </header>
