@@ -1,3 +1,5 @@
+/* Estilo general para toda la página */
+
 html{
     background-color: rgb(39, 36, 36);
 }
@@ -237,6 +239,8 @@ header h1{
     transform: scale(1.05);
 }
 
+/* Posts */
+
 .contenido-post img{
     display: block;
     max-width: 700px;
@@ -429,6 +433,8 @@ header h1{
     box-shadow: 5px 1px 40px rgb(56, 55, 55);
 }
 
+/* Subir.php // Subir contenido */
+
 .contenido-subir{
     display: flex;
     width: 65%;
@@ -490,8 +496,6 @@ header h1{
     display: block;
     width: 50%;
 }
-
-/**/
 
 .contenido-subir-divisores{
     margin-top: 15px;
@@ -581,6 +585,8 @@ header h1{
     white-space: nowrap; 
 }
 
+/* Página con mensaje de error */
+
 #input-tag b{
     color: rgb(56, 56, 54);
     font-size: 11px;
@@ -597,6 +603,8 @@ header h1{
 #disculpas{
     margin-top: 1em;
 }
+
+/* Página principal // index.php */
 
 .galerias{
     height: 100%;
@@ -898,4 +906,22 @@ header h1{
     color: rgb(98, 100, 98);
     font-size: 14px;
     margin-bottom: 0.30em;
+}
+
+/* Perfil */
+.perfil-div{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.perfil-banner{
+    display: flex;
+    background-color: rgb(24, 23, 23);
+    border-radius: 6px;
+    min-width: 600px;
+    max-width: 800px;
+    height: 200px;
+    width: auto;
+    padding: 1em;
 }
