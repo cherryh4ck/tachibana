@@ -1,6 +1,8 @@
 # Tachibana
 ![](resources/banner.png)
-<p align="center">[pixiv](https://www.pixiv.net/en/artworks/117630077) - autor shampuru</p>
+<div align="center">
+  [pixiv](https://www.pixiv.net/en/artworks/117630077) - shampuru
+</div>
 
 ## Descripción
 Tachibana es un tablón de imágenes no anónimo en el que los usuarios pueden postear imágenes o gifs acompañados de un tema principal y una breve descripción.
