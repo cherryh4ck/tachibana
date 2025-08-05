@@ -1,6 +1,5 @@
 # Tachibana
-[futuro banner acá]
-
+![](resources/banner.png)
 ## Descripción
 Tachibana es un tablón de imágenes no anónimo en el que los usuarios pueden postear imágenes o gifs acompañados de un tema principal y una breve descripción.
 Los usuarios pueden debatir y calificar cada posteo, sin ningún tipo de restricción.
