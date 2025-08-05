@@ -1,11 +1,11 @@
-# Galería de Imágenes Extendida
+# Tachibana
+[futuro banner acá]
 
 ## Descripción
-Tablón de imágenes con autenticación (no anónimo) donde los usuarios pueden crear una cuenta y subir imágenes con datos como: título, descripción y tags de búsqueda.
-Los posteos se pueden ver en la página de inicio, donde también se puede comentar y calificarlos.
+Tachibana es un tablón de imágenes no anónimo en el que los usuarios pueden postear imágenes o gifs acompañados de un tema principal y una breve descripción.
+Los usuarios pueden debatir y calificar cada posteo, sin ningún tipo de restricción.
 
-Este repositorio es una versión extendida del siguiente proyecto: [Galería de Imágenes](https://github.com/hddtomas/galeria-img)
-Esta versión presenta un uso más extenso del servidor (backend) y un sistema mucho más completo usando base de datos.
+Crear una cuenta es simple, solamente requiere un usuario, un nick y una contraseña. Detalles como descripción o foto de perfil, son completamente opcionales. 
 
 ## Requisitos para hostear
 - ```GD``` debe estar habilitado.
@@ -14,8 +14,7 @@ Esta versión presenta un uso más extenso del servidor (backend) y un sistema m
 - Subida de imágenes jpg, jpeg, png y gifs
 - Conversión de imágenes png a jpg
 - Creación de miniaturas
-- Chequeos de sanidad al subir imágenes
-- Visualización de imágenes (posts) usando una cuadrícula 
+- Visualización de posteos usando una cuadrícula 
 
 ## Por hacer
 - Cuentas de usuario mediante una base de datos
@@ -25,6 +24,7 @@ Esta versión presenta un uso más extenso del servidor (backend) y un sistema m
 - Miniaturas animadas para GIFs
 - Sistema de orden de imágenes (?)
 - Diseño responsive
+- Blue text
 
 ## Lenguajes de programación usados
 - ```HTML5```
