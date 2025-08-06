@@ -589,7 +589,7 @@ header h1{
     padding: 0.5em;
 }
 
-#input-tag, #input-tag2{
+#input-tag, #input-tag2, #input-tag-rojo{
     background-color: rgb(49, 168, 79);
     border-radius: 8px;
     height: 25px;
@@ -600,6 +600,11 @@ header h1{
     align-items: center;
     justify-content: center;
     white-space: nowrap; 
+}
+
+#input-tag-rojo{
+    background-color: rgb(219, 64, 64);
+    padding: 0 15px;
 }
 
 /* Página con mensaje de error */
@@ -741,6 +746,13 @@ header h1{
     transition: all 200ms;
 }
 
+.contenido-bloque-categoria{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 10px;
+}
+
 .contenido-bloque-phantom{
     opacity: 0.4;
 }
@@ -760,10 +772,15 @@ header h1{
 .contenido-bloque p{
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
     max-width: 400px;
     background-color: rgba(41, 40, 40, 0.233);
     color: rgb(241, 236, 236);
+    font-size: 24px;
+    padding: 5px;
+    text-shadow: 3px 4px 4px rgba(17, 17, 17, 0.7);
+    font-weight: bold;
 }
 
 .contenido-menu{
