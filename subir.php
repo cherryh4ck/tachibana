@@ -1,8 +1,7 @@
 <?php
     // TODO: Hacer sistema de tags
-    // Mejores textboxs
-    // Mejor boton de subir (no se pone bien)
-    // Mejor diseño, sinceramente no me gusta xd
+    // Añadir opción para borrar los tags
+    // Añadir input de descripción y categoría
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir</title>
+    <title>Publicar un post</title>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/archivos.js" type="module" defer></script>
     <script src="js/tags.js" type="module" defer></script>
@@ -59,7 +58,7 @@
                         <div class="contenido-subir-formulario-fila1">
                             <div class="contenido-subir-formulario-fila1-input">
                                 <p>Título</p>
-                                <input type="text" name="titulo" id="titulo-input">
+                                <input type="text" name="titulo" id="titulo-input" placeholder="Título del post..." required>
                             </div> 
                         </div>
                         <div class="contenido-subir-formulario-fila1">
@@ -70,7 +69,7 @@
                             </div>
                             <div class="contenido-subir-formulario-fila1-input">
                                 <p>Insertar tags</p>
-                                <input type="text" name="titulo" id="tags-input">
+                                <input type="text" name="titulo" id="tags-input" placeholder="Tag... (máx. 4)">
                             </div>
                         </div>
                         <input type="submit" value="Subir" id="btn-enviar" disabled>
