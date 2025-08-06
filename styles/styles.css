@@ -583,6 +583,11 @@ header h1{
     transition: all 200ms;
 }
 
+.contenido-subir-formulario form input[type=text]:hover{
+    background-color: rgb(64, 63, 63);
+    box-shadow: 5px 1px 40px rgb(53, 52, 52);
+}
+
 .contenido-subir-formulario form input[type=submit]{
     position: absolute;
     display: block;
@@ -635,12 +640,14 @@ header h1{
     min-height: 40px;
     gap: 0.5em;
     width: 250px;
-    max-height: 80px;
+    max-height: 150px;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
     flex-wrap: wrap;
     padding: 0.5em;
+    margin-top: 0.25em;
+    box-sizing: border-box;
 }
 
 #input-tag, #input-tag2, #input-tag-rojo{
