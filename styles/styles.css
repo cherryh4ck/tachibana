@@ -382,6 +382,10 @@ header h1{
     color: white;
 }
 
+#post-comentarios-bluetext{
+    color: rgb(70, 209, 116);
+}
+
 
 .post-comentarios-comentar{
     display: flex;
