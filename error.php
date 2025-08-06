@@ -2,7 +2,7 @@
     // No empieza en 0, sino en 1
     $errores = [
         "No hay contenido en esta página.",
-        "No se ha encontrado el contenido solicitado.", // Ya no se usa!
+        "No se ha encontrado el contenido solicitado.",
         "La imagen está corrupta o no es válida.",
         "No se ha encontrado el contenido solicitado porque fue eliminado por el usuario.",
         "No se ha encontrado el contenido solicitado porque fue moderado.",
@@ -27,14 +27,14 @@
 </head>
 <body>
     <nav>
-        <h1>test</h1>
+        <p id="nav-logo">Tachibana</p>
         <ul>
-            <li><a href="galeria.php?pag=1">Galería</a></li>
+            <li><a href="index.php?pag=1">Inicio</a></li>
             <li><a href="subir.php">Subir</a></li>
             <li><a href="perfiles.php">Usuarios</a></li>
         </ul>
         <div class="nav-cuenta">
-            <a href="php/cuenta.php" id="cuenta">Invitado</a>
+            <a href="php/cuenta.php" id="cuenta">Anónimo</a>
         </div>
     </nav>
     <header>
