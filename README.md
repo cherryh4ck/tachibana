@@ -1,4 +1,6 @@
+<div align="center">
 # Tachibana
+</div>
 ![](resources/banner.png)
 <div align="center">
 <a href="https://www.pixiv.net/en/artworks/117630077")>pixiv</a> - shampuru
