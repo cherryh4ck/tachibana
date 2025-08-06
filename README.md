@@ -11,23 +11,16 @@ Los usuarios pueden debatir y calificar cada posteo, sin ningún tipo de restric
 Crear una cuenta es simple, solamente requiere un usuario, un nick y una contraseña. Detalles como una descripción o foto de perfil, son completamente opcionales. 
 
 ## Requisitos para hostear
-- ```GD``` debe estar habilitado.
-
-## Contenidos
-- Subida de imágenes jpg, jpeg, png y gifs
-- Conversión de imágenes png a jpg
-- Creación de miniaturas
-- Visualización de posteos usando una cuadrícula 
+- ```Apache``` o otro servidor web HTTP
+- ```GD``` debe estar habilitado en la config. de PHP
 
 ## Por hacer
-- Cuentas de usuario mediante una base de datos
-- Sistema de rating
-- Imágenes con más información (Título, descripción, autor, comentarios y tags)
-- Más chequeos de sanidad (Min res & min size)
+- Vinculación a base de datos (general)
+- Sistema de rating básico
+- Chequeos de sanidad
 - Miniaturas animadas para GIFs
 - Sistema de orden de imágenes (?)
 - Diseño responsive
-- Blue text
 
 ## Lenguajes de programación usados
 - ```HTML5```
