@@ -44,7 +44,7 @@
         <div class="galeria-panel">
             <div class="galeria-herramientas">
                 <h2>Busqueda</h2>
-                <input type="text">
+                <input type="text" placeholder="Buscar...">
                 <h4>Tags populares</h4>
                 <div class="galeria-tags-populares">
                     <span id="input-tag">csgo<b>7</b></span>
