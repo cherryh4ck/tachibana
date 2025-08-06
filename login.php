@@ -17,14 +17,14 @@
 </head>
 <body>
     <nav>
-        <h1>test</h1>
+        <p id="nav-logo">Tachibana</p>
         <ul>
-            <li><a href="galeria.php?pag=1">Galería</a></li>
+            <li><a href="index.php?pag=1">Inicio</a></li>
             <li><a href="subir.php">Subir</a></li>
             <li><a href="perfiles.php">Usuarios</a></li>
         </ul>
         <div class="nav-cuenta">
-            <a href="php/cuenta.php" id="cuenta">Invitado</a>
+            <a href="php/cuenta.php" id="cuenta">Anónimo</a>
         </div>
     </nav>
     <div class="contenido-menu">
