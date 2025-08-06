@@ -1,4 +1,5 @@
 /* Estilo general para toda la página */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 html{
     background-color: rgb(39, 36, 36);
@@ -6,7 +7,7 @@ html{
 
 *{
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Lato", Arial;
 }
 
 nav{
@@ -27,9 +28,9 @@ nav{
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
-    margin-right: 1em;
+    margin-right: 0.65em;
     transition: all 200ms;
-    font-size: 18px;
+    font-size: 20px;
     color: rgb(211, 199, 199);
     text-decoration: none;
 }
@@ -74,7 +75,7 @@ nav ul li a::before{
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: rgb(185, 182, 182);
+    background-color: rgb(150, 148, 148);
     transform: scaleX(0);
     transition: transform 0.2s ease;
 }
@@ -83,9 +84,21 @@ nav ul li a:hover:before{
     transform: scaleX(1);
 }
 
-nav h1{
-    padding: 10px 10px;
-    color: rgb(185, 182, 182);
+nav ul li a:hover{
+    color: rgb(150, 148, 148);
+}
+
+#nav-logo { /* logo */
+    font-size: 28px;
+    color: rgb(141, 192, 129);
+    margin-left: 0.3em;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 600;
+}
+
+#nav-logo span{
+    color: rgb(109, 109, 155);
 }
 
 header h1{
