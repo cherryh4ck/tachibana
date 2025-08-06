@@ -988,6 +988,9 @@ header h1{
 .contenido-perfil-bloque-info p{
     font-size: 13px;
     text-align: left;
+    overflow-wrap: break-word;
+    word-break: break-word; 
+    white-space: normal;
 }
 
 #contenido-perfil-bloque-info-username{
