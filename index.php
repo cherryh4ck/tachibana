@@ -72,8 +72,12 @@
                         $id = 1 + (12*($pagina-1)) + $i;
                         if (file_exists("galeria/" . $id . ".jpg")){
                             echo "<div class='contenido-bloque'>";
+                            // acá iría el tag
+                            echo "<div class='contenido-bloque-categoria'>";
+                            echo "<span id='input-tag-rojo'>/any/</span>";
+                            echo "</div>";
                             echo "<a href='post.php?id=" . $id . "'><img src='galeria/" . $id . ".jpg' alt=''></a>";
-                            echo "<p>Post #" . $id . "</p>";
+                            echo "<p>Sin título</p>";
                             echo "</div>";
                         }
                         else if ($id <= $end_id){
