@@ -6,9 +6,9 @@
 
 ## Descripción
 Tachibana es un tablón de imágenes no anónimo en el que los usuarios pueden postear imágenes o gifs acompañados de un tema principal y una breve descripción.
-Los usuarios pueden debatir y calificar cada posteo, sin ningún tipo de restricción.
+Los usuarios pueden debatir y calificar cada posteo, sin ningún tipo de restricción respecto a la libertad de expresión.
 
-Crear una cuenta es simple, solamente requiere un usuario, un nick y una contraseña. Detalles como descripción o foto de perfil, son completamente opcionales. 
+Crear una cuenta es simple, solamente requiere un usuario, un nick y una contraseña. Detalles como una descripción o foto de perfil, son completamente opcionales. 
 
 ## Requisitos para hostear
 - ```GD``` debe estar habilitado.
