@@ -85,7 +85,7 @@
                 </div>
                 <div class="post-comentarios-comentario">
                     <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <p><b>User</b><br>Testeo</p>
+                    <p><b>User</b><br>Testeo<br><span id="post-comentarios-bluetext">>green text test. jajajjaj</span></p>
                 </div>
                 <div class="post-comentarios-comentario">
                     <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
