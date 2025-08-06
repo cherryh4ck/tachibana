@@ -26,7 +26,7 @@
     </nav>
     <div class="contenido-perfiles">
         <p>Buscar un usuario</p>
-        <input type="text" name="nombreUsuario" placeholder="Nombre de usuario..." id="nombreUsuario">
+        <input type="text" name="nombreUsuario" placeholder="Introducí el nombre de usuario..." id="nombreUsuario">
     </div>
     <div class="contenido-perfiles-usuarios">
         <p>Usuarios</p>
@@ -40,19 +40,44 @@
                 </div>
             </div>
             <div class="contenido-perfil-bloque">
-                <p>jejejejej</p>
+                <img src="resources/avatar.png" alt="">
+                <div class="contenido-perfil-bloque-info">
+                    <p><b>Display name</b></p>
+                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
+                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
+                </div>
             </div>
             <div class="contenido-perfil-bloque">
-                <p>jejejejej</p>
+                <img src="resources/avatar.png" alt="">
+                <div class="contenido-perfil-bloque-info">
+                    <p><b>Display name</b></p>
+                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
+                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
+                </div>
             </div>
             <div class="contenido-perfil-bloque">
-                <p>jejejejej</p>
+                <img src="resources/avatar.png" alt="">
+                <div class="contenido-perfil-bloque-info">
+                    <p><b>Display name</b></p>
+                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
+                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
+                </div>
             </div>
             <div class="contenido-perfil-bloque">
-                <p>jejejejej</p>
+                <img src="resources/avatar.png" alt="">
+                <div class="contenido-perfil-bloque-info">
+                    <p><b>Display name</b></p>
+                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
+                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
+                </div>
             </div>
             <div class="contenido-perfil-bloque">
-                <p>jejejejej</p>
+                <img src="resources/avatar.png" alt="">
+                <div class="contenido-perfil-bloque-info">
+                    <p><b>Display name</b></p>
+                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
+                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
+                </div>
             </div>
         </div>
     </div>
