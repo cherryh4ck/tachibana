@@ -8,10 +8,11 @@
         "No se ha encontrado el contenido solicitado porque fue moderado.",
         "No se ha encontrado la cuenta solicitada.",
         "La imagen debe tener una resolución mínima de 300x300 píxeles.",
-        "El tamaño de la imagen debe ser menor a 5.2 MBs."
+        "El tamaño de la imagen debe ser menor a 5.2 MBs.",
+        "No se puede acceder al servidor porque está caído o de mantenimiento.<br>Intenta nuevamente en un rato."
     ];
     if ((!isset($_GET["id"])) || (!is_numeric($_GET["id"])) || ($_GET["id"] < 1) || ($_GET["id"] > count($errores))) {
-        header("Location: galeria.php?pag=1");
+        header("Location: index.php?pag=1");
     }
 ?>
 
