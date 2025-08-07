@@ -46,9 +46,12 @@
                             <select name="categoria" id="categoria-input" size="1">
                                 <option value="any">General - /any/</option>
                                 <option value="anime">Anime - /anime/</option>
+                                <option value="manga">Manga - /manga/</option>
                                 <option value="games">Videojuegos - /games/</option>
                                 <option value="pol">Política - /pol/</option>
                                 <option value="tecno">Tecnología - /tecno/</option>
+                                <option value="music">Música - /music/</option>
+                                <option value="movie">Películas - /movie/</option>
                             </select>
                         </div> 
                     </div>
