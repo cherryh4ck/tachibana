@@ -1,5 +1,8 @@
 let archivo = document.getElementById("archivo-file");
 let image = document.getElementById("image-preview");
+let imagen_texto = document.getElementById("imagen-texto");
+let imagen_tamano = document.getElementById("imagen-tamano");
+let imagen_res = document.getElementById("imagen-res");
 
 let textbox = document.getElementById("titulo-input");
 let textarea = document.getElementById("descripcion-input");
@@ -17,12 +20,15 @@ archivo.addEventListener("change", (event) => {
         maxSize = 26228792;
     }
     console.log(imagen.type);
+    imagen_texto.textContent = imagen.name;
+    imagen_tamano.textContent = `${(imagen.size / 1024).toFixed(2)} KB`;
     let width, height;
 
     image.src = URL.createObjectURL(imagen);
     image.onload = () => {
         width = image.naturalWidth;
         height = image.naturalHeight;
+        imagen_res.textContent = `${width}x${height}`;
         if (width >= 400 && height >= 300){
             req1 = true;
             console.log("1 si");
