@@ -10,6 +10,7 @@ import {req1, req2, req3} from "./archivos.js";
 let insert_tags = document.getElementById("insert-tags");
 let tags_input = document.getElementById("tags-input");
 let titulo_input = document.getElementById("titulo-input")
+let textarea = document.getElementById("descripcion-input");
 let enviar = document.getElementById("btn-enviar");
 // let mensaje_error = document.getElementById("error-msj");
 
@@ -33,7 +34,7 @@ function introducirTag(tag){
             span.id = "input-tag";
             span.innerText = tag;
             insert_tags.appendChild(span);
-            if (req1 && req2 && req3 && titulo_input.value.trim() != ""){
+            if (req1 && req2 && req3 && titulo_input.value.trim() != "" && textarea.value.trim() != ""){
                 enviar.disabled = false;
             }
             else{
