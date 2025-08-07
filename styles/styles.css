@@ -451,10 +451,12 @@ header h1{
 }
 
 /* Subir.php // Subir contenido */
+/* //////////////////////////// */
 
 .contenido-subir{
     display: flex;
-    width: 65%;
+    width: 50%;
+    min-height: 440px;
     background-color: rgb(24, 23, 23);
     margin-left: auto;
     margin-right: auto;
@@ -464,48 +466,18 @@ header h1{
 
 .contenido-subir-preview{
     display: block;
+    height: 100%;
 }
 
 .contenido-subir-preview img{
     display: block;
     max-width: 400px;
-    margin-top: 2em;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     border-radius: 4px;
-    margin-bottom: 2em;
-}
-
-.centered-container{
-    display: flex;
-    justify-content: center;
-}
-
-.contenido-subir-preview-requisitos {
-    display: block;
-    margin-bottom: 1.5em;
-}
-
-.contenido-subir-preview-requisitos-requisito {
-    display: flex;
-    align-items: center; 
-    margin-top: 0.25em;
-}
-
-.contenido-subir-preview-requisitos-requisito p {
-    color: rgb(255, 255, 255);
-    margin: 0;
-}
-
-.requisito1, .requisito2, .requisito3 {
-    display: inline-block;
-    background-color: rgb(170, 175, 172);
-    width: 20px;
-    height: 20px;
-    margin-right: 0.5em;
-    border-radius: 50px;
-}
-.requisito3{
     margin-bottom: 2em;
 }
 
@@ -514,16 +486,12 @@ header h1{
     width: 50%;
 }
 
-.contenido-subir-divisores{
-    margin-top: 15px;
-}
-
 .contenido-subir-formulario{
     position: relative;
     display: block;
     width: 90%;
     height: 80%;
-    margin-top: 5em;
+    padding: 2em 0;
 }
 
 .contenido-subir-formulario form{
@@ -538,8 +506,9 @@ header h1{
 
 /* input file */
 .subir-archivo{
-    margin-top: 4em;
     transition: all 200ms;
+    margin-top: 1em;
+    width: 200px;
 }
 
 .subir-archivo::-webkit-file-upload-button{
@@ -568,6 +537,7 @@ header h1{
     opacity: .6;
     transform: scale(1.05);
 }
+/* fin de input file */
 
 .contenido-subir-formulario form input[type=text]{
     display: block;
@@ -575,17 +545,24 @@ header h1{
     width: 100%;
     height: 35px;
     margin-top: 0.25em;
-    border: 0;
     border-radius: 8px;
-    background-color: rgb(51, 51, 49);
+    background-color: #191b1b;
+    border: 2px solid #282b2b;
     color: white;
-    padding: 1em;
+    padding: 0.5em;
     transition: all 200ms;
+    font-size: 16px;
 }
 
 .contenido-subir-formulario form input[type=text]:hover{
-    background-color: rgb(64, 63, 63);
-    box-shadow: 5px 1px 40px rgb(53, 52, 52);
+    background-color: rgb(37, 35, 35);
+    box-shadow: 5px 1px 40px rgb(36, 35, 35);
+}
+
+.contenido-subir-formulario form input[type=text]:focus{
+    outline: none;
+    border: 2px solid #464949;
+    box-shadow: 5px 1px 40px rgb(56, 55, 55);
 }
 
 .contenido-subir-formulario form input[type=submit]{
@@ -624,14 +601,65 @@ header h1{
     gap: 2.5em;
 }
 
-.contenido-subir-formulario-fila1-input{
+.contenido-subir-formulario-fila1-input, .contenido-subir-formulario-fila1-input-allspace{
     display: block;
 }
 
-.contenido-subir-formulario-fila1-input p{
-    color: white;
+.contenido-subir-formulario-fila1-input-allspace{
+    width: 100%;
+}
+
+.contenido-subir-formulario-fila1-input p, .contenido-subir-formulario-fila1-input-allspace p{
+    color: rgb(211, 199, 199);
     font-weight: bold;
     font-size: 18px;
+}
+
+#categoria-input{
+    background-color: rgb(20, 20, 19);
+    margin-top: 0.25em;
+    height: 36px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 0;
+    color: rgb(211, 199, 199);
+    font-size: 16px;
+    padding: 0.5em;
+    cursor: pointer;
+    transition: all 200ms;
+}
+
+#categoria-input:hover{
+    background-color: rgb(27, 26, 26);
+    box-shadow: 5px 1px 40px rgb(53, 52, 52);
+    opacity: .6;
+}
+
+#descripcion-input{
+    display: block;
+    width: 100%;
+    height: 60px;
+    resize: none;
+    box-sizing: border-box;
+    background-color: #191b1b;
+    border: 2px solid #282b2b;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: all 200ms;
+    margin-top: 0.25em;
+    padding: 0.5em;
+}
+
+#descripcion-input:hover{
+    background-color: rgb(37, 35, 35);
+    box-shadow: 5px 1px 40px rgb(36, 35, 35);
+}
+
+#descripcion-input:focus{
+    outline: none;
+    border: 2px solid #464949;
+    box-shadow: 5px 1px 40px rgb(56, 55, 55);
 }
 
 .contenido-subir-formulario-fila1-input-tags{
