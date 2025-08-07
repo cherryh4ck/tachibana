@@ -35,35 +35,33 @@
         <div class="contenido-subir">
             <div class="contenido-subir-divisores">
                 <div class="contenido-subir-preview">
-                    <h1>Vista previa</h1>
                     <img src="https://placehold.co/400x300" alt="" id="image-preview">
-                </div>
-                <div class="centered-container">
-                    <div class="contenido-subir-preview-requisitos">
-                        <div class="contenido-subir-preview-requisitos-requisito">
-                            <span class="requisito1" id="requisito1"></span>
-                            <p>Resolución mínima de 400x300</p>
-                        </div>
-                        <div class="contenido-subir-preview-requisitos-requisito">
-                            <span class="requisito1" id="requisito2"></span>
-                            <p>Tamaño mayor a 20KB</p>
-                        </div>
-                        <div class="contenido-subir-preview-requisitos-requisito">
-                            <span class="requisito1" id="requisito3"></span>
-                            <p id="texto-size">Tamaño menor a 5.2MB</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="contenido-subir-divisores">
                 <div class="contenido-subir-formulario">
                     <form action="php/subida.php" method="POST" enctype="multipart/form-data" id="formulario-subir" onkeydown="if (event.keyCode === 13) {return false;}">
-                        <input type="file" accept=".png, .jpg, .jpeg, .gif" name="archivo" id="archivo-file" class="subir-archivo">
                         <div class="contenido-subir-formulario-fila1">
                             <div class="contenido-subir-formulario-fila1-input">
                                 <p>Título</p>
                                 <input type="text" name="titulo" id="titulo-input" placeholder="Título del post..." required>
                             </div> 
+                            <div class="contenido-subir-formulario-fila1-input">
+                                <p>Categoría</p>
+                                <select name="categoria" id="categoria-input" size="1">
+                                    <option value="any">General - /any/</option>
+                                    <option value="anime">Anime - /anime/</option>
+                                    <option value="games">Videojuegos - /games/</option>
+                                    <option value="pol">Política - /pol/</option>
+                                    <option value="tecno">Tecnología - /tecno/</option>
+                                </select>
+                            </div> 
+                        </div>
+                        <div class="contenido-subir-formulario-fila1">
+                            <div class="contenido-subir-formulario-fila1-input-allspace">
+                                <p>Descripción</p>
+                                <textarea name="descripcion" id="descripcion-input" placeholder="Descripción del post..."></textarea>
+                            </div>
                         </div>
                         <div class="contenido-subir-formulario-fila1">
                             <div class="contenido-subir-formulario-fila1-input">
@@ -76,6 +74,7 @@
                                 <input type="text" name="titulo" id="tags-input" placeholder="Tag... (máx. 4)">
                             </div>
                         </div>
+                        <input type="file" accept=".png, .jpg, .jpeg, .gif" name="archivo" id="archivo-file" class="subir-archivo">
                         <input type="submit" value="Subir" id="btn-enviar" disabled>
                     </form>
                 </div>
