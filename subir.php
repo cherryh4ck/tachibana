@@ -32,6 +32,7 @@
         </div>
     </nav>
     <header>
+        <img src="" alt="" id="image-preview" style="display: none;">
         <div class="contenido-subir">
             <div class="contenido-subir-formulario">
                 <form action="php/subida.php" method="POST" enctype="multipart/form-data" id="formulario-subir" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
@@ -68,7 +69,10 @@
                             <input type="text" name="titulo" id="tags-input" placeholder="Tag... (máx. 4)">
                         </div>
                     </div>
-                    <input type="file" accept=".png, .jpg, .jpeg, .gif" name="archivo" id="archivo-file" class="subir-archivo">
+                    <div class="contenido-subir-formulario-fila-subir">
+                        <input type="file" accept=".png, .jpg, .jpeg, .gif" name="archivo" id="archivo-file" class="subir-archivo">
+                        <p>Imagen no seleccionada</p>
+                    </div>
                     <input type="submit" value="Subir" id="btn-enviar" disabled>
                 </form>
             </div>
