@@ -71,7 +71,13 @@
                     </div>
                     <div class="contenido-subir-formulario-fila-subir">
                         <input type="file" accept=".png, .jpg, .jpeg, .gif" name="archivo" id="archivo-file" class="subir-archivo">
-                        <p>Imagen no seleccionada</p>
+                        <div class="contenido-subir-formulario-fila-subir-textos">
+                            <p id="imagen-texto">Imagen no seleccionada</p>
+                            <div class="contenido-subir-formulario-fila-subir-textos-estado">
+                                <p id="imagen-tamano"></p>
+                                <p id="imagen-res"></p>
+                            </div>
+                        </div>
                     </div>
                     <input type="submit" value="Subir" id="btn-enviar" disabled>
                 </form>
