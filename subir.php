@@ -2,6 +2,10 @@
     // TODO: Hacer sistema de tags
     // Añadir opción para borrar los tags
     // Añadir input de descripción y categoría
+
+    // REWORK EN PROGRESO!!
+    // por el momento todo el diseño se está puliendo para luego convertirlo en ventana modal
+    // y así no requiere de una página aparte
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +58,7 @@
             <div class="contenido-subir-divisores">
                 <div class="contenido-subir-formulario">
                     <form action="php/subida.php" method="POST" enctype="multipart/form-data" id="formulario-subir" onkeydown="if (event.keyCode === 13) {return false;}">
-                        <input type="file" accept=".png, .jpg, .jpeg, .gif" name="archivo" id="archivo-file" class="subir-archivo" required>
+                        <input type="file" accept=".png, .jpg, .jpeg, .gif" name="archivo" id="archivo-file" class="subir-archivo">
                         <div class="contenido-subir-formulario-fila1">
                             <div class="contenido-subir-formulario-fila1-input">
                                 <p>Título</p>
