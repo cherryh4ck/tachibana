@@ -668,13 +668,21 @@ header h1{
     margin-top: 1em;
 }
 
-.contenido-subir-formulario-fila-subir p{
+.contenido-subir-formulario-fila-subir-textos p{
     display: block;
     color: rgb(211, 199, 199);
     font-size: 18px;
     margin-left: 0.75em;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.contenido-subir-formulario-fila-subir-textos-estado{
+    display: flex;
+}
+
+.contenido-subir-formulario-fila-subir-textos-estado p{
+    color: rgb(81, 76, 76);
 }
 
 
