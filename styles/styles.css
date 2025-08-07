@@ -508,7 +508,6 @@ header h1{
 /* input file */
 .subir-archivo{
     transition: all 200ms;
-    margin-top: 1em;
     width: 200px;
 }
 
@@ -567,11 +566,7 @@ header h1{
 }
 
 .contenido-subir-formulario form input[type=submit]{
-    position: absolute;
     display: block;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
     width: 150px;
     height: 50px;
     background-color: rgb(20, 20, 19);
@@ -580,6 +575,9 @@ header h1{
     font-size: 20px;
     transition: all 200ms;
     border-radius: 8px;
+    margin-top: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contenido-subir-formulario form input[type=submit]:not([disabled]):hover{
@@ -588,7 +586,7 @@ header h1{
     box-shadow: 5px 1px 30px rgb(54, 53, 53);
     cursor: pointer;
     opacity: .6;
-    transform: translateX(-50%) scale(1.05);
+    transform: scale(1.05);
 }
 
 .contenido-subir-formulario form input[type=submit]:disabled{
@@ -663,6 +661,22 @@ header h1{
     border: 2px solid #464949;
     box-shadow: 5px 1px 40px rgb(56, 55, 55);
 }
+
+.contenido-subir-formulario-fila-subir{
+    display: flex;
+    width: 100%;
+    margin-top: 1em;
+}
+
+.contenido-subir-formulario-fila-subir p{
+    display: block;
+    color: rgb(211, 199, 199);
+    font-size: 18px;
+    margin-left: 0.75em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 
 .contenido-subir-formulario-fila1-input-tags{
     display: flex;
