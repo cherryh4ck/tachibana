@@ -82,6 +82,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="contenido-subir-formulario-error">
+                        <!-- div para mostrar errores mediante js/archivos.js -->
+                    </div>
                     <input type="submit" value="Subir" id="btn-enviar" disabled>
                 </form>
             </div>
