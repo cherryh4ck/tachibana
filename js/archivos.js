@@ -38,6 +38,9 @@ archivo.addEventListener("change", (event) => {
         else{
             req1 = false;
             mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> La resolución mínima es de 400x300";
+            imagen_texto.textContent = "Imagen no seleccionada";
+            imagen_tamano.textContent = "";
+            imagen_res.textContent = "";
             mensaje_error.style.display = "block";
             image.src = "";
         }
@@ -57,6 +60,9 @@ archivo.addEventListener("change", (event) => {
         req2 = false;
         mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño mínimo es de 10 KB";
         mensaje_error.style.display = "block";
+        imagen_texto.textContent = "Imagen no seleccionada";
+        imagen_tamano.textContent = "";
+        imagen_res.textContent = "";
         image.src = "";
     }
     if (imagen.size < maxSize) {
@@ -71,6 +77,9 @@ archivo.addEventListener("change", (event) => {
         else{
             mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño máximo es de 25 MB";
         }   
+        imagen_texto.textContent = "Imagen no seleccionada";
+        imagen_tamano.textContent = "";
+        imagen_res.textContent = "";
         mensaje_error.style.display = "block";
         image.src = "";
     }
