@@ -1,7 +1,6 @@
 <?php
-    // TODO: Hacer sistema de tags
     // Añadir opción para borrar los tags
-    // Añadir input de descripción y categoría
+    // añadir animación al mensaje de error (tipo un brillo o algo así)
 
     // REWORK EN PROGRESO!!
     // por el momento todo el diseño se está puliendo para luego convertirlo en ventana modal
@@ -84,6 +83,7 @@
                     </div>
                     <div class="contenido-subir-formulario-error">
                         <!-- div para mostrar errores mediante js/archivos.js -->
+                        <p style="display: none;" id="mensaje-error"><span>Error al subir la imagen:</span> Test test</p>
                     </div>
                     <input type="submit" value="Subir" id="btn-enviar" disabled>
                 </form>
