@@ -7,6 +7,7 @@ let imagen_res = document.getElementById("imagen-res");
 let textbox = document.getElementById("titulo-input");
 let textarea = document.getElementById("descripcion-input");
 let enviar = document.getElementById("btn-enviar");
+let mensaje_error = document.getElementById("mensaje-error");
 
 // 25228792 (25MB)
 let maxSize = 6228792; // 5 MB
@@ -16,6 +17,7 @@ import {tags_introducidos} from "./tags.js";
 
 archivo.addEventListener("change", (event) => {
     const imagen = event.target.files[0];
+    mensaje_error.style.display = "none";
     if (imagen.type == "image/gif"){    
         maxSize = 26228792;
     }
@@ -35,6 +37,9 @@ archivo.addEventListener("change", (event) => {
         }
         else{
             req1 = false;
+            mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> La resolución mínima es de 400x300";
+            mensaje_error.style.display = "block";
+            image.src = "";
         }
 
         if (req1 && req2 && req3 && tags_introducidos > 0 && textbox.value.trim() != "" && textarea.value.trim() != "") {
@@ -44,12 +49,15 @@ archivo.addEventListener("change", (event) => {
         }
     };
 
-    if (imagen.size > 20000){
+    if (imagen.size > 10000){
         req2 = true;
         console.log("2 si");
     }
     else{
         req2 = false;
+        mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño mínimo es de 10 KB";
+        mensaje_error.style.display = "block";
+        image.src = "";
     }
     if (imagen.size < maxSize) {
         req3 = true;
@@ -57,6 +65,14 @@ archivo.addEventListener("change", (event) => {
     }
     else{
         req3 = false;
+        if (!(imagen.type == "image/gif")){
+            mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño máximo es de 5 MB";
+        }
+        else{
+            mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño máximo es de 25 MB";
+        }   
+        mensaje_error.style.display = "block";
+        image.src = "";
     }
 });
 
