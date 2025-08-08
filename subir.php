@@ -24,7 +24,7 @@
         <p id="nav-logo">Tachibana</p>
         <ul>
             <li><a href="index.php?pag=1">Inicio</a></li>
-            <li><a href="subir.php">Subir</a></li>
+            <li><a href="subir.php">Publicar</a></li>
             <li><a href="perfiles.php">Usuarios</a></li>
         </ul>
         <div class="nav-cuenta">
