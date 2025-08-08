@@ -1,4 +1,6 @@
 <?php
+    $mantenimiento = false;
+
     // No empieza en 0, sino en 1
     $errores = [
         "No hay contenido en esta página.",
@@ -6,12 +8,13 @@
         "La imagen está corrupta o no es válida.",
         "No se ha encontrado el contenido solicitado porque fue eliminado por el usuario.",
         "No se ha encontrado el contenido solicitado porque fue moderado.",
-        "No se ha encontrado la cuenta solicitada.",
-        "La imagen debe tener una resolución mínima de 300x300 píxeles.",
-        "El tamaño de la imagen debe ser menor a 5.2 MBs.",
-        "No se puede acceder al servidor porque está caído o de mantenimiento.<br>Intenta nuevamente en un rato."
+        "No se ha encontrado la cuenta solicitada.", 
+        "La imagen debe tener una resolución mínima de 300x300 píxeles.", // sin usar
+        "El tamaño de la imagen debe ser menor a 5.2 MBs.", // sin usar
+        "No se puede acceder al servidor porque está caído.<br>Intenta nuevamente en un rato.",
+        "No se puede acceder al servidor porque está en mantenimiento.<br>En breve, la página mostrará cuando se acaba el mantenimiento.",
     ];
-    if ((!isset($_GET["id"])) || (!is_numeric($_GET["id"])) || ($_GET["id"] < 1) || ($_GET["id"] > count($errores))) {
+    if ((!isset($_GET["id"])) || (!is_numeric($_GET["id"])) || ($_GET["id"] < 1) || ($_GET["id"] > count($errores)) && (!$mantenimiento)) {
         header("Location: index.php?pag=1");
     }
 ?>
@@ -31,7 +34,7 @@
         <p id="nav-logo">Tachibana</p>
         <ul>
             <li><a href="index.php?pag=1">Inicio</a></li>
-            <li><a href="subir.php">Subir</a></li>
+            <li><a href="subir.php">Publicar</a></li>
             <li><a href="perfiles.php">Usuarios</a></li>
         </ul>
         <div class="nav-cuenta">
@@ -41,7 +44,11 @@
     <header>
         <h1>Ups, hubo un problema...</h1>
         <?php
-            echo "<p id='error'>" . $errores[$_GET["id"] - 1] . "</p>";
+            if ($mantenimiento) {
+                echo "<p id='error'>" . $errores[10] . "</p>";
+            } else {
+                echo "<p id='error'>" . $errores[$_GET["id"] - 1] . "</p>";
+            }
         ?>
         <p id="disculpas"><b>Pedimos disculpas.</b></p>
     </header>
