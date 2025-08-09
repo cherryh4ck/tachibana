@@ -702,13 +702,14 @@ header h1{
 .contenido-subir-formulario-error p{
     color: rgb(211, 199, 199);
     font-size: 18px;
+    transition: all 200ms;
 }
 
 .contenido-subir-formulario-error p span{
     color: rgb(219, 64, 64);
     font-size: 18px;
+    transition: all 200ms;
 }
-
 
 .contenido-subir-formulario-fila1-input-tags{
     display: flex;
@@ -742,6 +743,19 @@ header h1{
 #input-tag-rojo{
     background-color: rgb(219, 64, 64);
     padding: 0 15px;
+}
+
+#remover-tag{
+    background-color: transparent;
+    color: rgb(216, 208, 208);
+    border: 0;
+    transition: all 200ms;
+    font-size: 16px;
+}
+
+#remover-tag:hover{
+    color: rgb(238, 235, 235);
+    cursor: pointer;
 }
 
 /* Página con mensaje de error */
