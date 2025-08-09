@@ -37,12 +37,13 @@ archivo.addEventListener("change", (event) => {
         }
         else{
             req1 = false;
-            mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> La resolución mínima es de 400x300";
             imagen_texto.textContent = "Imagen no seleccionada";
             imagen_tamano.textContent = "";
             imagen_res.textContent = "";
-            mensaje_error.style.display = "block";
             image.src = "";
+            
+            mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> La resolución mínima es de 400x300";
+            mensaje_error.style.display = "block";
         }
 
         if (req1 && req2 && req3 && tags_introducidos > 0 && textbox.value.trim() != "" && textarea.value.trim() != "") {
@@ -58,12 +59,13 @@ archivo.addEventListener("change", (event) => {
     }
     else{
         req2 = false;
-        mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño mínimo es de 10 KB";
-        mensaje_error.style.display = "block";
         imagen_texto.textContent = "Imagen no seleccionada";
         imagen_tamano.textContent = "";
         imagen_res.textContent = "";
         image.src = "";
+
+        mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño mínimo es de 10 KB";
+        mensaje_error.style.display = "block";
     }
     if (imagen.size < maxSize) {
         req3 = true;
@@ -71,17 +73,18 @@ archivo.addEventListener("change", (event) => {
     }
     else{
         req3 = false;
+        imagen_texto.textContent = "Imagen no seleccionada";
+        imagen_tamano.textContent = "";
+        imagen_res.textContent = "";
+        image.src = "";
+
         if (!(imagen.type == "image/gif")){
             mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño máximo es de 5 MB";
         }
         else{
             mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño máximo es de 25 MB";
         }   
-        imagen_texto.textContent = "Imagen no seleccionada";
-        imagen_tamano.textContent = "";
-        imagen_res.textContent = "";
         mensaje_error.style.display = "block";
-        image.src = "";
     }
 });
 
