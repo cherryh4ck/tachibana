@@ -51,6 +51,7 @@
                                 <option value="tecno">Tecnología - /tecno/</option>
                                 <option value="music">Música - /music/</option>
                                 <option value="movie">Películas - /movie/</option>
+                                <option value="coding">Programación - /coding/</option>
                             </select>
                         </div> 
                     </div>
