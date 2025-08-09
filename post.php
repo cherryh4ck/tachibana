@@ -69,7 +69,7 @@
                 echo "<div class='post-autor'>";
                 echo "<img src='resources/avatar.png' alt='Avatar' id='post-autor-avatar'>";
                 echo "<div class='post-autor-info'>";
-                echo "<p><b>Autor</b><br>";
+                echo "<p><b><a href=''>OP</a></b><br>";
                 echo "<p>Publicado el 24-07-2025 a las 5:04 AM</p>";
                 echo "</div>";
                 echo "</div>";
@@ -81,15 +81,15 @@
             <div class="post-comentarios">
                 <div class="post-comentarios-comentario">
                     <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <p><b>User</b><br>Hola</p>
+                    <p><b><a href="">Usuario 1</a></b><br>Hola</p>
                 </div>
                 <div class="post-comentarios-comentario">
                     <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <p><b>User</b><br>Testeo<br><span id="post-comentarios-bluetext">>green text test. jajajjaj</span></p>
+                    <p><b><a href="">Usuario 2</a></b><br>Testeo<br><span id="post-comentarios-bluetext">>green text test. jajajjaj</span></p>
                 </div>
                 <div class="post-comentarios-comentario">
                     <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <p><b>User</b><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae accusamus quidem voluptatum eius. In sunt numquam sequi error vel fugit, consequatur, nesciunt temporibus commodi corporis reiciendis, excepturi sapiente. Facere, debitis.</p>
+                    <p><b><a href="">Usuario 3</a></b><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae accusamus quidem voluptatum eius. In sunt numquam sequi error vel fugit, consequatur, nesciunt temporibus commodi corporis reiciendis, excepturi sapiente. Facere, debitis.</p>
                 </div>
             </div>
             <h2 id="post-comentarios-comentar">Comentar</h2>
