@@ -48,7 +48,7 @@
                                 <option value="manga">Manga - /manga/</option>
                                 <option value="games">Videojuegos - /games/</option>
                                 <option value="pol">Política - /pol/</option>
-                                <option value="tecno">Tecnología - /tecno/</option>
+                                <option value="tech">Tecnología - /tech/</option>
                                 <option value="music">Música - /music/</option>
                                 <option value="movie">Películas - /movie/</option>
                                 <option value="coding">Programación - /coding/</option>
