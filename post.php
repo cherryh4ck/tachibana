@@ -96,7 +96,7 @@
             <div class="post-comentarios-comentar">
                 <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
                 <form action="" method="post">
-                    <textarea name="" id="post-comentarios-textarea" rows="2" required></textarea>
+                    <textarea name="" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required></textarea>
                     <input type="submit" value="Comentar" id="post-comentarios-enviar" disabled>
                 </form>
             </div>
