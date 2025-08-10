@@ -5,26 +5,28 @@
 </div>
 
 ## Descripción
-Tachibana es un tablón de imágenes no anónimo en el que los usuarios pueden postear imágenes o gifs acompañados de un tópico y una descripción.
-Los usuarios pueden debatir y calificar cada posteo, sin ningún tipo de restricción respecto a la libertad de expresión.
+Tachibana es un tablón de imágenes no anónimo en el que los usuarios pueden postear imágenes o gifs acompañados de un tópico y una descripción sobre el tema.
+Los usuarios pueden debatir sobre el tema, sin ningún tipo de restricción respecto a la libertad de expresión.
 
-Crear una cuenta es simple, solamente requiere un usuario, un nick y una contraseña. Detalles como una descripción o foto de perfil, son completamente opcionales. 
+Crear una cuenta es simple, solamente requiere un usuario, un nick y una contraseña. Detalles como una descripción, una foto de perfil o mostrar la última vez que se conectó el usuario, son completamente opcionales. 
 
 ## Requisitos para hostear
 - ```Apache``` o otro servidor web HTTP
+- ```Servidor MariaDB```
 - ```GD``` debe estar habilitado en la config. de PHP
 
 ## Por hacer
 - Vinculación a base de datos (general)
-- Sistema de rating básico
-- Chequeos de sanidad
+- Chequeos de sanidad para la entrada de datos
 - Miniaturas animadas para GIFs
-- Sistema de orden de imágenes (?)
+- Sistema de orden de imágenes 
 - Diseño responsive
+- Animaciones para mejor estética
 
 ## Lenguajes de programación usados
 - ```HTML5```
 - ```CSS3```
 - ```PHP```
 - ```JavaScript```
+- ```MySQL```
 
