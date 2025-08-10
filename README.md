@@ -12,8 +12,8 @@ Crear una cuenta es simple, solamente requiere un usuario, un nick y una contras
 
 ## Requisitos para hostear
 - ```Apache``` o otro servidor web HTTP
-- ```Servidor MariaDB```
-- ```GD``` debe estar habilitado en la config. de PHP
+- ```Servidor MariaDB``` para la base de datos
+- ```GD``` debe estar habilitado en la config. de extensiones de PHP
 
 ## Por hacer
 - Vinculación a base de datos (general)
