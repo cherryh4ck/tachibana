@@ -319,13 +319,13 @@ header h1{
 }
 
 .post-autor-info p b{
-    color: rgb(241, 236, 236);
+    color: rgb(226, 219, 219);
     font-size: 18px;
 }
 
 
 .post-autor-info p b a{
-    color: rgb(241, 236, 236);
+    color: rgb(226, 219, 219);
     text-decoration: none;
     transition: all 200ms;
 }
@@ -392,11 +392,11 @@ header h1{
 }
 
 .post-comentarios-comentario p{
-    color: rgb(241, 236, 236);
+    color: rgb(211, 199, 199);
 }
 
 .post-comentarios-comentario p a{
-    color: rgb(241, 236, 236);
+    color: rgb(226, 219, 219);
     text-decoration: none;
 }
 
@@ -407,7 +407,7 @@ header h1{
 }
 
 #post-comentarios-bluetext{
-    color: rgb(70, 209, 116);
+    color: rgb(62, 175, 100);
 }
 
 
@@ -416,6 +416,7 @@ header h1{
     margin-left: 0.3em;
     padding: 1em;
     background-color: #282b2b;
+    border-radius: 6px;
     margin-bottom: 1em;
 }
 
@@ -438,6 +439,7 @@ header h1{
     border-radius: 6px;
     transition: all 200ms;
     margin-left: 0.3em;
+    padding: 0.25em;
 }
 
 #post-comentarios-enviar{
@@ -1076,6 +1078,7 @@ header h1{
     border: 0;
     border-radius: 8px;
     background-color: rgb(51, 51, 49);
+    border: 2px solid rgb(41, 41, 40);
     color: white;
     padding: 1em;
     transition: all 200ms;
@@ -1087,7 +1090,9 @@ header h1{
 }
 
 .contenido-perfiles input[type=text]:focus{
-
+    outline: 0;
+    border: 2px solid rgb(75, 75, 72);
+    box-shadow: 5px 1px 40px rgb(53, 52, 52);
 }
 
 .contenido-perfiles p, .contenido-perfiles-usuarios p{
@@ -1146,10 +1151,12 @@ header h1{
 }
 
 .contenido-perfil-bloque-info p b{
+    color: rgb(226, 219, 219);
     font-size: 18px;
 }
 
 .contenido-perfil-bloque-info p{
+    color: rgb(211, 199, 199);
     font-size: 13px;
     text-align: left;
     overflow-wrap: break-word;
@@ -1164,6 +1171,7 @@ header h1{
 }
 
 /* Perfil */
+/* ////// */
 .perfil-div{
     display: flex;
     justify-content: center;
