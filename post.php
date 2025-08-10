@@ -81,15 +81,41 @@
             <div class="post-comentarios">
                 <div class="post-comentarios-comentario">
                     <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <p><b><a href="">Usuario 1</a></b><br>Hola</p>
+                    <div class="post-comentarios-comentario-info">
+                        <div class="post-comentarios-comentario-autor">
+                            <p><b><a href="">Usuario 1</a></b></p>
+                            <p id="post-comentarios-comentario-fecha">24-07-2025 a las 5:06 AM</p>
+                        </div>
+                        <div class="post-comentarios-comentario-texto">
+                            <p>Hola</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="post-comentarios-comentario">
                     <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <p><b><a href="">Usuario 2</a></b><br>Testeo<br><span id="post-comentarios-bluetext">>green text test. jajajjaj</span></p>
+                    <div class="post-comentarios-comentario-info">
+                        <div class="post-comentarios-comentario-autor">
+                            <p><b><a href="">Usuario 2</a></b></p>
+                            <p id="post-comentarios-comentario-fecha">24-07-2025 a las 5:12 AM</p>
+                        </div>
+                        <div class="post-comentarios-comentario-texto">
+                            <p>Hola</p>
+                            <p id="post-comentarios-greentext">>green text test. lol</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="post-comentarios-comentario">
                     <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <p><b><a href="">Usuario 3</a></b><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae accusamus quidem voluptatum eius. In sunt numquam sequi error vel fugit, consequatur, nesciunt temporibus commodi corporis reiciendis, excepturi sapiente. Facere, debitis.</p>
+                    <div class="post-comentarios-comentario-info">
+                        <div class="post-comentarios-comentario-autor">
+                            <p><b><a href="">Usuario 3</a></b></p>
+                            <p id="post-comentarios-comentario-fecha">24-07-2025 a las 5:54 AM</p>
+                        </div>
+                        <div class="post-comentarios-comentario-texto">
+                            <p>Hola :3</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, expedita, dolore illo corrupti voluptatum, rem beatae enim distinctio doloribus quis non. Repudiandae porro provident quibusdam eius quod enim cumque iure.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <h2 id="post-comentarios-comentar">Comentar</h2>
