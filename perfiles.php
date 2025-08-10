@@ -26,7 +26,7 @@
     </nav>
     <div class="contenido-perfiles">
         <p>Buscar un usuario</p>
-        <input type="text" name="nombreUsuario" placeholder="Introducí el nombre de usuario..." id="nombreUsuario">
+        <input type="text" name="nombreUsuario" placeholder="Introducir el nombre de usuario..." id="nombreUsuario">
     </div>
     <div class="contenido-perfiles-usuarios">
         <p>Usuarios</p>
