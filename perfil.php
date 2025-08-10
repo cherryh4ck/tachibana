@@ -2,7 +2,8 @@
     session_start();
     if (isset($_GET["id"])){
         // Mostrar cuenta si es que existe
-        $nombreDeUsuario = "Default";
+        $nick = "Nombre de usuario";
+        $username = "@username";
     }
     else{
         if (isset($_SESSION["logueado"])){
@@ -20,7 +21,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        echo "<title>" . $nombreDeUsuario . "</title>";
+        echo "<title>" . $nick . " - " . $username . "</title>";
     ?>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/archivos.js" defer></script>
@@ -41,7 +42,14 @@
     <header>
         <div class="perfil-div">
             <div class="perfil-banner">
-                <p>User</p>
+                <img src="resources/avatar.png" alt="">
+                <div class="perfil-info">
+                    <p><b>Nombre de usuario</b></p>
+                    <p id="contenido-perfil-bloque-info-username">@username</p>
+                    <div class="perfil-info-avanzada">
+                        <p>Se unió hace dos años <span id="viñeta">•</span> Última vez hace 30 minutos</p>
+                    </div>  
+                </div>
             </div>
         </div>
     </header>
