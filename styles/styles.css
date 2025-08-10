@@ -376,28 +376,52 @@ header h1{
     margin-left: 0.3em;
 }
 
-.post-comentarios-comentario{
+.post-comentarios-comentario {
     display: flex;
     width: 100%;
     padding: 1em;
     gap: 0.5em;
+    align-items: flex-start;
 }
 
-#post-comentarios-comentario-avatar{
+#post-comentarios-comentario-avatar {
     display: block;
     width: 40px;
-    max-height: 40px;
+    height: 40px;
     margin: 0;
     background-color: transparent;
 }
 
-.post-comentarios-comentario p{
+.post-comentarios-comentario-autor {
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap; 
+}
+
+#post-comentarios-comentario-fecha{
+    color: rgb(136, 131, 131);
+    font-size: 14px;
+    margin-top: 0.1em;
+}
+
+.post-comentarios-comentario-comentario {
+    display: block;
+    margin-top: 0.2em;
+}
+
+.post-comentarios-comentario-comentario p {
+    display: block;
+    margin: 0;
+}
+
+.post-comentarios-comentario p {
     color: rgb(211, 199, 199);
 }
 
-.post-comentarios-comentario p a{
+.post-comentarios-comentario p a {
     color: rgb(226, 219, 219);
     text-decoration: none;
+    transition: all 100ms;
 }
 
 .post-comentarios-comentario p a:hover{
@@ -406,7 +430,7 @@ header h1{
     cursor: pointer;
 }
 
-#post-comentarios-bluetext{
+#post-comentarios-greentext{
     color: rgb(62, 175, 100);
 }
 
