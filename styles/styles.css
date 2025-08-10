@@ -1178,16 +1178,40 @@ header h1{
     width: 100%;
 }
 
+.perfil-div-separacion{
+    margin-top: 1em;
+}
+
 .perfil-banner{
     display: flex;
     align-items: flex-end;
     background-color: rgb(24, 23, 23);
     border-radius: 6px;
-    min-width: 600px;
-    max-width: 800px;
+    width: 600px;
     height: 80px;
-    width: auto;
     padding: 1em;
+    transition: all 200ms;
+}
+
+.perfil-banner:hover{
+    transform: scale(1.05);
+    border: 2px solid #333535;
+    box-shadow: 5px 1px 40px rgb(56, 55, 55);
+}
+
+.perfil-descripcion{
+    display: flex;
+    align-items:center;
+    background-color: rgb(24, 23, 23);
+    border-radius: 6px;
+    width: 600px;
+    min-width: 40px;
+    padding: 1em;
+    transition: all 200ms;
+}
+
+.perfil-descripcion p{
+    color: rgb(214, 212, 212);
 }
 
 .perfil-banner img{
