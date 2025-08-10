@@ -1,6 +1,10 @@
 <?php
     $mantenimiento = false;
 
+    if (!$mantenimiento){
+        session_start();
+    }
+
     // No empieza en 0, sino en 1
     $errores = [
         "No hay contenido en esta página.",
