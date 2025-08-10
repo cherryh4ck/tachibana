@@ -52,6 +52,11 @@
                 </div>
             </div>
         </div>
+        <div class="perfil-div perfil-div-separacion">
+            <div class="perfil-descripcion">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus totam quaerat quod nulla enim, praesentium a quos, eum deserunt asperiores in assumenda natus esse officiis unde, aut nesciunt saepe. Temporibus?</p>
+            </div>
+        </div>
     </header>
 </body>
 </html>
