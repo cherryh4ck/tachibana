@@ -388,7 +388,7 @@ header h1{
     width: 40px;
     max-height: 40px;
     margin: 0;
-    background-color: gray;
+    background-color: transparent;
 }
 
 .post-comentarios-comentario p{
@@ -1180,11 +1180,43 @@ header h1{
 
 .perfil-banner{
     display: flex;
+    align-items: flex-end;
     background-color: rgb(24, 23, 23);
     border-radius: 6px;
     min-width: 600px;
     max-width: 800px;
-    height: 200px;
+    height: 80px;
     width: auto;
     padding: 1em;
+}
+
+.perfil-banner img{
+    display: block;
+    max-width: 80px;
+    max-height: 80px;
+    margin: 0;
+    background-color: transparent;
+}
+
+.perfil-info{
+    padding: 0 1em;
+}
+
+.perfil-info p{
+    color: rgb(136, 131, 131);
+    font-size: 14px;
+}
+
+.perfil-info p b{
+    color: rgb(226, 219, 219);
+    font-size: 18px;
+}
+
+.perfil-info-avanzada{
+    display: block;
+    margin-top: 0.35em;
+}
+
+#viñeta{
+    color: rgb(211, 199, 199);
 }
