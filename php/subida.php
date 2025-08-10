@@ -1,7 +1,13 @@
 <?php
     // TODO TOTAL:
-    // - más chequeos de sanidad (tamaño mínimo)
-    // - soporte para gifs
+    // - más chequeos de sanidad (tamaño mínimo y máxima resolución)
+    // - organizar el código, parece un desastre xd
+
+    $archivo = $_FILES["archivo"];
+    if (!isset($archivo)){ // chequear si de entrada tenemos un archivo
+        header("Location: ../index.php");
+        exit();
+    }
 
     $maxSize = 6228792;
 
@@ -18,7 +24,6 @@
         $total_archivos = count($archivos) - 2;
     }
 
-    $archivo = $_FILES["archivo"];
     $info = pathinfo($archivo["name"]);
 
     $renombrado = strval($total_archivos) . ".jpg";
@@ -33,10 +38,6 @@
 
 
     $nombregenerado = strval(rand(0, 100000000000)) . ".jpg";
-    if (!isset($archivo)){
-        header("Location: ../error.php?id=3");
-        exit();
-    }
     // chequeos de sanidad
     list($x, $y) = getimagesize($archivo["tmp_name"]);
     $tamaño = filesize($archivo["tmp_name"]);
