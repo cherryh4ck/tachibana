@@ -1268,6 +1268,12 @@ header h1{
     transition: all 200ms;
 }
 
+.perfil-descripcion:hover{
+    transform: scale(1.01);
+    border: 2px solid #333535;
+    box-shadow: 5px 1px 40px rgb(51, 50, 50);
+}
+
 .perfil-descripcion p{
     color: rgb(214, 212, 212);
 }
