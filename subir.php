@@ -65,6 +65,7 @@
                         <div class="contenido-subir-formulario-fila1-input">
                             <p>Tags</p>
                             <div class="contenido-subir-formulario-fila1-input-tags" id="insert-tags">
+                                <p id="no-hay-tags">Añade un tag</p>
                             </div>
                         </div>
                         <div class="contenido-subir-formulario-fila1-input">
