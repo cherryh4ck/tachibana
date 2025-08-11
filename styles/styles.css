@@ -794,6 +794,19 @@ header h1{
     box-sizing: border-box;
 }
 
+.contenido-subir-formulario-fila1-input-tags p{
+    font-weight: normal;
+    font-size: 16px;
+    color: rgb(153, 144, 144);
+    cursor:help;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+}
+
 #input-tag, #input-tag2, #input-tag-rojo{
     background-color: rgb(49, 168, 79);
     border-radius: 8px;
