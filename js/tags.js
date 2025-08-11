@@ -11,6 +11,7 @@ let titulo_input = document.getElementById("titulo-input")
 let textarea = document.getElementById("descripcion-input");
 let enviar = document.getElementById("btn-enviar");
 let mensaje_error = document.getElementById("mensaje-error");
+let no_tags = document.getElementById("no-hay-tags");
 
 let formulario = document.getElementById("formulario-subir");
 
@@ -26,6 +27,10 @@ function introducirTag(tag){
         }
         if (tag_permitido){
             tags_introducidos++;
+            no_tags = document.getElementById("no-hay-tags");
+            if (no_tags != null) {
+                no_tags.remove();
+            }
             tags.push(tag)
 
             mensaje_error.style.display = "none";
@@ -43,6 +48,12 @@ function introducirTag(tag){
                 tags_introducidos--;
                 tags = tags.filter(t => t !== tag);
                 span.remove();
+                if (tags_introducidos == 0) {
+                    no_tags = document.createElement("p");
+                    no_tags.id = "no-hay-tags";
+                    no_tags.innerText = "Añade un tag...";
+                    insert_tags.appendChild(no_tags);
+                }
             });
 
             span.appendChild(botonRemover);
