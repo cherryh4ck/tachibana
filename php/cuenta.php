@@ -3,7 +3,7 @@
     // Si no hay una cuenta, entonces lo redirigimos a login
     // Si hay, entonces lo redirigimos al perfil de la cuenta
     session_start();
-    if (isset($_SESSION["logueado"])){
+    if (isset($_SESSION["cuenta_usuario"])){
         header("Location: ../perfil.php");
     }
     else{
