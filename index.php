@@ -2,6 +2,8 @@
     // TODO: Sistema de busqueda ?
     // Sistema de indexado (Yo creo que estaría feo mostrar las imágenes borradas como inaccesibles)
     // Arreglar lo de que si el ID 1 no existe, colapsa todo el sistema xd
+    session_start();
+
     if (!isset($_GET["pag"])){
         $pagina = 1;
     }
@@ -36,7 +38,14 @@
             <li><a href="perfiles.php">Usuarios</a></li>
         </ul>
         <div class="nav-cuenta">
-            <a href="php/cuenta.php" id="cuenta">Anónimo</a>
+            <?php
+                if (!isset($_SESSION["cuenta_usuario"])){
+                    echo "<a href='php/cuenta.php' id='cuenta'>Anónimo</a>"; 
+                }
+                else{
+                    echo "<a href='php/cuenta.php' id='cuenta'>" . $_SESSION["cuenta_usuario"] . "</a>"; 
+                }
+            ?>
         </div>
     </nav>
     <div class="galeria">
