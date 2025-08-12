@@ -1,13 +1,13 @@
-let archivo = document.getElementById("archivo-file");
-let image = document.getElementById("image-preview");
-let imagen_texto = document.getElementById("imagen-texto");
-let imagen_tamano = document.getElementById("imagen-tamano");
-let imagen_res = document.getElementById("imagen-res");
+const archivo = document.getElementById("archivo-file");
+const image = document.getElementById("image-preview");
+const imagen_texto = document.getElementById("imagen-texto");
+const imagen_tamano = document.getElementById("imagen-tamano");
+const imagen_res = document.getElementById("imagen-res");
 
-let textbox = document.getElementById("titulo-input");
-let textarea = document.getElementById("descripcion-input");
-let enviar = document.getElementById("btn-enviar");
-let mensaje_error = document.getElementById("mensaje-error");
+const textbox = document.getElementById("titulo-input");
+const textarea = document.getElementById("descripcion-input");
+const enviar = document.getElementById("btn-enviar");
+const mensaje_error = document.getElementById("mensaje-error");
 
 // 25228792 (25MB)
 let maxSize = 6228792; // 5 MB
