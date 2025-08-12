@@ -16,3 +16,5 @@ post.php:
 subir.php:
 - animación de brillo al mensaje de error
 
+base de datos:
+- optimizar búsqueda de tags (ordenar tags de manera alfabética y usar comas para separar la busqueda)
