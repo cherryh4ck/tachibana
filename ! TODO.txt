@@ -1,0 +1,18 @@
+/// LISTA DE TODO GENERAL ///
+
+General:
+- añadir ventana modal para subir.php
+
+index.php:
+- añadir un sistema de tags seleccionados
+- añadir selector de categoría
+
+post.php:
+- hacer funcionar el botón de adjuntar imagen
+- añadir info de la imagen al adjuntar imagen
+- añadir id a los comentarios
+- añadir soporte para las imagenes en los comentarios
+
+subir.php:
+- animación de brillo al mensaje de error
+
