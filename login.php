@@ -1,8 +1,40 @@
 <?php
-    // Por hacer!!
+    require "php/db/config.php";
+
     session_start();
-    if (isset($_SESSION["logueado"])){
+    if (isset($_SESSION["cuenta_usuario"])){
         header("Location: index.php");
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST"){
+        $username = trim($_POST["user"]);
+        $password = $_POST["password"];
+
+        if (empty($user) || empty($password)){
+            exit();
+        }
+        try{
+            $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = $conn->prepare("SELECT * FROM usuarios WHERE username = ?");
+            $sql->execute([$username]);
+            $fetch = $sql->fetch(PDO::FETCH_ASSOC);
+
+            if ($fetch && password_verify($password, $fetch["password"])){
+                echo "Logueado con exito!";
+                $_SESSION["cuenta_id"] = $fetch["id"];
+                $_SESSION["cuenta_usuario"] = $fetch["username"];
+                header("Location: index.php");
+            }
+            else{
+                echo "Datos incorrectos.";
+            }
+        }
+        catch(PDOException $e){
+            echo $e;
+            // mostrar error de manera más visual (base de datos caida)
+        }
     }
 ?>
 
@@ -28,7 +60,7 @@
         </div>
     </nav>
     <div class="contenido-menu">
-        <form action="php/login.php" method="post">
+        <form action="login.php" method="post">
             <p id="texto-centrado">Iniciar sesión</p>
             <input type="text" name="user" placeholder="Nombre de usuario" required>
             <input type="password" name="password" placeholder="Contraseña" required>
