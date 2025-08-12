@@ -342,12 +342,6 @@ header h1{
     margin-left: 0.2em;
 }
 
-#post-comentarios-comentar{
-    color: white;
-    margin-left: 0.2em;
-    margin: 0.2em;
-}
-
 #post-descripcion{
     background-color: #191b1b;
     color: rgb(214, 212, 212);
@@ -363,6 +357,12 @@ header h1{
 #post-descripcion:hover{
     border: 2px solid #444747;
     box-shadow: 5px 1px 40px rgb(56, 55, 55);
+}
+
+#post-comentarios-comentar{
+    color: white;
+    margin-left: 0.2em;
+    margin: 0.2em;
 }
 
 #post-comentarios-titulo{
@@ -442,12 +442,16 @@ header h1{
     background-color: rgb(24, 23, 23);
     border-radius: 6px;
     margin-bottom: 1em;
+    margin-top: 0.5em;
 }
-
 
 .post-comentarios-comentar form{
     display: block;
     width: 100%;
+}
+
+.post-comentarios-comentar-botones{
+    display: flex;
 }
 
 #post-comentarios-textarea{
@@ -479,7 +483,7 @@ header h1{
     color: rgb(228, 221, 221);
 }
 
-#post-comentarios-enviar{
+#post-comentarios-enviar, .post-comentarios-comentar-botones input[type=button]{
     display: block;
     width: 100px;
     height: 40px;
@@ -493,7 +497,11 @@ header h1{
     margin-top: 0.5em;
 }
 
-#post-comentarios-enviar:not([disabled]):hover{
+.post-comentarios-comentar-botones input[type=button]{
+    width: 140px;
+}
+
+#post-comentarios-enviar:not([disabled]):hover, .post-comentarios-comentar-botones input[type=button]:hover{
     background-color: rgb(27, 26, 26);
     color: rgb(255, 255, 255);
     box-shadow: 5px 1px 30px rgb(54, 53, 53);
