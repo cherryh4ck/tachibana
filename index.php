@@ -55,6 +55,21 @@
                     <span id="input-tag">asfafasgasgagasfasf<b>2</b></span>
                     <span id="input-tag">counter strike 2<b>1</b></span>
                 </div>
+                <h4>Categoría</h4>
+                <div class="galeria-categoria-seleccionada">
+                    <select name="categoria" id="categoria-input-index" size="1">
+                                <option value="any">General - /any/</option>
+                                <option value="anime">Anime - /anime/</option>
+                                <option value="manga">Manga - /manga/</option>
+                                <option value="games">Videojuegos - /games/</option>
+                                <option value="pol">Política - /pol/</option>
+                                <option value="tech">Tecnología - /tech/</option>
+                                <option value="music">Música - /music/</option>
+                                <option value="movie">Películas - /movie/</option>
+                                <option value="coding">Programación - /coding/</option>
+                    </select>
+                    <span id="input-tag-rojo-index">/any/</span>
+                </div>
             </div>
         </div>
         <div class="galeria-panel2">
