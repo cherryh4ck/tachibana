@@ -1,9 +1,32 @@
 <?php
-    // Por hacer!!
-    // también estaría bueno mostrar un mensaje de error y no hacer un alert
+    require "php/db/config.php";
+
     session_start();
-    if (isset($_SESSION["logueado"])){
-        header("Location: galeria.php");
+    if (isset($_SESSION["cuenta_usuario"])){
+        header("Location: index.php");
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST"){
+        $username = trim($_POST["user"]);
+        $password = $_POST["password"];
+
+        if (empty($user) || empty($password)){
+            exit();
+        }
+
+        $password = password_hash($password, PASSWORD_BCRYPT);
+
+        try{
+            $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = $conn->prepare("INSERT INTO usuarios(username, password, nickname) VALUES (?, ?, ?);");
+            $sql->execute([$username, $password, $username]);
+        }
+        catch(PDOException $e){
+            echo $e;
+            // mostrar error de manera más visual (base de datos caida)
+        }
     }
 ?>
 
@@ -30,7 +53,7 @@
         </div>
     </nav>
     <div class="contenido-menu">
-        <form action="php/register.php" method="post" id="formulario">
+        <form action="register.php" method="post" id="formulario">
             <p id="texto-centrado">Registrarse</p>
             <input type="text" name="user" placeholder="Nombre de usuario" required>
             <input type="password" name="password" placeholder="Contraseña" id="contraseña" required>
