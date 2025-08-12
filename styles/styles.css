@@ -942,6 +942,47 @@ header h1{
     gap: 0.5em;
 }
 
+.galeria-categoria-seleccionada{
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    display: flex;
+    gap: 0.5em;
+}
+
+#categoria-input-index{
+    background-color: rgb(20, 20, 19);
+    height: 32px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 0;
+    color: rgb(211, 199, 199);
+    font-size: 16px;
+    padding: 0.05em;
+    cursor: pointer;
+    transition: all 200ms;
+}
+
+#categoria-input-index:hover{
+    background-color: rgb(27, 26, 26);
+    box-shadow: 5px 1px 40px rgb(53, 52, 52);
+    opacity: .6;
+}
+
+#input-tag-rojo-index{
+    background-color: rgb(219, 64, 64);
+    padding: 0 15px;
+    border-radius: 8px;
+    height: 25px;
+    color: white;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; 
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .galeria-panel2{
     display: block;
     height: 100%;
