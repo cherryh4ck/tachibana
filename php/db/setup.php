@@ -23,3 +23,16 @@ catch(PDOException $e){
         echo "Eres libre de borrar este archivo si es que lo deseas.";
     }
 }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup</title>
+</head>
+<body>
+    
+</body>
+</html>
