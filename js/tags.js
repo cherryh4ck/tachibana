@@ -1,19 +1,19 @@
-let caracteres_permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_ ";
+const caracteres_permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_ ";
 let tag_permitido = true;
 let tags = [];
 
 export let tags_introducidos = 0;
 import {req1, req2, req3} from "./archivos.js";
 
-let insert_tags = document.getElementById("insert-tags");
-let tags_input = document.getElementById("tags-input");
-let titulo_input = document.getElementById("titulo-input")
-let textarea = document.getElementById("descripcion-input");
-let enviar = document.getElementById("btn-enviar");
-let mensaje_error = document.getElementById("mensaje-error");
+const insert_tags = document.getElementById("insert-tags");
+const tags_input = document.getElementById("tags-input");
+const titulo_input = document.getElementById("titulo-input")
+const textarea = document.getElementById("descripcion-input");
+const enviar = document.getElementById("btn-enviar");
+const mensaje_error = document.getElementById("mensaje-error");
 let no_tags = document.getElementById("no-hay-tags");
 
-let formulario = document.getElementById("formulario-subir");
+const formulario = document.getElementById("formulario-subir");
 
 function introducirTag(tag){
     tag = tag.trim()
