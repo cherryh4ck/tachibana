@@ -23,9 +23,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <script src="js/index/categorias.js" defer></script>
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="js/archivos.js" defer></script>
-    <script src="js/tags.js" defer></script>
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body class="galerias">
