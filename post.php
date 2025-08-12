@@ -21,7 +21,11 @@
 
     $post_titulo = "Sin nombre"; // se debe conseguir a través de una base de datos
 
-    //todo: mejores tags - like y dislikes - mejor preview (?)
+    //todo:
+    // hacer funcionar el botón de adjuntar imagen
+    // añadir info de la imagen al adjuntar imagen
+    // añadir id a los comentarios
+    // añadir soporte para las imagenes en los comentarios
 ?>
 
 <!DOCTYPE html>
@@ -60,10 +64,6 @@
                 echo "<span id='input-tag2'>tag1</span>";
                 echo "<span id='input-tag2'>tag2</span>";
                 echo "<span id='input-tag2'>asfsafafafafagg</span>";
-                echo "<span id='input-tag2'>test tes test t eststst</span>";
-                echo "<span id='input-tag2'>test tes test t eststst</span>";
-                echo "<span id='input-tag2'>test tes test t eststst</span>";
-                echo "<span id='input-tag2'>test tes test t eststst</span>";
                 echo "<span id='input-tag2'>test tes test t eststst</span>";
                 echo "</div>";
                 echo "<div class='post-autor'>";
@@ -123,7 +123,10 @@
                 <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
                 <form action="" method="post">
                     <textarea name="" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required></textarea>
-                    <input type="submit" value="Comentar" id="post-comentarios-enviar" disabled>
+                    <div class="post-comentarios-comentar-botones">
+                        <input type="submit" value="Comentar" id="post-comentarios-enviar" disabled>
+                        <input type="button" value="Adjuntar imagen">
+                    </div>
                 </form>
             </div>
             </div>
