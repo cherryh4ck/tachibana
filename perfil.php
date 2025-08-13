@@ -162,18 +162,41 @@
             </div>
         </div>
         <?php
+            if ($modo == "ver"){
+                echo "<div class='perfil-div perfil-div-separacion'>";
+                echo "<div class='perfil-descripcion'>";
+                if (!empty($descripcion)){
+                    echo "<p>$descripcion</p>";
+                }
+                else{
+                    echo "<p>No hay descripción.</p>";
+                }
+                echo "</div>";
+            }
             // quitar descripcion
         ?>
-        <div class="perfil-div perfil-div-separacion">
-            <div class="perfil-descripcion">
-                <?php
-                    if (!empty($descripcion)){
-                        echo "<p>$descripcion</p>";
-                    }
-                    else{
-                        echo "<p>No hay descripción.</p>";
-                    }
-                ?>
+        <div class="perfil-div">
+            <div class="perfil-banner">
+                <div class="perfil-banner-parte1-modificado">
+                    <form action="perfil.php" method="POST" enctype="multipart/form-data" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
+                        <div class="perfil-banner-parte1-modificado-input">
+                            <p>Nickname</p>
+                            <input type="text" name="nickname" id="nickname-input" placeholder="Nickname...">
+                        </div>
+                        <div class="perfil-banner-parte1-modificado-input">
+                            <p>Descripcion</p>
+                            <textarea name="descripcion" id="descripcion-input" placeholder="Descripción..."></textarea>
+                        </div>
+                        <div class="perfil-banner-parte1-modificado-input">
+                            <p>Avatar</p>
+                            <div class="perfil-banner-parte1-modificado-input-avatar">
+                                <img src='resources/avatar.png' alt=''>
+                                <input type="file" accept=".png, .jpg, .jpeg, .gif" name="avatar" id="avatar-file">
+                            </div>
+                        </div>   
+                    </form>
+                </div>
+            </div>
         </div>
     </header>
 </body>
