@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <?php
-                    if ($_GET["id"] === $_SESSION["cuenta_id"]){
+                    if ($_GET["id"] == $_SESSION["cuenta_id"]){
                         echo "<div class='perfil-banner-parte2'>";
                         echo "<button>Editar perfil</button>";
                         echo "<button onclick=" . "window.location.href=" . 'php/db/logout.php' . ">Cerrar sesión</button>";
