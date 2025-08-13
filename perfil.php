@@ -55,7 +55,6 @@
         echo "<title>" . $nickname . " - " . $nombre_usuario . "</title>";
     ?>
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="js/archivos.js" defer></script>
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
@@ -80,80 +79,91 @@
     <header>
         <div class="perfil-div">
             <div class="perfil-banner">
-                <div class="perfil-banner-parte1">
-                    <img src="resources/avatar.png" alt="">
-                    <div class="perfil-info">
-                        <?php 
-                            echo "<p><b>$nickname</p></b>";
-                            echo "<p id='contenido-perfil-bloque-info-username'>@$nombre_usuario</p>";
-                        ?>
-                        <div class="perfil-info-avanzada">
-                            <?php
-                                // codigo más largo q no se ke xddd
-
-                                // gracias chatgpt, ni sabía de esto kek
-                                // por poco lo hago mucho más complicado :P
-                                $tiempo_actual = new DateTime();
-                                $tiempo_creado = new DateTime($fecha_creacion);
-                                $diferencia = $tiempo_actual->diff($tiempo_creado);
-                                $texto = "";
-
-                                if ($diferencia->y > 0) {
-                                    if ($diferencia->y > 1){
-                                        $texto = "Se unió hace $diferencia->y años";
-                                    }
-                                    else{
-                                        $texto = "Se unió hace un año";
-                                    }
-                                } elseif ($diferencia->m > 0) {
-                                    if ($diferencia->m > 1){
-                                        $texto = "Se unió hace $diferencia->m meses";
-                                    }
-                                    else{
-                                        $texto = "Se unió hace un mes";
-                                    }
-                                } elseif ($diferencia->d > 0) {
-                                    if ($diferencia->d > 1){
-                                        $texto = "Se unió hace $diferencia->d días";
-                                    }
-                                    else{
-                                        $texto = "Se unió hace un día";
-                                    }
-                                } elseif ($diferencia->h > 0) {
-                                    if ($diferencia->h > 1){
-                                        $texto = "Se unió hace $diferencia->h horas";
-                                    }
-                                    else{
-                                        $texto = "Se unió hace una hora";
-                                    }
-                                } elseif ($diferencia->i > 0) {
-                                    if ($diferencia->i > 1){
-                                        $texto = "Se unió hace $diferencia->i minutos";
-                                    }
-                                    else{
-                                        $texto = "Se unió hace un minuto";
-                                    }
-                                } else {
-                                    $texto = "Se unió hace unos segundos";
-                                }
-
-                                echo "<p>$texto <span id='viñeta'>•</span> Última vez hace ?"
-                            ?>
-                        </div>  
-                    </div>
-                </div>
                 <?php
-                    if (isset($_SESSION["cuenta_id"])){
-                        if ($_GET["id"] == $_SESSION["cuenta_id"]){
-                            echo "<div class='perfil-banner-parte2'>";
-                            echo "<button>Editar perfil</button>";
-                            echo "<button onclick=" . "window.location.href=" . 'php/db/logout.php' . ">Cerrar sesión</button>";
-                            echo "</div>";
+                    if ($modo == "ver"){
+                        echo "<div class='perfil-banner-parte1'>";
+                        echo "<img src='resources/avatar.png' alt=''>";
+                        echo "<div class='perfil-info'>";
+                        echo "<p><b>$nickname</p></b>";
+                        echo "<p id='contenido-perfil-bloque-info-username'>@$nombre_usuario</p>";
+                        echo "<div class='perfil-info-avanzada'>";
+                        // codigo más largo q no se ke xddd
+
+                        // gracias chatgpt, ni sabía de esto kek
+                        // por poco lo hago mucho más complicado :P
+                        $tiempo_actual = new DateTime();
+                        $tiempo_creado = new DateTime($fecha_creacion);
+                        $diferencia = $tiempo_actual->diff($tiempo_creado);
+                        $texto = "";
+
+                        if ($diferencia->y > 0) {
+                            if ($diferencia->y > 1){
+                                $texto = "Se unió hace $diferencia->y años";
+                            }
+                            else{
+                                $texto = "Se unió hace un año";
+                            }
+                        } elseif ($diferencia->m > 0) {
+                            if ($diferencia->m > 1){
+                                $texto = "Se unió hace $diferencia->m meses";
+                            }
+                            else{
+                                $texto = "Se unió hace un mes";
+                            }
+                        } elseif ($diferencia->d > 0) {
+                            if ($diferencia->d > 1){
+                                $texto = "Se unió hace $diferencia->d días";
+                            }
+                            else{
+                                $texto = "Se unió hace un día";
+                            }
+                        } elseif ($diferencia->h > 0) {
+                            if ($diferencia->h > 1){
+                                $texto = "Se unió hace $diferencia->h horas";
+                            }
+                            else{
+                                $texto = "Se unió hace una hora";
+                            }
+                        } elseif ($diferencia->i > 0) {
+                            if ($diferencia->i > 1){
+                                $texto = "Se unió hace $diferencia->i minutos";
+                            }
+                            else{
+                                $texto = "Se unió hace un minuto";
+                            }
+                        } else {
+                            $texto = "Se unió hace unos segundos";
+                        }
+
+                        echo "<p>$texto <span id='viñeta'>•</span> Última vez hace ?</p>";
+                        echo "</div>";  
+                        echo "</div>";
+                        echo "</div>";
+                        if (isset($_SESSION["cuenta_id"])){
+                            if ($_GET["id"] == $_SESSION["cuenta_id"]){
+                                echo "<div class='perfil-banner-parte2'>";
+                                echo '<button onclick="window.location.href=\'perfil.php?editar=1\'">Editar perfil</button>';
+                                echo '<button onclick="window.location.href=\'php/db/logout.php\'">Cerrar sesión</button>';
+                                echo "</div>";
+                            }
+                        }
+                    }
+                    else{
+                        if (isset($_SESSION["cuenta_id"])){
+                            if ($_GET["id"] == $_SESSION["cuenta_id"]){
+                                
+                            }
+                            else{
+                                header("Location: index.php");
+                            }
                         }
                     }
                 ?>
             </div>
         </div>
+        <?php
+            // quitar descripcion
+        ?>
         <div class="perfil-div perfil-div-separacion">
             <div class="perfil-descripcion">
                 <?php
