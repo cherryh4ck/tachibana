@@ -3,6 +3,7 @@
     date_default_timezone_set('America/Argentina/Buenos_Aires');
 
     session_start();
+    $modo = "ver";
     if (isset($_GET["id"])){
         if (!is_numeric($_GET["id"])){
             header("Location: error.php?id=2");
@@ -15,6 +16,10 @@
         else{
             header("Location: login.php");
         }
+    }
+
+    if (isset($_GET["editar"])){
+        $modo = "editar";
     }
 
     try{
@@ -138,11 +143,13 @@
                     </div>
                 </div>
                 <?php
-                    if ($_GET["id"] == $_SESSION["cuenta_id"]){
-                        echo "<div class='perfil-banner-parte2'>";
-                        echo "<button>Editar perfil</button>";
-                        echo "<button onclick=" . "window.location.href=" . 'php/db/logout.php' . ">Cerrar sesión</button>";
-                        echo "</div>";
+                    if (isset($_SESSION["cuenta_id"])){
+                        if ($_GET["id"] == $_SESSION["cuenta_id"]){
+                            echo "<div class='perfil-banner-parte2'>";
+                            echo "<button>Editar perfil</button>";
+                            echo "<button onclick=" . "window.location.href=" . 'php/db/logout.php' . ">Cerrar sesión</button>";
+                            echo "</div>";
+                        }
                     }
                 ?>
             </div>
