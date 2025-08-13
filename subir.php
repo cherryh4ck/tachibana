@@ -5,6 +5,7 @@
     // REWORK EN PROGRESO!!
     // por el momento todo el diseño se está puliendo para luego convertirlo en ventana modal
     // y así no requiere de una página aparte
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,14 @@
             <li><a href="perfiles.php">Usuarios</a></li>
         </ul>
         <div class="nav-cuenta">
-            <a href="php/cuenta.php" id="cuenta">Anónimo</a>
+            <?php
+                if (!isset($_SESSION["cuenta_usuario"])){
+                    echo "<a href='php/cuenta.php' id='cuenta'>Anónimo</a>"; 
+                }
+                else{
+                    echo "<a href='php/cuenta.php' id='cuenta'>" . $_SESSION["cuenta_usuario"] . "</a>"; 
+                }
+            ?>
         </div>
     </nav>
     <header>
