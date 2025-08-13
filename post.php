@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     if (isset($_GET["id"]) && is_numeric($_GET["id"])){
         $id = $_GET["id"];
         if (!file_exists("galeria/fullsize/" . $id . ".jpg")){
@@ -49,7 +51,14 @@
             <li><a href="perfiles.php">Usuarios</a></li>
         </ul>
         <div class="nav-cuenta">
-            <a href="php/cuenta.php" id="cuenta">Anónimo</a>
+            <?php
+                if (!isset($_SESSION["cuenta_usuario"])){
+                    echo "<a href='php/cuenta.php' id='cuenta'>Anónimo</a>"; 
+                }
+                else{
+                    echo "<a href='php/cuenta.php' id='cuenta'>" . $_SESSION["cuenta_usuario"] . "</a>"; 
+                }
+            ?>
         </div>
     </nav>
     <header>
