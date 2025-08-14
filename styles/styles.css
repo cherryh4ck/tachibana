@@ -1419,6 +1419,11 @@ header h1{
     margin-top: 1em;
 }
 
+.perfil-banner-parte1-modificado-input-gap{
+    display: flex;
+    gap: 1em;
+}
+
 .perfil-banner-parte1-modificado-input input[type=text]{
     display: block;
     box-sizing: border-box;
@@ -1473,6 +1478,31 @@ header h1{
     border: 2px solid #464949;
     box-shadow: 5px 1px 40px rgb(56, 55, 55);
     color: rgb(228, 221, 221);
+}
+
+.perfil-banner-parte1-modificado-input input[type=submit], .perfil-banner-parte1-modificado-input input[type=button]{
+    width: 140px;
+    height: 50px;
+    background-color: rgb(20, 20, 19);
+    color: rgb(211, 199, 199);
+    border: none;
+    font-size: 16px;
+    transition: all 200ms;
+    border-radius: 8px;
+}
+
+.perfil-banner-parte1-modificado-input input[type=submit]:not([disabled]):hover, .perfil-banner-parte1-modificado-input input[type=button]:hover{
+    background-color: rgb(27, 26, 26);
+    color: rgb(255, 255, 255);
+    box-shadow: 5px 1px 30px rgb(54, 53, 53);
+    cursor: pointer;
+    opacity: .6;
+    transform: scale(1.05);
+}
+
+.perfil-banner-parte1-modificado-input input[type=submit]:disabled{
+    opacity: .3;
+    cursor: not-allowed;
 }
 
 .perfil-banner-parte1-modificado-input-avatar{
