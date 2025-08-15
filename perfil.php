@@ -7,6 +7,7 @@
     if (isset($_GET["id"])){
         if (!is_numeric($_GET["id"])){
             header("Location: error.php?id=2");
+            exit();
         }
     }
     else{
@@ -15,6 +16,7 @@
         }
         else{
             header("Location: login.php");
+            exit();
         }
     }
 
@@ -39,10 +41,12 @@
         }
         else{
             header("Location: error.php?id=2");
+            exit();
         }
     }
     catch (PDOException $e){
         header("Location: error.php?id=2");
+        exit();
     }
 ?>
 
