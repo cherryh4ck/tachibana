@@ -173,31 +173,43 @@
                 }
                 echo "</div>";
             }
+            else{
+                echo <<<EOM
+                <div class="perfil-div">
+                <div class="perfil-banner">
+                <div class="perfil-banner-parte1-modificado">
+                <form action="perfil.php" method="POST" enctype="multipart/form-data" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
+                <div class="perfil-banner-parte1-modificado-input">
+                <p>Nickname</p>
+                EOM;
+                echo "<input type='text' name='nickname' id='nickname-input' value='$nickname' placeholder='Nickname...'>";
+                echo <<<EOM
+                </div>
+                <div class="perfil-banner-parte1-modificado-input">
+                <p>Descripcion</p>
+                EOM;
+                echo "<textarea name='descripcion' id='descripcion-input' value='$descripcion' placeholder='Descripción...'></textarea>";
+                echo <<<EOM
+                </div>
+                <div class="perfil-banner-parte1-modificado-input">
+                <p>Avatar</p>
+                <div class="perfil-banner-parte1-modificado-input-avatar">
+                <img src='resources/avatar.png' alt=''>
+                <input type="file" accept=".png, .jpg, .jpeg, .gif" name="avatar" id="avatar-file">
+                </div>
+                </div>   
+                <div class="perfil-banner-parte1-modificado-input perfil-banner-parte1-modificado-input-gap">
+                <input type="submit" value="Guardar cambios" id="guardar-cambios">
+                <input type="button" value="Volver" onclick="window.location.href='perfil.php'">
+                </div>
+                </form>
+                </div>
+                </div>
+                </div>
+                EOM;
+            }
             // quitar descripcion
         ?>
-        <div class="perfil-div">
-            <div class="perfil-banner">
-                <div class="perfil-banner-parte1-modificado">
-                    <form action="perfil.php" method="POST" enctype="multipart/form-data" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
-                        <div class="perfil-banner-parte1-modificado-input">
-                            <p>Nickname</p>
-                            <input type="text" name="nickname" id="nickname-input" placeholder="Nickname...">
-                        </div>
-                        <div class="perfil-banner-parte1-modificado-input">
-                            <p>Descripcion</p>
-                            <textarea name="descripcion" id="descripcion-input" placeholder="Descripción..."></textarea>
-                        </div>
-                        <div class="perfil-banner-parte1-modificado-input">
-                            <p>Avatar</p>
-                            <div class="perfil-banner-parte1-modificado-input-avatar">
-                                <img src='resources/avatar.png' alt=''>
-                                <input type="file" accept=".png, .jpg, .jpeg, .gif" name="avatar" id="avatar-file">
-                            </div>
-                        </div>   
-                    </form>
-                </div>
-            </div>
-        </div>
     </header>
 </body>
 </html>
