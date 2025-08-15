@@ -1,4 +1,5 @@
 <?php
+    require "php/db/config.php";
     session_start();
 
     if (isset($_GET["id"]) && is_numeric($_GET["id"])){
@@ -20,7 +21,28 @@
         header("Location: error.php?id=2");
         exit();
     }
+    try {
+        $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        $sql = $conn->prepare("SELECT * FROM posts WHERE id = ?");
+        $sql->execute([$id]);
+        $fetch = $sql->fetch(PDO::FETCH_ASSOC);
+        if ($fetch){
+            $post_titulo = $fetch["titulo"];
+            $post_descripcion = $fetch["descripcion"];
+            $post_id_autor = $fetch["id_autor"];
+            $post_fecha_creacion = $fetch["fecha_creacion"];
+        }
+        else{
+            header("Location: error.php?id=2");
+            exit();
+        }
+    }
+    catch (PDOException $e){
+        header("Location: error.php?id=2");
+        exit();
+    }
     $post_titulo = "Sin nombre"; // se debe conseguir a través de una base de datos
 
     //todo:
