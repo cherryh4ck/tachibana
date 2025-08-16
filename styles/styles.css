@@ -1221,6 +1221,12 @@ header h1{
     font-size: 18px;
 }
 
+#no-se-ha-encontrado{
+    color: rgb(211, 199, 199);
+    font-size: 16px;
+    margin-top: 1em;
+}
+
 .contenido-perfiles-usuarios-lista{
     display: grid;
     margin-top: 1em;
