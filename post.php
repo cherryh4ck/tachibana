@@ -33,6 +33,23 @@
             $post_descripcion = $fetch["descripcion"];
             $post_id_autor = $fetch["id_autor"];
             $post_fecha_creacion = $fetch["fecha_creacion"];
+
+            $dateTime = new DateTime($post_fecha_creacion);
+            $post_fecha_creacion = $dateTime->format("d-m-Y \a \l\a\s H:i:s");
+
+            // buscar datos del OP
+            $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
+            $sql->execute([$post_id_autor]);
+            $fetch = $sql->fetch(PDO::FETCH_ASSOC);
+            if ($fetch){
+                $post_autor_username = $fetch["username"];
+                $post_autor_nickname = $fetch["nickname"];
+                $post_autor_perfil = "perfil.php?id=" . $post_id_autor;
+            }
+            else{
+                header("Location: error.php?id=2");
+                exit();
+            }
         }
         else{
             header("Location: error.php?id=2");
@@ -43,13 +60,14 @@
         header("Location: error.php?id=2");
         exit();
     }
-    $post_titulo = "Sin nombre"; // se debe conseguir a través de una base de datos
 
     //todo:
     // hacer funcionar el botón de adjuntar imagen
     // añadir info de la imagen al adjuntar imagen
     // añadir id a los comentarios
     // añadir soporte para las imagenes en los comentarios
+    // añadir categoria
+    // arreglar el alineado del titulo kek
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +107,7 @@
                 echo "<img src='galeria/fullsize/" . $id . "." . $ext ."'>";
                 echo "<div class='post-contenido'>";
                 echo "<div class='post-contenido-titulo'>";
-                echo "<h1 id='post-titulo'>Título</h1>";
+                echo "<h1 id='post-titulo'>$post_titulo</h1>";
                 echo "<h2 id='post-id'>ID #" . $id . "</h2>";
                 echo "<div class='post-contenido-tags'>";
                 echo "<span id='input-tag2'>tag1</span>";
@@ -100,12 +118,12 @@
                 echo "<div class='post-autor'>";
                 echo "<img src='resources/avatar.png' alt='Avatar' id='post-autor-avatar'>";
                 echo "<div class='post-autor-info'>";
-                echo "<p><b><a href=''>OP</a></b><br>";
-                echo "<p>Publicado el 24-07-2025 a las 5:04 AM</p>";
+                echo "<p><b><a href='$post_autor_perfil'>$post_autor_nickname</a></b><br>";
+                echo "<p>Publicado el $post_fecha_creacion</p>";
                 echo "</div>";
                 echo "</div>";
                 echo "<h2 id='post-titulo-descripcion'>Descripción</h2>";
-                echo "<p id='post-descripcion'>Descripción. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium aspernatur alias harum velit laborum perspiciatis quisquam autem voluptatum ducimus deleniti. Placeat fugiat veniam provident, blanditiis quos voluptatum aliquam cupiditate ullam.</p>";
+                echo "<p id='post-descripcion'>$post_descripcion</p>";
                 echo "</div>";
             ?>
             <h2 id="post-comentarios-titulo">Comentarios</h1>
