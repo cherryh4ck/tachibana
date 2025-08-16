@@ -11,6 +11,7 @@ const titulo_input = document.getElementById("titulo-input")
 const textarea = document.getElementById("descripcion-input");
 const enviar = document.getElementById("btn-enviar");
 const mensaje_error = document.getElementById("mensaje-error");
+const tagsValue = document.getElementById("tags-value");
 let no_tags = document.getElementById("no-hay-tags");
 
 const formulario = document.getElementById("formulario-subir");
@@ -96,6 +97,7 @@ tags_input.addEventListener('keyup', function (e) {
 });
 
 formulario.addEventListener("submit", function (e) {
+    tagsValue.value = tags.join(",");
     if (!tags_introducidos > 0){
         e.preventDefault();
     }
