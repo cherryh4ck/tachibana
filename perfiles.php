@@ -1,7 +1,22 @@
 <?php
-    // por hacer: todooooo
-    // falta bastante
+    require "php/db/config.php";
+
     session_start();
+    if (isset($_GET["q"])){
+        $query = "%" . $_GET["q"] . "%";
+        try{
+            $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = $conn->prepare("SELECT * FROM usuarios WHERE lower(username) LIKE ?");
+            $sql->execute([$query]);
+            $fetch = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e){
+            header("Location: error.php?id=9");
+            exit();
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -34,59 +49,43 @@
     </nav>
     <div class="contenido-perfiles">
         <p>Buscar un usuario</p>
-        <input type="text" name="nombreUsuario" placeholder="Introducir el nombre de usuario..." id="nombreUsuario">
+        <form action="perfiles.php" method="GET">
+            <input type="text" name="q" placeholder="Introducir el nombre de usuario..." id="nombreUsuario">
+        </form>
     </div>
     <div class="contenido-perfiles-usuarios">
-        <p>Usuarios</p>
-        <div class="contenido-perfiles-usuarios-lista">
-            <div class="contenido-perfil-bloque" onclick="location.href='perfil.php?id=1'">
-                <img src="resources/avatar.png" alt="">
-                <div class="contenido-perfil-bloque-info">
-                    <p><b>Display name</b></p>
-                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
-                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
-                </div>
-            </div>
-            <div class="contenido-perfil-bloque">
-                <img src="resources/avatar.png" alt="">
-                <div class="contenido-perfil-bloque-info">
-                    <p><b>Display name</b></p>
-                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
-                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
-                </div>
-            </div>
-            <div class="contenido-perfil-bloque">
-                <img src="resources/avatar.png" alt="">
-                <div class="contenido-perfil-bloque-info">
-                    <p><b>Display name</b></p>
-                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
-                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
-                </div>
-            </div>
-            <div class="contenido-perfil-bloque">
-                <img src="resources/avatar.png" alt="">
-                <div class="contenido-perfil-bloque-info">
-                    <p><b>Display name</b></p>
-                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
-                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
-                </div>
-            </div>
-            <div class="contenido-perfil-bloque">
-                <img src="resources/avatar.png" alt="">
-                <div class="contenido-perfil-bloque-info">
-                    <p><b>Display name</b></p>
-                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
-                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
-                </div>
-            </div>
-            <div class="contenido-perfil-bloque">
-                <img src="resources/avatar.png" alt="">
-                <div class="contenido-perfil-bloque-info">
-                    <p><b>Display name</b></p>
-                    <p id="contenido-perfil-bloque-info-username">@usuario</p>
-                    <p>Pequeña biografía dalfslalkfkalkflkalkfalklkslkf</p>
-                </div>
-            </div>
+        <?php
+            if (isset($fetch)){
+                echo "<p>Usuarios</p>";
+                if (count($fetch) == 0){
+                    echo "<p id='no-se-ha-encontrado'>No se han encontrado usuarios.</p>";
+                }
+                else{
+                    echo "<div class='contenido-perfiles-usuarios-lista'>";
+                    foreach ($fetch as $usuario){
+                        $avatar = "resources/avatars/" . $usuario["id"] . ".png";
+                        echo "<div class='contenido-perfil-bloque' onclick=\"location.href='perfil.php?id=" . $usuario["id"] . "'\">";
+                        if (file_exists($avatar)){
+                            echo "<img src='$avatar' alt=''>";
+                        }
+                        else{
+                            echo "<img src='resources/avatar.png' alt=''>";
+                        }
+                        echo "<div class='contenido-perfil-bloque-info'>";
+                        echo "<p><b>" . $usuario["nickname"] . "</b></p>";
+                        echo "<p id='contenido-perfil-bloque-info-username'>@" . htmlspecialchars($usuario["username"]) . "</p>";
+                        if (!empty($usuario["descripcion"])){
+                            echo "<p>" . strip_tags($usuario["descripcion"]) . "</p>";
+                        }
+                        else{
+                            echo "<p>No hay descripción.</p>";
+                        }
+                        echo "</div></div>";
+                    }
+                    echo "</div>";
+                }
+            }
+        ?>
         </div>
     </div>
 </body>
