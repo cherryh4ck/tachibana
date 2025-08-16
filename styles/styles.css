@@ -284,6 +284,7 @@ header h1{
     display: flex;
     width: 100%;
     margin-top: 0.5em;
+    margin-left: 0.1em;
 }
 
 #post-id{
@@ -885,7 +886,7 @@ header h1{
     color: rgb(211, 199, 199);
     padding: 1em;
     padding-top: 0;
-    min-width: 250px;
+    min-width: 280px;
 }
 
 .galeria-herramientas{
