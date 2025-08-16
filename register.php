@@ -7,7 +7,8 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
-        $username = trim($_POST["user"]);
+        $username = trim(strip_tags($_POST["user"]));
+        $username = str_replace(" ", "", $username);
         $password = $_POST["password"];
 
         if (empty($user) || empty($password)){
