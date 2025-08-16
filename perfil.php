@@ -38,6 +38,7 @@
             $rol = $fetch["rol"];
             $fecha_creacion = $fetch["fecha_creacion"];
             $ultima_actividad = $fetch["ultima_actividad"];
+            $avatar = "resources/avatars/" . $_GET["id"] . ".png";
         }
         else{
             header("Location: error.php?id=2");
@@ -86,7 +87,12 @@
                 <?php
                     if ($modo == "ver"){
                         echo "<div class='perfil-banner-parte1'>";
-                        echo "<img src='resources/avatar.png' alt=''>";
+                        if (file_exists($avatar)){
+                            echo "<img src='$avatar' alt=''>";
+                        }
+                        else{
+                            echo "<img src='resources/avatar.png' alt=''>";
+                        }
                         echo "<div class='perfil-info'>";
                         echo "<p><b>$nickname</p></b>";
                         echo "<p id='contenido-perfil-bloque-info-username'>@$nombre_usuario</p>";
@@ -170,7 +176,14 @@
                 echo "<div class='perfil-div perfil-div-separacion'>";
                 echo "<div class='perfil-descripcion'>";
                 if (!empty($descripcion)){
-                    echo "<p>$descripcion</p>";
+                    $descripcion = str_replace(["<br>", "<br />"], "</p><p>", $descripcion);
+                    $descripcion = "<p>$descripcion</p>";
+                    $descripcion = preg_replace(
+                        '/<p>\s*(&gt;|>)(.*)<\/p>/',
+                        '<p id="post-comentarios-greentext">&gt;$2</p>',
+                        $descripcion
+                    );
+                    echo $descripcion;
                 }
                 else{
                     echo "<p>No hay descripción.</p>";
@@ -182,7 +195,7 @@
                 <div class="perfil-div">
                 <div class="perfil-banner">
                 <div class="perfil-banner-parte1-modificado">
-                <form action="perfil.php" method="POST" enctype="multipart/form-data" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
+                <form action="php/account/editar.php" method="POST" enctype="multipart/form-data" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
                 <div class="perfil-banner-parte1-modificado-input">
                 <p>Nickname</p>
                 EOM;
@@ -192,14 +205,21 @@
                 <div class="perfil-banner-parte1-modificado-input">
                 <p>Descripcion</p>
                 EOM;
-                echo "<textarea name='descripcion' id='descripcion-input' value='$descripcion' placeholder='Descripción...'></textarea>";
+                echo "<textarea name='descripcion' id='descripcion-input' placeholder='Descripción...'>" . strip_tags($descripcion) . "</textarea>";
                 echo <<<EOM
                 </div>
                 <div class="perfil-banner-parte1-modificado-input">
                 <p>Avatar</p>
                 <div class="perfil-banner-parte1-modificado-input-avatar">
-                <img src='resources/avatar.png' alt=''>
-                <input type="file" accept=".png, .jpg, .jpeg, .gif" name="avatar" id="avatar-file">
+                EOM;
+                if (file_exists($avatar)){
+                    echo "<img src='$avatar' alt=''>";
+                }
+                else{
+                    echo "<img src='resources/avatar.png' alt=''>";
+                }
+                echo <<<EOM
+                <input type="file" accept=".png, .jpg, .jpeg" name="avatar" id="avatar-file">
                 </div>
                 </div>   
                 <div class="perfil-banner-parte1-modificado-input perfil-banner-parte1-modificado-input-gap">
