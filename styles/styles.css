@@ -1314,7 +1314,7 @@ header h1{
 }
 
 .perfil-descripcion{
-    display: flex;
+    display: block;
     align-items:center;
     background-color: rgb(24, 23, 23);
     border-radius: 6px;
