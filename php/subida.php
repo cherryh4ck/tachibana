@@ -1,6 +1,6 @@
 <?php
     // TODO TOTAL:
-    // - más chequeos de sanidad (tamaño mínimo y máxima resolución)
+    // - más chequeos de sanidad (tamaño mínimo, máxima resolución, sesión etc etc etc)
     // - organizar el código, parece un desastre xd
     // - reworkear un poco todo para que trabaje más con base de datos y no depender de archivos xddd
     // - terminar tags
@@ -11,9 +11,9 @@
     $maxSize = 6228792; // esta variable es para el tamaño maximo del archivo, se cambia si el archivo es de tipo gif
 
     // datos de entrada
-    $post_titulo = $_POST["titulo"];
+    $post_titulo = htmlspecialchars($_POST["titulo"]);
     $post_categoria = $_POST["categoria"];
-    $post_descripcion = $_POST["descripcion"];
+    $post_descripcion = nl2br(htmlspecialchars($_POST["descripcion"]));
     $post_autor_id = $_SESSION["cuenta_id"];
     $post_tags = $_POST["tags"];
     $archivo = $_FILES["archivo"];
