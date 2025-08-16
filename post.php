@@ -45,6 +45,7 @@
                 $post_autor_username = $fetch["username"];
                 $post_autor_nickname = $fetch["nickname"];
                 $post_autor_perfil = "perfil.php?id=" . $post_id_autor;
+                $avatar = "resources/avatars/" . $post_id_autor . ".png";
             }
             else{
                 header("Location: error.php?id=2");
@@ -116,7 +117,12 @@
                 echo "<span id='input-tag2'>test tes test t eststst</span>";
                 echo "</div>";
                 echo "<div class='post-autor'>";
-                echo "<img src='resources/avatar.png' alt='Avatar' id='post-autor-avatar'>";
+                if (file_exists($avatar)){
+                    echo "<img src='$avatar' alt='' id='post-autor-avatar'>";
+                }
+                else{
+                    echo "<img src='resources/avatar.png' alt='' id='post-autor-avatar'>";
+                }
                 echo "<div class='post-autor-info'>";
                 echo "<p><b><a href='$post_autor_perfil'>$post_autor_nickname</a></b><br>";
                 echo "<p>Publicado el $post_fecha_creacion</p>";
