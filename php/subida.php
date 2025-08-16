@@ -2,16 +2,25 @@
     // TODO TOTAL:
     // - más chequeos de sanidad (tamaño mínimo y máxima resolución)
     // - organizar el código, parece un desastre xd
+    // - reworkear un poco todo para que trabaje más con base de datos y no depender de archivos xddd
+    // - terminar tags
+    require "db/config.php";
+    error_reporting(E_ERROR | E_PARSE);
+    session_start();
 
+    $maxSize = 6228792; // esta variable es para el tamaño maximo del archivo, se cambia si el archivo es de tipo gif
+
+    // datos de entrada
+    $post_titulo = $_POST["titulo"];
+    $post_categoria = $_POST["categoria"];
+    $post_descripcion = $_POST["descripcion"];
+    $post_autor_id = $_SESSION["cuenta_id"];
+    $post_tags = $_POST["tags"];
     $archivo = $_FILES["archivo"];
     if (!isset($archivo)){ // chequear si de entrada tenemos un archivo
         header("Location: ../index.php");
         exit();
     }
-
-    $maxSize = 6228792;
-
-    error_reporting(E_ERROR | E_PARSE);
 
     $renombrado = "";
     $archivos = scandir("../galeria/");
@@ -63,6 +72,20 @@
                 header("Location: ../error.php?id=8");
                 exit();
             }
+
+            try{
+                // usar last insert id y explode para la separación de tags (?
+                $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $sql = $conn->prepare("INSERT INTO posts(id_autor, id_categoria, titulo, descripcion) VALUES (?, ?, ?, ?);");
+                $sql->execute([$post_autor_id, $post_categoria, $post_titulo, $post_descripcion]);
+            }
+            catch (PDOException $e){
+                header("Location: ../error.php?id=9");
+                exit();
+            }
+
             $miniatura_w = 400;
             $miniatura_h = 300;
 
