@@ -43,6 +43,7 @@
         <div class="contenido-subir">
             <div class="contenido-subir-formulario">
                 <form action="php/subida.php" method="POST" enctype="multipart/form-data" id="formulario-subir" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
+                    <input type="hidden" name="tags" id="tags-value" value="">
                     <div class="contenido-subir-formulario-fila1">
                         <div class="contenido-subir-formulario-fila1-input">
                             <p>Título</p>
@@ -51,15 +52,15 @@
                         <div class="contenido-subir-formulario-fila1-input">
                             <p>Categoría</p>
                             <select name="categoria" id="categoria-input" size="1">
-                                <option value="any">General - /any/</option>
-                                <option value="anime">Anime - /anime/</option>
-                                <option value="manga">Manga - /manga/</option>
-                                <option value="games">Videojuegos - /games/</option>
-                                <option value="pol">Política - /pol/</option>
-                                <option value="tech">Tecnología - /tech/</option>
-                                <option value="music">Música - /music/</option>
-                                <option value="movie">Películas - /movie/</option>
-                                <option value="coding">Programación - /coding/</option>
+                                <option value="1">General - /any/</option>
+                                <option value="2">Anime - /anime/</option>
+                                <option value="3">Manga - /manga/</option>
+                                <option value="4">Videojuegos - /games/</option>
+                                <option value="5">Política - /pol/</option>
+                                <option value="6">Tecnología - /tech/</option>
+                                <option value="7">Música - /music/</option>
+                                <option value="8">Películas - /movie/</option>
+                                <option value="9">Programación - /coding/</option>
                             </select>
                         </div> 
                     </div>
@@ -78,7 +79,7 @@
                         </div>
                         <div class="contenido-subir-formulario-fila1-input">
                             <p>Insertar tags</p>
-                            <input type="text" name="titulo" id="tags-input" placeholder="Tag... (máx. 4)">
+                            <input type="text" id="tags-input" placeholder="Tag... (máx. 4)">
                         </div>
                     </div>
                     <div class="contenido-subir-formulario-fila-subir">
