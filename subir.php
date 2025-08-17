@@ -70,6 +70,10 @@
                             <textarea name="descripcion" id="descripcion-input" placeholder="Descripción del post..." rows="7" cols="60"></textarea>
                         </div>
                     </div>
+                    <div class="contenido-subir-formulario-fila1-input-checkbox">
+                        <input type="checkbox" name="anonimo" id="anonimo-checkbox">
+                        <label for="anonimo">Publicar de forma anónima</label>
+                    </div>
                     <div class="contenido-subir-formulario-fila1">
                         <div class="contenido-subir-formulario-fila1-input">
                             <p>Tags</p>
@@ -93,8 +97,9 @@
                         </div>
                     </div>
                     <div class="contenido-subir-formulario-error">
-                        <!-- div para mostrar errores mediante js/archivos.js -->
+                        <!-- div para mostrar errores / avisos mediante js/archivos.js -->
                         <p style="display: none;" id="mensaje-error"><span>Error al subir la imagen:</span> Test test</p>
+                        <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> Tu ID de usuario se seguirá guardando en la base de datos como identificación, pero esto es solamente visible para administradores.</p>
                     </div>
                     <input type="submit" value="Subir" id="btn-enviar" disabled>
                 </form>
