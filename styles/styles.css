@@ -313,10 +313,14 @@ header h1{
     margin-left: 0.5em;
 }
 
+.post-autor-info-nickname{
+    display: flex;
+    align-items: center;
+}
+
 .post-autor-info p{
     color: rgb(136, 131, 131);
     font-size: 14px;
-    margin-top: 0.1em;
 }
 
 .post-autor-info p b{
@@ -331,6 +335,10 @@ header h1{
     transition: all 200ms;
 }
 
+.post-autor-info p b a span{
+    margin-left: 0.3em;
+}
+
 .post-autor-info p b a:hover{
     color: rgb(183, 187, 184);
     text-shadow: 2px 2px 15px rgb(27, 26, 26);
@@ -343,7 +351,8 @@ header h1{
     margin-left: 0.2em;
 }
 
-#post-descripcion{
+.post-descripcion{
+    display: block;
     background-color: #191b1b;
     color: rgb(214, 212, 212);
     border: 2px solid #282b2b;
@@ -355,7 +364,7 @@ header h1{
     transition: all 100ms;
 }
 
-#post-descripcion:hover{
+.post-descripcion:hover{
     border: 2px solid #444747;
     box-shadow: 5px 1px 40px rgb(56, 55, 55);
 }
@@ -520,6 +529,39 @@ header h1{
     outline: none !important;
     border: 2px solid #464949;
     box-shadow: 5px 1px 40px rgb(56, 55, 55);
+}
+
+.post-comentarios-comentar-botones-checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.3em;
+}
+
+.post-comentarios-comentar-botones-checkbox input[type=checkbox]{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #191b1b;
+    border: 2px solid #282b2b;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 200ms all;
+}
+
+.post-comentarios-comentar-botones-checkbox input[type=checkbox]:hover {
+    background-color: rgb(37, 35, 35);
+    box-shadow: 5px 1px 40px rgb(36, 35, 35);
+}
+
+.post-comentarios-comentar-botones-checkbox input[type=checkbox]:checked {
+    background-color: #909494;
+    position: relative;
+}
+
+.post-comentarios-comentar-botones-checkbox label{
+    margin-left: 0.3em;
+    color: rgb(211, 199, 199);
 }
 
 /* Subir.php // Subir contenido */
