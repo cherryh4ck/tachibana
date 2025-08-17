@@ -1,110 +1,142 @@
 <?php
-    // Añadir opción para borrar los tags
-    // añadir animación al mensaje de error (tipo un brillo o algo así)
-
-    // REWORK EN PROGRESO!!
-    // por el momento todo el diseño se está puliendo para luego convertirlo en ventana modal
-    // y así no requiere de una página aparte
+    // TODO TOTAL:
+    // - más chequeos de sanidad (tamaño mínimo, máxima resolución, sesión etc etc etc)
+    // - organizar el código, parece un desastre xd
+    // - reworkear un poco todo para que trabaje más con base de datos y no depender de archivos xddd
+    // - terminar tags
+    require "db/config.php";
+    error_reporting(E_ERROR | E_PARSE);
     session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publicar un post</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <script src="js/archivos.js" type="module" defer></script>
-    <script src="js/tags.js" type="module" defer></script>
-    <link rel="shortcut icon" href="favicon.ico" />
-</head>
-<body>
-    <nav>
-        <p id="nav-logo">Tachibana</p>
-        <ul>
-            <li><a href="index.php?pag=1">Inicio</a></li>
-            <li><a href="subir.php">Publicar</a></li>
-            <li><a href="perfiles.php">Usuarios</a></li>
-        </ul>
-        <div class="nav-cuenta">
-            <?php
-                if (!isset($_SESSION["cuenta_usuario"])){
-                    echo "<a href='php/cuenta.php' id='cuenta'>Anónimo</a>"; 
-                }
-                else{
-                    echo "<a href='php/cuenta.php' id='cuenta'>" . $_SESSION["cuenta_usuario"] . "</a>"; 
-                }
-            ?>
-        </div>
-    </nav>
-    <header>
-        <img src="" alt="" id="image-preview" style="display: none;">
-        <div class="contenido-subir">
-            <div class="contenido-subir-formulario">
-                <form action="php/subida.php" method="POST" enctype="multipart/form-data" id="formulario-subir" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
-                    <input type="hidden" name="tags" id="tags-value" value="">
-                    <div class="contenido-subir-formulario-fila1">
-                        <div class="contenido-subir-formulario-fila1-input">
-                            <p>Título</p>
-                            <input type="text" name="titulo" id="titulo-input" placeholder="Título del post..." required>
-                        </div> 
-                        <div class="contenido-subir-formulario-fila1-input">
-                            <p>Categoría</p>
-                            <select name="categoria" id="categoria-input" size="1">
-                                <option value="1">General - /any/</option>
-                                <option value="2">Anime - /anime/</option>
-                                <option value="3">Manga - /manga/</option>
-                                <option value="4">Videojuegos - /games/</option>
-                                <option value="5">Política - /pol/</option>
-                                <option value="6">Tecnología - /tech/</option>
-                                <option value="7">Música - /music/</option>
-                                <option value="8">Películas - /movie/</option>
-                                <option value="9">Programación - /coding/</option>
-                            </select>
-                        </div> 
-                    </div>
-                    <div class="contenido-subir-formulario-fila1">
-                        <div class="contenido-subir-formulario-fila1-input-allspace">
-                            <p>Descripción</p>
-                            <textarea name="descripcion" id="descripcion-input" placeholder="Descripción del post..." rows="7" cols="60"></textarea>
-                        </div>
-                    </div>
-                    <div class="contenido-subir-formulario-fila1-input-checkbox">
-                        <input type="checkbox" name="anonimo" id="anonimo-checkbox">
-                        <label for="anonimo">Publicar de forma anónima</label>
-                    </div>
-                    <div class="contenido-subir-formulario-fila1">
-                        <div class="contenido-subir-formulario-fila1-input">
-                            <p>Tags</p>
-                            <div class="contenido-subir-formulario-fila1-input-tags" id="insert-tags">
-                                <p id="no-hay-tags">Añade un tag...</p>
-                            </div>
-                        </div>
-                        <div class="contenido-subir-formulario-fila1-input">
-                            <p>Insertar tags</p>
-                            <input type="text" id="tags-input" placeholder="Tag... (máx. 4)">
-                        </div>
-                    </div>
-                    <div class="contenido-subir-formulario-fila-subir">
-                        <input type="file" accept=".png, .jpg, .jpeg, .gif" name="archivo" id="archivo-file" class="subir-archivo">
-                        <div class="contenido-subir-formulario-fila-subir-textos">
-                            <p id="imagen-texto">Imagen no seleccionada</p>
-                            <div class="contenido-subir-formulario-fila-subir-textos-estado">
-                                <p id="imagen-tamano"></p>
-                                <p id="imagen-res"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contenido-subir-formulario-error">
-                        <!-- div para mostrar errores / avisos mediante js/archivos.js -->
-                        <p style="display: none;" id="mensaje-error"><span>Error al subir la imagen:</span> Test test</p>
-                        <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> Tu ID de usuario se seguirá guardando en la base de datos como identificación, pero esto es solamente visible para administradores.</p>
-                    </div>
-                    <input type="submit" value="Subir" id="btn-enviar" disabled>
-                </form>
-            </div>
-        </div>
-    </header>
-</body>
-</html>
+    $maxSize = 6228792; // esta variable es para el tamaño maximo del archivo, se cambia si el archivo es de tipo gif
+
+    // datos de entrada
+    $post_titulo = htmlspecialchars($_POST["titulo"]);
+    $post_categoria = $_POST["categoria"];
+    $post_descripcion = nl2br(htmlspecialchars($_POST["descripcion"]));
+    $post_autor_id = $_SESSION["cuenta_id"];
+    $post_anonimo = $_POST["anonimo"];
+    if ($post_anonimo == "on"){
+        $post_anonimo = 1;
+    }
+    else{
+        $post_anonimo = 0;
+    }
+    $post_tags = $_POST["tags"];
+    $archivo = $_FILES["archivo"];
+
+    if (!isset($archivo)){ // chequear si de entrada tenemos un archivo
+        header("Location: ../index.php");
+        exit();
+    }
+
+    $renombrado = "";
+    $archivos = scandir("../galeria/");
+    
+    // Por si existe el test.txt o no
+    if (file_exists("../galeria/Test.txt")){
+        $total_archivos = count($archivos) - 3;
+    }
+    else{
+        $total_archivos = count($archivos) - 2;
+    }
+
+    $info = pathinfo($archivo["name"]);
+
+    $renombrado = strval($total_archivos) . ".jpg";
+    if ($info["extension"] == "gif"){
+        $fullRenombrado = strval($total_archivos) . ".gif";
+    }
+    else{
+        $fullRenombrado = $renombrado;
+    }
+    $dir = "../galeria/";
+    $fullsize = "../galeria/fullsize/";
+
+
+    $nombregenerado = strval(rand(0, 100000000000)) . ".jpg";
+    // chequeos de sanidad
+    list($x, $y) = getimagesize($archivo["tmp_name"]);
+    $tamaño = filesize($archivo["tmp_name"]);
+
+    if ($x >= 400 and $y >= 300){
+        if ($info["extension"] == "png"){
+            $imagen = imagecreatefrompng($archivo["tmp_name"]);
+        }
+        else if ($info["extension"] == "jpg" or $info["extension"] == "jpeg"){
+            $imagen = imagecreatefromjpeg($archivo["tmp_name"]);
+        }
+        else if ($info["extension"] == "gif"){
+            $imagen = imagecreatefromgif($archivo["tmp_name"]);
+            $maxSize = 26228792;
+        }
+
+        if (!$imagen){
+            header("Location: ../error.php?id=3");
+            exit();
+        }
+        else{
+            if (!($tamaño < $maxSize)){
+                header("Location: ../error.php?id=8");
+                exit();
+            }
+
+            try{
+                // usar last insert id y explode para la separación de tags (?
+                $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $sql = $conn->prepare("INSERT INTO posts(id_autor, id_categoria, titulo, descripcion, anonimo) VALUES (?, ?, ?, ?, ?);");
+                $sql->execute([$post_autor_id, $post_categoria, $post_titulo, $post_descripcion, $post_anonimo]);
+            }
+            catch (PDOException $e){
+                header("Location: ../error.php?id=9");
+                exit();
+            }
+
+            $miniatura_w = 400;
+            $miniatura_h = 300;
+
+            $width = imagesx($imagen);
+            $height = imagesy($imagen);
+
+            $aspecto_original = $width / $height;
+            $aspecto_miniatura = $miniatura_w / $miniatura_h;
+
+            if ( $aspecto_original >= $aspecto_miniatura )
+            {
+                $nueva_height = $miniatura_h;
+                $nueva_width = $width / ($height / $miniatura_h);
+            }
+            else
+            {
+                $nueva_width = $miniatura_w;
+                $nueva_height = $height / ($width / $miniatura_w);
+            }
+
+            $miniatura = imagecreatetruecolor( $miniatura_w, $miniatura_h );
+
+            imagecopyresampled($miniatura,
+                            $imagen,
+                            0 - ($nueva_width - $miniatura_w) / 2, 
+                            0 - ($nueva_height - $miniatura_h) / 2, 
+                            0, 0,
+                            $nueva_width, $nueva_height,
+                            $width, $height);
+            imagejpeg($miniatura, $dir . $renombrado , 80);
+            if ($info["extension"] == "gif"){
+                rename($archivo["tmp_name"], $fullsize . $fullRenombrado);
+            }
+            else{
+                $fullsizeimg = imagejpeg($imagen, $fullsize . $fullRenombrado);
+            }
+            header("Location: ../post.php?id=" . strval($total_archivos));
+            exit();
+        }
+    }
+    else{
+        header("Location: ../error.php?id=7");
+        exit();
+    }
+    // chdir("../galeria/");
+?>
