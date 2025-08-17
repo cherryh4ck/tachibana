@@ -30,9 +30,22 @@
         $fetch = $sql->fetch(PDO::FETCH_ASSOC);
         if ($fetch){
             $post_titulo = $fetch["titulo"];
+            $post_id_categoria = $fetch["id_categoria"];
             $post_descripcion = $fetch["descripcion"];
             $post_id_autor = $fetch["id_autor"];
             $post_fecha_creacion = $fetch["fecha_creacion"];
+            
+            // conseguir datos de la categoria
+            $sql = $conn->prepare("SELECT * FROM categorias WHERE id = ?;");
+            $sql->execute([$post_id_categoria]);
+            $fetch = $sql->fetch(PDO::FETCH_ASSOC);
+            if ($fetch){
+                $post_categoria = "/" . $fetch["nombre"] . "/";
+            }
+            else{
+                header("Location: error.php?id=2");
+                exit();
+            }
 
             $dateTime = new DateTime($post_fecha_creacion);
             $post_fecha_creacion = $dateTime->format("d-m-Y \a \l\a\s H:i:s");
@@ -111,6 +124,7 @@
                 echo "<h1 id='post-titulo'>$post_titulo</h1>";
                 echo "<h2 id='post-id'>ID #" . $id . "</h2>";
                 echo "<div class='post-contenido-tags'>";
+                echo "<span id='input-tag-rojo'>$post_categoria</span>";
                 echo "<span id='input-tag2'>tag1</span>";
                 echo "<span id='input-tag2'>tag2</span>";
                 echo "<span id='input-tag2'>asfsafafafafagg</span>";
@@ -124,13 +138,22 @@
                     echo "<img src='resources/avatar.png' alt='' id='post-autor-avatar'>";
                 }
                 echo "<div class='post-autor-info'>";
-                echo "<p><b><a href='$post_autor_perfil'>$post_autor_nickname</a></b><br>";
+                echo "<div class='post-autor-info-nickname'>";
+                echo "<p><b><a href='$post_autor_perfil'>$post_autor_nickname<span id='contenido-perfil-bloque-info-username'>@$post_autor_username</span></a></b><br>";
+                echo "</div>";
                 echo "<p>Publicado el $post_fecha_creacion</p>";
-                echo "</div>";
-                echo "</div>";
+                echo "</div></div>";
                 echo "<h2 id='post-titulo-descripcion'>Descripción</h2>";
-                echo "<p id='post-descripcion'>$post_descripcion</p>";
-                echo "</div>";
+                echo "<div class='post-descripcion'>";
+                $post_descripcion = str_replace(["<br>", "<br />"], "</p><p>", $post_descripcion);
+                $post_descripcion = "<p>$post_descripcion</p>";
+                $post_descripcion = preg_replace(
+                    '/<p>\s*(&gt;|>)(.*)<\/p>/',
+                    '<p id="post-comentarios-greentext">&gt;$2</p>',
+                    $post_descripcion
+                );
+                echo $post_descripcion;
+                echo "</div></div>";
             ?>
             <h2 id="post-comentarios-titulo">Comentarios</h1>
             <div class="post-comentarios">
@@ -175,12 +198,23 @@
             </div>
             <h2 id="post-comentarios-comentar">Comentar</h2>
             <div class="post-comentarios-comentar">
-                <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                <form action="" method="post">
+                <?php
+                    if (file_exists($avatar)){
+                        echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
+                    }
+                    else{
+                        echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
+                    }
+                ?>
+                <form action="php/post/comentar.php" enctype="multipart/form-data" method="POST">
                     <textarea name="" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required></textarea>
                     <div class="post-comentarios-comentar-botones">
                         <input type="submit" value="Comentar" id="post-comentarios-enviar" disabled>
                         <input type="button" value="Adjuntar imagen">
+                        <div class="post-comentarios-comentar-botones-checkbox">
+                            <input type="checkbox" name="anonimo">
+                            <label for="anonimo">Comentar como anónimo</label>
+                        </div>
                     </div>
                 </form>
             </div>
