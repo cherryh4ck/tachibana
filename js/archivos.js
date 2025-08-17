@@ -8,6 +8,8 @@ const textbox = document.getElementById("titulo-input");
 const textarea = document.getElementById("descripcion-input");
 const enviar = document.getElementById("btn-enviar");
 const mensaje_error = document.getElementById("mensaje-error");
+const anonimo_checkbox = document.getElementById("anonimo-checkbox");
+const mensaje_aviso = document.getElementById("mensaje-aviso");
 
 // 25228792 (25MB)
 let maxSize = 6228792; // 5 MB
@@ -103,5 +105,14 @@ textarea.addEventListener("input", (e) => {
     }
     else{
         enviar.disabled = true;
+    }
+});
+
+anonimo_checkbox.addEventListener("change", (e) => {
+    if (e.target.checked){
+        mensaje_aviso.style.display = "block";
+    }
+    else{
+        mensaje_aviso.style.display = "none";
     }
 });
