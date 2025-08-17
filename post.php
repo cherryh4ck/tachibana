@@ -33,6 +33,7 @@
             $post_id_categoria = $fetch["id_categoria"];
             $post_descripcion = $fetch["descripcion"];
             $post_id_autor = $fetch["id_autor"];
+            $post_anonimo = $fetch["anonimo"];
             $post_fecha_creacion = $fetch["fecha_creacion"];
             
             // conseguir datos de la categoria
@@ -131,7 +132,7 @@
                 echo "<span id='input-tag2'>test tes test t eststst</span>";
                 echo "</div>";
                 echo "<div class='post-autor'>";
-                if (file_exists($avatar)){
+                if ((file_exists($avatar)) && !($post_anonimo == 1)){
                     echo "<img src='$avatar' alt='' id='post-autor-avatar'>";
                 }
                 else{
@@ -139,7 +140,12 @@
                 }
                 echo "<div class='post-autor-info'>";
                 echo "<div class='post-autor-info-nickname'>";
-                echo "<p><b><a href='$post_autor_perfil'>$post_autor_nickname<span id='contenido-perfil-bloque-info-username'>@$post_autor_username</span></a></b><br>";
+                if ($post_anonimo == 1){
+                    echo "<p><b>Anónimo</b></p>";
+                }
+                else{
+                    echo "<p><b><a href='$post_autor_perfil'>$post_autor_nickname<span id='contenido-perfil-bloque-info-username'>@$post_autor_username</span></a></b><br>";
+                }
                 echo "</div>";
                 echo "<p>Publicado el $post_fecha_creacion</p>";
                 echo "</div></div>";
