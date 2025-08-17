@@ -33,20 +33,22 @@
                 $sql = $conn->prepare("UPDATE usuarios SET descripcion = ? WHERE id = ?;");
                 $sql->execute([nl2br(htmlspecialchars($_POST["descripcion"])), $_SESSION["cuenta_id"]]);
             }
-            if (isset($_POST["avatar"])){
+            if (isset($_FILES["avatar"])){
                 $avatar = $_FILES["avatar"];
                 $info = pathinfo($avatar["name"]);
-                if (!($info["extension"] == "png")){
-                    $imagen = imagecreatefromjpeg($avatar["tmp_name"]);
-                }
+                if (!empty($info["extension"])){
+                    if (!($info["extension"] == "png")){
+                        $imagen = imagecreatefromjpeg($avatar["tmp_name"]);
+                    }
 
-                if ($imagen){
-                    imagepng($imagen, "../../resources/avatars/" . $_SESSION["cuenta_id"] . ".png");
-                    resize_image("../../resources/avatars/" . $_SESSION["cuenta_id"] . ".png", 498, 498);
-                }
-                else{
-                    header("Location: ../../error.php?id=3");
-                    exit();
+                    if ($imagen){
+                        imagepng($imagen, "../../resources/avatars/" . $_SESSION["cuenta_id"] . ".png");
+                        resize_image("../../resources/avatars/" . $_SESSION["cuenta_id"] . ".png", 498, 498);
+                    }
+                    else{
+                        header("Location: ../../error.php?id=3");
+                        exit();
+                    }
                 }
             }
 
