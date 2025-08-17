@@ -15,8 +15,16 @@
     $post_categoria = $_POST["categoria"];
     $post_descripcion = nl2br(htmlspecialchars($_POST["descripcion"]));
     $post_autor_id = $_SESSION["cuenta_id"];
+    $post_anonimo = $_POST["anonimo"];
+    if ($post_anonimo == "on"){
+        $post_anonimo = 1;
+    }
+    else{
+        $post_anonimo = 0;
+    }
     $post_tags = $_POST["tags"];
     $archivo = $_FILES["archivo"];
+
     if (!isset($archivo)){ // chequear si de entrada tenemos un archivo
         header("Location: ../index.php");
         exit();
@@ -78,8 +86,8 @@
                 $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $sql = $conn->prepare("INSERT INTO posts(id_autor, id_categoria, titulo, descripcion) VALUES (?, ?, ?, ?);");
-                $sql->execute([$post_autor_id, $post_categoria, $post_titulo, $post_descripcion]);
+                $sql = $conn->prepare("INSERT INTO posts(id_autor, id_categoria, titulo, descripcion, anonimo) VALUES (?, ?, ?, ?, ?);");
+                $sql->execute([$post_autor_id, $post_categoria, $post_titulo, $post_descripcion, $post_anonimo]);
             }
             catch (PDOException $e){
                 header("Location: ../error.php?id=9");
