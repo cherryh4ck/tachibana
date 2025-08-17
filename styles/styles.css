@@ -830,6 +830,10 @@ header h1{
     transition: all 200ms;
 }
 
+#mensaje-aviso2{
+    color: rgb(219, 170, 64);
+}
+
 .contenido-subir-formulario-fila1-input-tags{
     display: flex;
     background-color: rgb(20, 20, 19);
@@ -890,7 +894,40 @@ header h1{
     cursor: pointer;
 }
 
+.contenido-subir-formulario-fila1-input-checkbox{
+    display: flex;
+    gap: 0.3em;
+    margin-top: 1em;
+}
+
+.contenido-subir-formulario-fila1-input-checkbox input[type=checkbox]{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #191b1b;
+    border: 2px solid #282b2b;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 200ms all;
+}
+
+.contenido-subir-formulario-fila1-input-checkbox input[type=checkbox]:hover {
+    background-color: rgb(37, 35, 35);
+    box-shadow: 5px 1px 40px rgb(36, 35, 35);
+}
+
+.contenido-subir-formulario-fila1-input-checkbox input[type=checkbox]:checked {
+    background-color: #343636;
+    position: relative;
+}
+
+.contenido-subir-formulario-fila1-input-checkbox label{
+    margin-left: 0.3em;
+    color: rgb(211, 199, 199);
+}
+
 /* Página con mensaje de error */
+/* /////////////////////////// */
 
 #input-tag b{
     color: rgb(56, 56, 54);
