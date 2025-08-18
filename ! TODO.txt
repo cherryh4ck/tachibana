@@ -3,6 +3,7 @@
 General:
 - añadir ventana modal para subir.php
 - añadir funciones para los administradores
+- añadir config para solo anonimato ?
 
 register.php & login.php:
 - añadir mensajes visuales
