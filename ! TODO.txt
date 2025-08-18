@@ -2,19 +2,43 @@
 
 General:
 - añadir ventana modal para subir.php
+- añadir funciones para los administradores
+
+register.php & login.php:
+- añadir mensajes visuales
 
 index.php:
+- añadir sistema de búsqueda
 - añadir un sistema de tags seleccionados
-- añadir selector de categoría
+- mostrar info de los posts
 
 post.php:
-- hacer funcionar el botón de adjuntar imagen
-- añadir info de la imagen al adjuntar imagen
+- añadir info de la imagen al adjuntar imagen + funcionalidad
 - añadir id a los comentarios
+- añadir username al lado del nickname
 - añadir soporte para las imagenes en los comentarios
 
+perfil.php:
+- añadir script en js para el preview del avatar
+- trabajar lo de la última actividad
+- añadir tags de admin
+
+perfiles.php:
+- reworkear la búsqueda pq lit anda como quiere
+- añadir chequeos de sanidad
+
 subir.php:
-- animación de brillo al mensaje de error
+- es necesario si o si incluir tags? no se ve necesario
+- añadir animación de brillo al mensaje de error y aviso
+
+php/subida.php:
+- añadir chequeos de sanidad
+
+php/db/cookie_auth:
+- trabajar en la idea de auth mediante cookie
+
+setup.php:
+- mejorar el estilo visual
 
 base de datos:
 - optimizar búsqueda de tags (ordenar tags de manera alfabética y usar comas para separar la busqueda)
