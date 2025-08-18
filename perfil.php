@@ -203,7 +203,7 @@
                 echo <<<EOM
                 </div>
                 <div class="perfil-banner-parte1-modificado-input">
-                <p>Descripcion</p>
+                <p>Descripción</p>
                 EOM;
                 echo "<textarea name='descripcion' id='descripcion-input' placeholder='Descripción...'>" . strip_tags($descripcion) . "</textarea>";
                 echo <<<EOM
