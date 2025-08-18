@@ -1246,6 +1246,16 @@ header h1{
     cursor: pointer;
 }
 
+#formulario-mensaje{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 17px;
+}
+
+#formulario-mensaje span{
+    color: rgb(219, 64, 64);
+}
+
 /* perfiles */
 /* //////// */
 
