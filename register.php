@@ -23,9 +23,10 @@
 
             $sql = $conn->prepare("INSERT INTO usuarios(username, password, nickname) VALUES (?, ?, ?);");
             $sql->execute([$username, $password, $username]);
+            $mensaje = "Usuario registrado, inicia sesión.";
         }
         catch(PDOException $e){
-            echo $e;
+            $mensaje = "<span>Error:</span> El usuario ya existe.";
             // mostrar error de manera más visual (base de datos caida)
         }
     }
@@ -59,6 +60,11 @@
             <input type="text" name="user" placeholder="Nombre de usuario" required>
             <input type="password" name="password" placeholder="Contraseña" id="contraseña" required>
             <input type="password" name="verifyPassword" placeholder="Repetir contraseña" id="repetirContraseña" required>
+            <?php
+                if (isset($mensaje)){
+                    echo "<p id='formulario-mensaje'>$mensaje</p>";
+                }
+            ?>
             <input type="submit" value="Registrarse">
         </form>
         <p id="registrate">¿Tenés cuenta? Iniciá sesión <a href="login.php">acá</a></p>
