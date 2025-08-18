@@ -6,7 +6,7 @@ General:
 - añadir config para solo anonimato ?
 
 register.php & login.php:
-- añadir mensajes visuales
+- añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
 
 index.php:
 - añadir sistema de búsqueda
