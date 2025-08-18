@@ -22,17 +22,16 @@
             $fetch = $sql->fetch(PDO::FETCH_ASSOC);
 
             if ($fetch && password_verify($password, $fetch["password"])){
-                echo "Logueado con exito!";
                 $_SESSION["cuenta_id"] = $fetch["id"];
                 $_SESSION["cuenta_usuario"] = $fetch["username"];
                 header("Location: index.php");
             }
             else{
-                echo "Datos incorrectos.";
+                $mensaje = "<span>Error:</span> Usuario o contraseña incorrecta";
             }
         }
         catch(PDOException $e){
-            echo $e;
+            $mensaje = "<span>Error:</span> Ha ocurrido un error, intente más tarde";
             // mostrar error de manera más visual (base de datos caida)
         }
     }
@@ -64,6 +63,11 @@
             <p id="texto-centrado">Iniciar sesión</p>
             <input type="text" name="user" placeholder="Nombre de usuario" required>
             <input type="password" name="password" placeholder="Contraseña" required>
+            <?php
+                if (isset($mensaje)){
+                    echo "<p id='formulario-mensaje'>$mensaje</p>";
+                }
+            ?>
             <input type="submit" value="Iniciar sesión">
         </form>
         <p id="registrate">¿No tenés cuenta? Registrate <a href="register.php">acá</a></p>
