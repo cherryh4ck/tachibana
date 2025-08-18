@@ -23,6 +23,7 @@ perfil.php:
 - añadir script en js para el preview del avatar
 - trabajar lo de la última actividad
 - añadir tags de admin
+- añadir apartado de seguridad
 
 perfiles.php:
 - reworkear la búsqueda pq lit anda como quiere
