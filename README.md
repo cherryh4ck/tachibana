@@ -21,13 +21,7 @@ Crear una cuenta si o si es necesaria para postear o comentar, aun así siempre 
 3. Desde un navegador, ir a la dirección ```tachibana-main\php\db\setup.php``` (Ej: ```localhost\tachibana\php\db\setup.php```) y seguir los pasos
 
 ## Por hacer
-(POR CAMBIAR)
-- Vinculación a base de datos (general)
-- Chequeos de sanidad para la entrada de datos
-- Miniaturas animadas para GIFs
-- Sistema de orden de imágenes 
-- Diseño responsive
-- Animaciones para mejor estética
+Refierase al documento ```! TODO.txt```, ya que es la lista oficial de desarrollo.
 
 ## Lenguajes de programación usados
 - ```HTML5```
