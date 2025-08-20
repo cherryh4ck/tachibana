@@ -15,7 +15,7 @@ Crear una cuenta si o si es necesaria para postear o comentar, aun así siempre 
 - ```Servidor MariaDB``` para la base de datos
 - ```GD``` debe estar habilitado en la config. de extensiones de PHP
 
-# Para hostear Tachibana
+## Para hostear Tachibana
 1. Configurar el archivo ```php\db\config.php``` con las credenciales del servidor
 2. Prender el servidor Apache o web HTTP
 3. Desde un navegador, ir a la dirección ```tachibana-main\php\db\setup.php``` (Ej: ```localhost\tachibana\php\db\setup.php```) y seguir los pasos
