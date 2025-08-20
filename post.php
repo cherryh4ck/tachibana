@@ -60,6 +60,17 @@
                 $post_autor_nickname = $fetch["nickname"];
                 $post_autor_perfil = "perfil.php?id=" . $post_id_autor;
                 $avatar = "resources/avatars/" . $post_id_autor . ".png";
+
+                // buscar comentarios
+                $sql = $conn->prepare("SELECT * FROM posts_comentarios WHERE id = ?;");
+                $sql->execute([$id]);
+                $fetch = $sql->fetchAll(PDO::FETCH_ASSOC);
+                if ($fetch){
+                    $post_comentarios = count($fetch);
+                }
+                else{
+                    $post_comentarios = 0;
+                }
             }
             else{
                 header("Location: error.php?id=2");
@@ -161,43 +172,26 @@
                 echo $post_descripcion;
                 echo "</div></div>";
             ?>
-            <h2 id="post-comentarios-titulo">Comentarios</h1>
+            <?php
+                if ($post_comentarios > 0){
+                    echo "<h2 id='post-comentarios-titulo'>Comentarios ($post_comentarios)</h1>";
+                }
+                else{
+                    echo "<h2 id='post-comentarios-titulo'>Comentarios</h1>";
+                }
+            ?>
             <div class="post-comentarios">
                 <div class="post-comentarios-comentario">
                     <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
                     <div class="post-comentarios-comentario-info">
                         <div class="post-comentarios-comentario-autor">
-                            <p><b><a href="">Usuario 1</a></b></p>
+                            <div class="post-autor-info-nickname">
+                                <p><b><a href="">Usuario 1<span id='contenido-perfil-bloque-info-username'>@$post_autor_username</span></a></b></p>
+                            </div>
                             <p id="post-comentarios-comentario-fecha">24-07-2025 a las 5:06 AM</p>
                         </div>
                         <div class="post-comentarios-comentario-texto">
                             <p>Hola</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-comentarios-comentario">
-                    <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <div class="post-comentarios-comentario-info">
-                        <div class="post-comentarios-comentario-autor">
-                            <p><b><a href="">Usuario 2</a></b></p>
-                            <p id="post-comentarios-comentario-fecha">24-07-2025 a las 5:12 AM</p>
-                        </div>
-                        <div class="post-comentarios-comentario-texto">
-                            <p>Hola</p>
-                            <p id="post-comentarios-greentext">>green text test. lol</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-comentarios-comentario">
-                    <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <div class="post-comentarios-comentario-info">
-                        <div class="post-comentarios-comentario-autor">
-                            <p><b><a href="">Usuario 3</a></b></p>
-                            <p id="post-comentarios-comentario-fecha">24-07-2025 a las 5:54 AM</p>
-                        </div>
-                        <div class="post-comentarios-comentario-texto">
-                            <p>Hola :3</p>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, expedita, dolore illo corrupti voluptatum, rem beatae enim distinctio doloribus quis non. Repudiandae porro provident quibusdam eius quod enim cumque iure.</p>
                         </div>
                     </div>
                 </div>
