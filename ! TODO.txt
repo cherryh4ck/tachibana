@@ -19,6 +19,7 @@ post.php:
 - añadir soporte para las imagenes en los comentarios
 - añadir mensaje cuando no hay comentarios
 - añadir mensaje de que no se puede comentar cuando no hay sesión
+- añadir input tag (rojo o amarillo?) de OP
 
 perfil.php:
 - añadir script en js para el preview del avatar
