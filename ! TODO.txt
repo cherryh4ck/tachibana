@@ -16,7 +16,6 @@ index.php:
 post.php:
 - añadir info de la imagen al adjuntar imagen + funcionalidad
 - añadir id a los comentarios
-- añadir username al lado del nickname
 - añadir soporte para las imagenes en los comentarios
 
 perfil.php:
