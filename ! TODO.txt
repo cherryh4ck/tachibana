@@ -17,6 +17,8 @@ post.php:
 - añadir info de la imagen al adjuntar imagen + funcionalidad
 - añadir id a los comentarios
 - añadir soporte para las imagenes en los comentarios
+- añadir mensaje cuando no hay comentarios
+- añadir mensaje de que no se puede comentar cuando no hay sesión
 
 perfil.php:
 - añadir script en js para el preview del avatar
@@ -37,6 +39,9 @@ php/subida.php:
 
 php/db/cookie_auth:
 - trabajar en la idea de auth mediante cookie
+
+php/post/comentar.php:
+- añadir chequeos de sanidad
 
 setup.php:
 - mejorar el estilo visual
