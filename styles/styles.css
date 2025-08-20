@@ -335,7 +335,7 @@ header h1{
     transition: all 200ms;
 }
 
-.post-autor-info p b a span{
+.post-autor-info p b a span, .post-autor-info-nickname p b a span{
     margin-left: 0.3em;
 }
 
