@@ -49,7 +49,7 @@
             }
 
             $dateTime = new DateTime($post_fecha_creacion);
-            $post_fecha_creacion = $dateTime->format("d-m-Y \a \l\a\s H:i:s");
+            $post_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
 
             // buscar datos del OP
             $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
@@ -62,7 +62,7 @@
                 $avatar = "resources/avatars/" . $post_id_autor . ".png";
 
                 // buscar comentarios
-                $sql = $conn->prepare("SELECT * FROM posts_comentarios WHERE id = ?;");
+                $sql = $conn->prepare("SELECT * FROM posts_comentarios WHERE id_post = ?;");
                 $sql->execute([$id]);
                 $fetch = $sql->fetchAll(PDO::FETCH_ASSOC);
                 if ($fetch){
@@ -181,33 +181,92 @@
                 }
             ?>
             <div class="post-comentarios">
-                <div class="post-comentarios-comentario">
-                    <img src="resources/avatar.png" alt="" id="post-comentarios-comentario-avatar">
-                    <div class="post-comentarios-comentario-info">
-                        <div class="post-comentarios-comentario-autor">
-                            <div class="post-autor-info-nickname">
-                                <p><b><a href="">Usuario 1<span id='contenido-perfil-bloque-info-username'>@$post_autor_username</span></a></b></p>
-                            </div>
-                            <p id="post-comentarios-comentario-fecha">24-07-2025 a las 5:06 AM</p>
-                        </div>
-                        <div class="post-comentarios-comentario-texto">
-                            <p>Hola</p>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    foreach ($fetch as $comentario){
+                        $comentario_autor_id = $comentario["id_autor"];
+                        $comentario_fecha_creacion = $comentario["fecha_creacion"];
+                        $comentario_texto = $comentario["comentario"];
+                        $comentario_imagen_adjuntada = $comentario["imagen_adjuntada"];
+
+                        $dateTime = new DateTime($comentario_fecha_creacion);
+                        $comentario_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
+
+                        if ($comentario_autor_id != 0){
+                            $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
+                            $sql->execute([$comentario_autor_id]);
+                            $newFetch = $sql->fetch(PDO::FETCH_ASSOC);
+                        }
+                        else{
+                            $newFetch = [
+                                "username" => "Anónimo",
+                                "nickname" => "Anónimo"
+                            ];
+                        }
+                        if ($newFetch){
+                            $comentario_autor_username = $newFetch["username"];
+                            $comentario_autor_nickname = $newFetch["nickname"];
+                            if ($comentario_autor_id != 0) {
+                                $avatar = "resources/avatars/" . $comentario_autor_id . ".png";
+                                $comentario_autor_perfil = "perfil.php?id=" . $comentario_autor_id;
+                            }
+                            else{
+                                $avatar = "resources/avatar.png";
+                            }
+
+                            echo "<div class='post-comentarios-comentario'>";
+                            if (file_exists($avatar)){
+                                echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
+                            }
+                            else{
+                                echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
+                            }
+                            echo "<div class='post-comentarios-comentario-info'>";
+                            echo "<div class='post-comentarios-comentario-autor'>";
+                            echo "<div class='post-autor-info-nickname'>";
+                            if ($comentario_autor_id != 0) {
+                                echo "<p><b><a href='$comentario_autor_perfil'>$comentario_autor_nickname<span id='contenido-perfil-bloque-info-username'>@$comentario_autor_username</span></a></b></p>";
+                            }
+                            else{
+                                echo "<p><b>Anónimo</b></p>";
+                            }
+                            echo "</div>";
+                            echo "<p id='post-comentarios-comentario-fecha'>$comentario_fecha_creacion</p>";
+                            echo "</div>";
+                            echo "<div class='post-comentarios-comentario-texto'>";
+                            $comentario_texto = str_replace(["<br>", "<br />"], "</p><p>", $comentario_texto);
+                            $comentario_texto = "<p>$comentario_texto</p>";
+                            $comentario_texto = preg_replace(
+                                '/<p>\s*(&gt;|>)(.*)<\/p>/',
+                                '<p id="post-comentarios-greentext">&gt;$2</p>',
+                                $comentario_texto
+                            );
+                            echo $comentario_texto;
+                            echo "</div>";
+                            echo "</div>";
+                            echo "</div>";
+                        }
+                    }
+                ?>
             </div>
             <h2 id="post-comentarios-comentar">Comentar</h2>
             <div class="post-comentarios-comentar">
                 <?php
-                    if (file_exists($avatar)){
-                        echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
+                    if (isset($_SESSION["cuenta_id"])){
+                        $avatar = "resources/avatars/" . $_SESSION["cuenta_id"] . ".png";
+                        if (file_exists($avatar)){
+                            echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
+                        }
+                        else{
+                            echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
+                        }
                     }
                     else{
                         echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
                     }
                 ?>
                 <form action="php/post/comentar.php" enctype="multipart/form-data" method="POST">
-                    <textarea name="" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required></textarea>
+                    <input type="hidden" name="id_comentario" value="<?php echo $id; ?>">
+                    <textarea name="comentario" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required></textarea>
                     <div class="post-comentarios-comentar-botones">
                         <input type="submit" value="Comentar" id="post-comentarios-enviar" disabled>
                         <input type="button" value="Adjuntar imagen">
