@@ -18,9 +18,22 @@
                 $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $sql = $conn->prepare("INSERT INTO posts_comentarios(id_post, id_autor, comentario, imagen_adjuntada) VALUES (?, ?, ?, ?);");
-                $sql->execute([$comentario_id, $comentario_autor_id, $comentario_texto, $comentario_imagen]);
-                header("Location: ../../post.php?id=$comentario_id");
+                $sql = $conn->prepare("SELECT * FROM posts WHERE id = ?");
+                $sql->execute([$comentario_id]);
+                $fetch = $sql->fetch(PDO::FETCH_ASSOC);
+                if ($fetch){
+                    $post_autor_id = $fetch["id_autor"];
+                    if ($post_autor_id == $_SESSION["cuenta_id"]){
+                        $original_poster = 1;
+                    }
+                    else{
+                        $original_poster = 0;
+                    }
+
+                    $sql = $conn->prepare("INSERT INTO posts_comentarios(id_post, id_autor, comentario, imagen_adjuntada, original_poster) VALUES (?, ?, ?, ?, ?);");
+                    $sql->execute([$comentario_id, $comentario_autor_id, $comentario_texto, $comentario_imagen, $original_poster]);
+                    header("Location: ../../post.php?id=$comentario_id");
+                }
             }
             catch (PDOException $e){
                 header("Location: ../../error.php?id=9");
