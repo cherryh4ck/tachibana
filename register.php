@@ -27,7 +27,6 @@
         }
         catch(PDOException $e){
             $mensaje = "<span>Error:</span> El usuario ya existe.";
-            // mostrar error de manera más visual (base de datos caida)
         }
     }
 ?>
@@ -57,14 +56,16 @@
     <div class="contenido-menu">
         <form action="register.php" method="post" id="formulario">
             <p id="texto-centrado">Registrarse</p>
-            <input type="text" name="user" placeholder="Nombre de usuario" required>
+            <input type="text" name="user" id="usernameF" placeholder="Nombre de usuario" required>
             <input type="password" name="password" placeholder="Contraseña" id="contraseña" required>
             <input type="password" name="verifyPassword" placeholder="Repetir contraseña" id="repetirContraseña" required>
-            <?php
-                if (isset($mensaje)){
-                    echo "<p id='formulario-mensaje'>$mensaje</p>";
-                }
-            ?>
+            <div id="register-mensaje">
+                <?php
+                    if (isset($mensaje)){
+                        echo "<p id='formulario-mensaje'>$mensaje</p>";
+                    }
+                ?>
+            </div>
             <input type="submit" value="Registrarse">
         </form>
         <p id="registrate">¿Tenés cuenta? Iniciá sesión <a href="login.php">acá</a></p>
