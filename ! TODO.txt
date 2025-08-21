@@ -9,6 +9,7 @@ login.php:
 - añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
 
 index.php:
+- añadir una categoría que muestre TODO
 - añadir sistema de búsqueda
 - añadir un sistema de tags seleccionados
 - mostrar info de los posts
@@ -49,3 +50,4 @@ setup.php:
 
 base de datos:
 - optimizar búsqueda de tags (ordenar tags de manera alfabética y usar comas para separar la busqueda)
+
