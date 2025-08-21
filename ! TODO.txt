@@ -3,9 +3,9 @@
 General:
 - añadir ventana modal para subir.php
 - añadir funciones para los administradores
-- añadir config para solo anonimato ?
+- añadir config para solo anonimato ? (o más bien, un config general)
 
-register.php & login.php:
+login.php:
 - añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
 
 index.php:
