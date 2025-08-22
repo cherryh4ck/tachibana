@@ -191,80 +191,85 @@
             ?>
             <div class="post-comentarios">
                 <?php
-                    foreach ($fetch as $comentario){
-                        $comentario_autor_id = $comentario["id_autor"];
-                        $comentario_fecha_creacion = $comentario["fecha_creacion"];
-                        $comentario_texto = $comentario["comentario"];
-                        $comentario_imagen_adjuntada = $comentario["imagen_adjuntada"];
-                        $comentario_op = $comentario["original_poster"];
+                    if ($post_comentarios == 0){
+                        echo "<p id='post-comentarios-no-comentarios'>No hay comentarios, sé el primero en comentar</p>";
+                    }
+                    else{
+                        foreach ($fetch as $comentario){
+                            $comentario_autor_id = $comentario["id_autor"];
+                            $comentario_fecha_creacion = $comentario["fecha_creacion"];
+                            $comentario_texto = $comentario["comentario"];
+                            $comentario_imagen_adjuntada = $comentario["imagen_adjuntada"];
+                            $comentario_op = $comentario["original_poster"];
 
-                        $dateTime = new DateTime($comentario_fecha_creacion);
-                        $año_comentario = (int)$dateTime->format('Y');
-                        if ($año_comentario == $año_actual){
-                            $comentario_fecha_creacion = $dateTime->format("d/m \a \l\a\s H:i");
-                        }
-                        else{
-                            $comentario_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
-                        }
-                        
-
-                        if ($comentario_autor_id != 0){
-                            $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
-                            $sql->execute([$comentario_autor_id]);
-                            $newFetch = $sql->fetch(PDO::FETCH_ASSOC);
-                        }
-                        else{
-                            $newFetch = [
-                                "username" => "Anónimo",
-                                "nickname" => "Anónimo"
-                            ];
-                        }
-                        if ($newFetch){
-                            $comentario_autor_username = $newFetch["username"];
-                            $comentario_autor_nickname = $newFetch["nickname"];
-                            if ($comentario_autor_id != 0) {
-                                $avatar = "resources/avatars/" . $comentario_autor_id . ".png";
-                                $comentario_autor_perfil = "perfil.php?id=" . $comentario_autor_id;
+                            $dateTime = new DateTime($comentario_fecha_creacion);
+                            $año_comentario = (int)$dateTime->format('Y');
+                            if ($año_comentario == $año_actual){
+                                $comentario_fecha_creacion = $dateTime->format("d/m \a \l\a\s H:i");
                             }
                             else{
-                                $avatar = "resources/avatar.png";
+                                $comentario_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
                             }
+                            
 
-                            echo "<div class='post-comentarios-comentario'>";
-                            if (file_exists($avatar)){
-                                echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
+                            if ($comentario_autor_id != 0){
+                                $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
+                                $sql->execute([$comentario_autor_id]);
+                                $newFetch = $sql->fetch(PDO::FETCH_ASSOC);
                             }
                             else{
-                                echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
+                                $newFetch = [
+                                    "username" => "Anónimo",
+                                    "nickname" => "Anónimo"
+                                ];
                             }
-                            echo "<div class='post-comentarios-comentario-info'>";
-                            echo "<div class='post-comentarios-comentario-autor'>";
-                            echo "<div class='post-autor-info-nickname'>";
-                            if ($comentario_autor_id != 0) {
-                                echo "<p><b><a href='$comentario_autor_perfil'>$comentario_autor_nickname<span id='contenido-perfil-bloque-info-username'>@$comentario_autor_username</span></a></b></p>";
-                            }
-                            else{
-                                echo "<p><b>Anónimo</b></p>";
-                            }
+                            if ($newFetch){
+                                $comentario_autor_username = $newFetch["username"];
+                                $comentario_autor_nickname = $newFetch["nickname"];
+                                if ($comentario_autor_id != 0) {
+                                    $avatar = "resources/avatars/" . $comentario_autor_id . ".png";
+                                    $comentario_autor_perfil = "perfil.php?id=" . $comentario_autor_id;
+                                }
+                                else{
+                                    $avatar = "resources/avatar.png";
+                                }
 
-                            if ($comentario_op == 1){
-                                echo "<span id='input-tag-op'>OP</span>";
+                                echo "<div class='post-comentarios-comentario'>";
+                                if (file_exists($avatar)){
+                                    echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
+                                }
+                                else{
+                                    echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
+                                }
+                                echo "<div class='post-comentarios-comentario-info'>";
+                                echo "<div class='post-comentarios-comentario-autor'>";
+                                echo "<div class='post-autor-info-nickname'>";
+                                if ($comentario_autor_id != 0) {
+                                    echo "<p><b><a href='$comentario_autor_perfil'>$comentario_autor_nickname<span id='contenido-perfil-bloque-info-username'>@$comentario_autor_username</span></a></b></p>";
+                                }
+                                else{
+                                    echo "<p><b>Anónimo</b></p>";
+                                }
+
+                                if ($comentario_op == 1){
+                                    echo "<span id='input-tag-op'>OP</span>";
+                                }
+                                echo "</div>";
+                                echo "<p id='post-comentarios-comentario-fecha'>$comentario_fecha_creacion</p>";
+                                echo "</div>";
+                                echo "<div class='post-comentarios-comentario-texto'>";
+                                $comentario_texto = str_replace(["<br>", "<br />"], "</p><p>", $comentario_texto);
+                                $comentario_texto = "<p>$comentario_texto</p>";
+                                $comentario_texto = preg_replace(
+                                    '/<p>\s*(&gt;|>)(.*)<\/p>/',
+                                    '<p id="post-comentarios-greentext">&gt;$2</p>',
+                                    $comentario_texto
+                                );
+                                echo $comentario_texto;
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
                             }
-                            echo "</div>";
-                            echo "<p id='post-comentarios-comentario-fecha'>$comentario_fecha_creacion</p>";
-                            echo "</div>";
-                            echo "<div class='post-comentarios-comentario-texto'>";
-                            $comentario_texto = str_replace(["<br>", "<br />"], "</p><p>", $comentario_texto);
-                            $comentario_texto = "<p>$comentario_texto</p>";
-                            $comentario_texto = preg_replace(
-                                '/<p>\s*(&gt;|>)(.*)<\/p>/',
-                                '<p id="post-comentarios-greentext">&gt;$2</p>',
-                                $comentario_texto
-                            );
-                            echo $comentario_texto;
-                            echo "</div>";
-                            echo "</div>";
-                            echo "</div>";
                         }
                     }
                 ?>
