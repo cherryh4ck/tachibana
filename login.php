@@ -22,6 +22,12 @@
             $fetch = $sql->fetch(PDO::FETCH_ASSOC);
 
             if ($fetch && password_verify($password, $fetch["password"])){
+                // crear auth cookie
+                $auth_cookie = bin2hex(random_bytes(128));
+                $sql = $conn->prepare("UPDATE usuarios SET auth_cookie = ? WHERE id = ?");
+                $sql->execute([$auth_cookie, $fetch["id"]]);
+
+                setcookie("auth", $auth_cookie, time() + (86400 * 30), "/"); 
                 $_SESSION["cuenta_id"] = $fetch["id"];
                 $_SESSION["cuenta_usuario"] = $fetch["username"];
                 header("Location: index.php");
