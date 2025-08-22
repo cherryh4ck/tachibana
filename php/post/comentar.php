@@ -11,8 +11,12 @@
             // desarrollar imagen adjuntada
             $comentario_imagen = 0;
             if ($comentario_anonimo == "on"){
+                $comentario_anonimo = 1;
                 $comentario_autor_id = 0;
             }   
+            else{
+                $comentario_anonimo = 0;
+            }
 
             try{
                 $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
@@ -23,11 +27,12 @@
                 $fetch = $sql->fetch(PDO::FETCH_ASSOC);
                 if ($fetch){
                     $post_autor_id = $fetch["id_autor"];
+                    $post_anonimo = $fetch["anonimo"];
+                    $original_poster = 0;
                     if ($post_autor_id == $_SESSION["cuenta_id"]){
-                        $original_poster = 1;
-                    }
-                    else{
-                        $original_poster = 0;
+                        if ((($comentario_anonimo == 0) && ($post_anonimo == 0)) || (($comentario_anonimo == 1) && ($post_anonimo == 1))){
+                            $original_poster = 1;
+                        }
                     }
 
                     $sql = $conn->prepare("INSERT INTO posts_comentarios(id_post, id_autor, comentario, imagen_adjuntada, original_poster) VALUES (?, ?, ?, ?, ?);");
