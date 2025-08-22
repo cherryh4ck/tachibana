@@ -3,6 +3,7 @@
     // Sistema de indexado (Yo creo que estaría feo mostrar las imágenes borradas como inaccesibles)
     // Arreglar lo de que si el ID 1 no existe, colapsa todo el sistema xd
     session_start();
+    require "php/db/config.php";
 
     if (!isset($_GET["pag"])){
         $pagina = 1;
@@ -16,6 +17,14 @@
             header("Location: error.php?id=2");
             exit();
         }
+    }
+
+    try{
+        $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch (PDOException $e){
+        // mostrar error
     }
 ?>
 
@@ -94,13 +103,35 @@
                     for ($i = 0; $i < 12; $i++){
                         $id = 1 + (12*($pagina-1)) + $i;
                         if (file_exists("galeria/" . $id . ".jpg")){
+                            try {
+                                $sql = $conn->prepare("SELECT * FROM posts WHERE id = ?");
+                                $sql->execute([$id]);
+                                $fetch = $sql->fetch(PDO::FETCH_ASSOC);
+                                if ($fetch){
+                                    $post_id_categoria = $fetch["id_categoria"];
+                                    $post_titulo = $fetch["titulo"];
+
+                                    $sql = $conn->prepare("SELECT * FROM categorias WHERE id = ?");
+                                    $sql->execute([$post_id_categoria]);
+                                    $fetch = $sql->fetch(PDO::FETCH_ASSOC);
+                                    if ($fetch){
+                                        $post_categoria = $fetch["nombre"];
+                                    }
+                                }
+                            }
+                            catch (PDOException $e){
+                                echo "<div class='contenido-bloque contenido-bloque-phantom'>";
+                                echo "<a href='error.php?id=4'><img src='resources/notfound.jpg' alt=''></a>";
+                                echo "<p>Post #" . $id . " (Eliminado)</p>";
+                                echo "</div>";
+                            }
                             echo "<div class='contenido-bloque'>";
                             // acá iría el tag
                             echo "<div class='contenido-bloque-categoria'>";
-                            echo "<span id='input-tag-rojo'>/any/</span>";
+                            echo "<span id='input-tag-rojo'>/$post_categoria/</span>";
                             echo "</div>";
                             echo "<a href='post.php?id=" . $id . "'><img src='galeria/" . $id . ".jpg' alt=''></a>";
-                            echo "<p>Sin título</p>";
+                            echo "<p>$post_titulo</p>";
                             echo "</div>";
                         }
                         else if ($id <= $end_id){
