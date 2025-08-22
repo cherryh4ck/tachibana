@@ -386,6 +386,13 @@ header h1{
     margin-left: 0.3em;
 }
 
+#post-comentarios-no-comentarios{
+    color: rgb(136, 131, 131);
+    font-size: 18px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
 .post-comentarios-comentario {
     display: flex;
     align-items: flex-start;
@@ -1425,6 +1432,10 @@ header h1{
     transform: scale(1.05);
     border: 2px solid #333535;
     box-shadow: 5px 1px 40px rgb(56, 55, 55);
+}
+
+.perfil-editar-mensaje p{
+    font-weight: normal !important;
 }
 
 .perfil-descripcion{
