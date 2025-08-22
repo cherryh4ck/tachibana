@@ -2,6 +2,9 @@
     require "php/db/config.php";
     session_start();
 
+    // para el formateo de fecha
+    $año_actual = (int)date("Y");
+
     if (isset($_GET["id"]) && is_numeric($_GET["id"])){
         $id = $_GET["id"];
         if (!file_exists("galeria/fullsize/" . $id . ".jpg")){
@@ -49,7 +52,13 @@
             }
 
             $dateTime = new DateTime($post_fecha_creacion);
-            $post_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
+            $año_post = (int)$dateTime->format('Y');
+            if ($año_post == $año_actual){
+                $post_fecha_creacion = $dateTime->format("d/m \a \l\a\s H:i");
+            }
+            else{
+                $post_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
+            }
 
             // buscar datos del OP
             $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
@@ -190,7 +199,14 @@
                         $comentario_op = $comentario["original_poster"];
 
                         $dateTime = new DateTime($comentario_fecha_creacion);
-                        $comentario_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
+                        $año_comentario = (int)$dateTime->format('Y');
+                        if ($año_comentario == $año_actual){
+                            $comentario_fecha_creacion = $dateTime->format("d/m \a \l\a\s H:i");
+                        }
+                        else{
+                            $comentario_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
+                        }
+                        
 
                         if ($comentario_autor_id != 0){
                             $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
