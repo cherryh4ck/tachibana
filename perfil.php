@@ -57,7 +57,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        echo "<title>" . $nickname . " - " . $nombre_usuario . "</title>";
+        echo "<title> $nickname - @$nombre_usuario </title>";
     ?>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="shortcut icon" href="favicon.ico" />
@@ -195,6 +195,7 @@
                 <div class="perfil-div">
                 <div class="perfil-banner">
                 <div class="perfil-banner-parte1-modificado">
+                <script src="js/perfil/editar.js" defer></script>
                 <form action="php/account/editar.php" method="POST" enctype="multipart/form-data" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
                 <div class="perfil-banner-parte1-modificado-input">
                 <p>Nickname</p>
@@ -213,13 +214,18 @@
                 <div class="perfil-banner-parte1-modificado-input-avatar">
                 EOM;
                 if (file_exists($avatar)){
-                    echo "<img src='$avatar' alt=''>";
+                    echo "<img src='$avatar' alt='' id='avatar-img'>";
                 }
                 else{
-                    echo "<img src='resources/avatar.png' alt=''>";
+                    echo "<img src='resources/avatar.png' alt='' id='avatar-img'>";
                 }
                 echo <<<EOM
                 <input type="file" accept=".png, .jpg, .jpeg" name="avatar" id="avatar-file">
+                </div>
+                <div class="contenido-subir-formulario-error perfil-editar-mensaje">
+                        <!-- div para mostrar errores / avisos mediante js/archivos.js -->
+                        <p style="display: none;" id="mensaje-error"><span>Error al subir la imagen:</span> Test test</p>
+                        <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> El ancho y la altura del avatar no coinciden, por lo que puede verse estirado.</p>
                 </div>
                 </div>   
                 <div class="perfil-banner-parte1-modificado-input perfil-banner-parte1-modificado-input-gap">
