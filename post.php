@@ -187,6 +187,7 @@
                         $comentario_fecha_creacion = $comentario["fecha_creacion"];
                         $comentario_texto = $comentario["comentario"];
                         $comentario_imagen_adjuntada = $comentario["imagen_adjuntada"];
+                        $comentario_op = $comentario["original_poster"];
 
                         $dateTime = new DateTime($comentario_fecha_creacion);
                         $comentario_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
@@ -228,6 +229,10 @@
                             }
                             else{
                                 echo "<p><b>Anónimo</b></p>";
+                            }
+
+                            if ($comentario_op == 1){
+                                echo "<span id='input-tag-op'>OP</span>";
                             }
                             echo "</div>";
                             echo "<p id='post-comentarios-comentario-fecha'>$comentario_fecha_creacion</p>";
