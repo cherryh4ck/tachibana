@@ -4,4 +4,6 @@
     $user = "root";
     $pass = "";
     $db = "tachibana";
+
+    require "cookie_auth.php";
 ?>
