@@ -12,6 +12,7 @@
         }
         catch (PDOException $e){
             header("Location: ../../error.php?id=9");
+            exit();
         }
         session_unset();
         session_destroy();
