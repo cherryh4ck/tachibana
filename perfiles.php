@@ -1,7 +1,7 @@
 <?php
+    session_start();
     require "php/db/config.php";
 
-    session_start();
     if (isset($_GET["q"])){
         $query = "%" . $_GET["q"] . "%";
         try{
