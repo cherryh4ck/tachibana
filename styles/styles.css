@@ -598,6 +598,13 @@ header h1{
     margin-top: 2em;
     border-radius: 8px;
     justify-content: center;
+    border: 2px solid #444747;
+    box-shadow: 5px 1px 40px rgb(56, 55, 55);
+    transition: all 200ms;
+}
+
+.contenido-subir::backdrop{
+    background: rgba(26, 25, 25, 0.8);
 }
 
 .contenido-subir-preview{
