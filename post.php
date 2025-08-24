@@ -113,10 +113,11 @@
     <?php
         echo "<title>" . $post_titulo . "</title>";
     ?>
-    <link rel="stylesheet" href="styles/styles.css">
     <script src="js/post/comentar.js" defer></script>
+    <script src="js/post/anonimo.js" defer></script>
     <script src="js/subir_modal.js" defer></script>
 
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
@@ -143,6 +144,10 @@
         </div>
     </nav>
     <header>
+        <!-- datos enviados por php -->
+        <span style="display: none;" id="es_anonimo"><?=$post_anonimo?></span>
+        <!-- fin -->
+
         <div class="contenido-post">
             <?php
                 echo "<img src='galeria/fullsize/" . $id . "." . $ext ."'>";
@@ -282,20 +287,25 @@
             </div>
             <h2 id="post-comentarios-comentar">Comentar</h2>
             <div class="post-comentarios-comentar">
+                <div class="post-comentarios-comentar-seccion-avatar">
                 <?php
                     if (isset($_SESSION["cuenta_id"])){
                         $avatar = "resources/avatars/" . $_SESSION["cuenta_id"] . ".png";
                         if (file_exists($avatar)){
-                            echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
+                            echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar' class='comentar-avatar'>";
+                            if ($post_id_autor == $_SESSION["cuenta_id"]){
+                                echo "<span id='input-tag-op' class='comentar-input-tag-op'>OP</span>";
+                            }
                         }
                         else{
-                            echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
+                            echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar' class='comentar-avatar'>";
                         }
                     }
                     else{
-                        echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
+                        echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar' class='comentar-avatar'>";
                     }
                 ?>
+                </div>
                 <form action="php/post/comentar.php" enctype="multipart/form-data" method="POST">
                     <input type="hidden" name="id_comentario" value="<?php echo $id; ?>">
                     <textarea name="comentario" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required></textarea>
@@ -303,7 +313,7 @@
                         <input type="submit" value="Comentar" id="post-comentarios-enviar" disabled>
                         <input type="button" value="Adjuntar imagen">
                         <div class="post-comentarios-comentar-botones-checkbox">
-                            <input type="checkbox" name="anonimo">
+                            <input type="checkbox" id="anonimo-checkbox" name="anonimo">
                             <label for="anonimo">Comentar como anónimo</label>
                         </div>
                     </div>
