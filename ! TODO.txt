@@ -1,10 +1,8 @@
 /// LISTA DE TODO GENERAL ///
 
 General:
-- añadir ventana modal para subir.php
 - añadir funciones para los administradores
 - añadir config para solo anonimato ? (o más bien, un config general)
-- añadir auth cookie
 
 login.php:
 - añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
@@ -21,7 +19,6 @@ post.php:
 - añadir mensaje de que no se puede comentar cuando no hay sesión
 
 perfil.php:
-- añadir script en js para el preview del avatar
 - trabajar lo de la última actividad
 - añadir tags de admin
 - añadir apartado de seguridad
@@ -30,7 +27,7 @@ perfiles.php:
 - reworkear la búsqueda pq lit anda como quiere
 - añadir chequeos de sanidad
 
-subir.php:
+ventana modal de publicar:
 - es necesario si o si incluir tags? no se ve necesario
 - añadir animación de brillo al mensaje de error y aviso
 
