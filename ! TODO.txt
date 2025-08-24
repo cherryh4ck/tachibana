@@ -16,7 +16,7 @@ post.php:
 - añadir info de la imagen al adjuntar imagen + funcionalidad
 - añadir id a los comentarios
 - añadir soporte para las imagenes en los comentarios
-- añadir mensaje de que no se puede comentar cuando no hay sesión
+- añadir mensaje visual de que no se puede comentar cuando no hay sesión
 
 perfil.php:
 - trabajar lo de la última actividad
@@ -28,20 +28,17 @@ perfiles.php:
 - añadir chequeos de sanidad
 
 ventana modal de publicar:
-- es necesario si o si incluir tags? no se ve necesario
-- añadir animación de brillo al mensaje de error y aviso
+- pensar si es necesario si o si incluir tags? la verdad, no se ve necesario
 
 php/subida.php:
 - añadir chequeos de sanidad
-
-php/db/cookie_auth:
-- trabajar en la idea de auth mediante cookie
 
 php/post/comentar.php:
 - añadir chequeos de sanidad
 
 setup.php:
 - mejorar el estilo visual
+- hacer accesible la cuenta root
 
 base de datos:
 - optimizar búsqueda de tags (ordenar tags de manera alfabética y usar comas para separar la busqueda)
