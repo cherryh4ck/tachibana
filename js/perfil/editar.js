@@ -3,6 +3,9 @@ const avatar_preview = document.getElementById("avatar-img");
 
 const imagen_estirada_aviso = document.getElementById("mensaje-aviso");
 
+imagen_estirada_aviso.style.transition = "opacity 0.3s ease";
+imagen_estirada_aviso.style.opacity = 0;
+
 avatar_input.addEventListener("change", (event) => {
     const imagen = event.target.files[0];
     avatar_preview.src = URL.createObjectURL(imagen);
@@ -11,9 +14,19 @@ avatar_input.addEventListener("change", (event) => {
         const height = avatar_preview.naturalHeight;
 
         if (width !== height) {
+            imagen_estirada_aviso.style.opacity = 0;
             imagen_estirada_aviso.style.display = "block";
+            requestAnimationFrame(() => {
+                imagen_estirada_aviso.style.opacity = 1; 
+            });
         } else {
-            imagen_estirada_aviso.style.display = "none";
+            imagen_estirada_aviso.style.opacity = 0;
         }
     };
+});
+
+imagen_estirada_aviso.addEventListener('transitionend', e=>{
+  if (e.propertyName === 'opacity' && getComputedStyle(imagen_estirada_aviso).opacity === "0") {
+    imagen_estirada_aviso.style.display = "none";
+  }
 });
