@@ -1527,6 +1527,10 @@ header h1{
     transform: scale(1.05);
 }
 
+.perfil-banner-parte1-fila{
+    display: flex;
+    gap: 2.5em;
+}
 
 .perfil-banner-parte1-modificado{
     display: flex;
@@ -1571,6 +1575,11 @@ header h1{
     transition: all 200ms;
     font-size: 16px;
     color: rgb(211, 199, 199);
+}
+
+.perfil-banner-parte1-modificado-input input[type=text]:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 .perfil-banner-parte1-modificado-input input[type=text]:hover{
