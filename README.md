@@ -17,8 +17,8 @@ Crear una cuenta si o si es necesaria para postear o comentar, aun así siempre 
 
 ## Para hostear Tachibana
 1. Configurar el archivo ```php\db\config.php``` con las credenciales del servidor
-2. Prender el servidor Apache o web HTTP
-3. Desde un navegador, ir a la dirección ```tachibana-main\php\db\setup.php``` (Ej: ```localhost\tachibana\php\db\setup.php```) y seguir los pasos
+2. Iniciar el servidor Apache o web HTTP
+3. Desde un navegador, ir a la dirección ```php\db\setup.php``` (Ej: ```localhost\php\db\setup.php```) y seguir los pasos
 
 ## Por hacer
 Refierase al documento ```! TODO.txt```, ya que es la lista oficial de desarrollo.
