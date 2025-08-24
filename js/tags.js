@@ -34,7 +34,7 @@ function introducirTag(tag){
             }
             tags.push(tag)
 
-            mensaje_error.style.display = "none";
+            mensaje_error.style.opacity = 0;
 
             let span = document.createElement("span");
             span.className = "input-tag";
@@ -70,6 +70,10 @@ function introducirTag(tag){
         else{
             mensaje_error.innerHTML = "<span>Error al añadir tag: </span> El tag contiene caracteres ilegales";
             mensaje_error.style.display = "block";
+            mensaje_error.style.opacity = 0;
+            requestAnimationFrame(() => {
+                mensaje_error.style.opacity = 1; 
+            });
         }
     }
     else{
@@ -86,6 +90,10 @@ function introducirTag(tag){
             mensaje_error.innerHTML = "<span>Error al añadir tag: </span> El tag no puede estar vacío";
         }
         mensaje_error.style.display = "block";
+        mensaje_error.style.opacity = 0;
+        requestAnimationFrame(() => {
+            mensaje_error.style.opacity = 1; 
+        });
     }
 }
 
