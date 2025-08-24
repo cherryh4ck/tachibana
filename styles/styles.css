@@ -375,6 +375,14 @@ header h1{
     margin: 0.2em;
 }
 
+.post-comentarios-comentar-seccion-avatar{
+    display: block;
+}
+
+.post-comentarios-comentar-seccion-avatar span{
+    margin-top: 0.5em;
+}
+
 #post-comentarios-titulo{
     display: flex;
     width: 100%;
@@ -890,7 +898,7 @@ header h1{
     user-select: none;
 }
 
-#input-tag, #input-tag2, #input-tag-rojo, #input-tag-op{
+#input-tag, #input-tag2, #input-tag-rojo, #input-tag-op, #input-tag-admin{
     background-color: rgb(49, 168, 79);
     border-radius: 8px;
     height: 25px;
@@ -907,7 +915,16 @@ header h1{
     background-color: rgb(64, 100, 219);
     height: 20px;
     margin-left: 0.5em;
+    font-size: 12px;
 }
+
+#input-tag-admin{
+    background-color: rgb(219, 147, 64);
+    height: 20px;
+    margin-left: 0.5em;
+    font-size: 12px;
+}
+
 
 #input-tag-rojo{
     background-color: rgb(219, 64, 64);
