@@ -17,9 +17,14 @@ let maxSize = 6228792; // 5 MB
 export let req1 = false, req2 = false, req3 = false;
 import {tags_introducidos} from "./tags.js";
 
+mensaje_error.style.transition = "opacity 0.3s ease";
+mensaje_aviso.style.transition = "opacity 0.3s ease";
+mensaje_error.style.opacity = 0;
+mensaje_aviso.style.opacity = 0;
+
 archivo.addEventListener("change", (event) => {
     const imagen = event.target.files[0];
-    mensaje_error.style.display = "none";
+    mensaje_error.style.opacity = 0;
     if (imagen.type == "image/gif"){    
         maxSize = 26228792;
     }
@@ -46,6 +51,10 @@ archivo.addEventListener("change", (event) => {
             
             mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> La resolución mínima es de 400x300";
             mensaje_error.style.display = "block";
+            mensaje_error.style.opacity = 0;
+            requestAnimationFrame(() => {
+                mensaje_error.style.opacity = 1; 
+            });
         }
 
         if (req1 && req2 && req3 && tags_introducidos > 0 && textbox.value.trim() != "" && textarea.value.trim() != "") {
@@ -68,6 +77,10 @@ archivo.addEventListener("change", (event) => {
 
         mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño mínimo es de 10 KB";
         mensaje_error.style.display = "block";
+        mensaje_error.style.opacity = 0;
+        requestAnimationFrame(() => {
+            mensaje_error.style.opacity = 1; 
+        });
     }
     if (imagen.size < maxSize) {
         req3 = true;
@@ -87,6 +100,10 @@ archivo.addEventListener("change", (event) => {
             mensaje_error.innerHTML = "<span>Error al subir la imagen: </span> El tamaño máximo es de 25 MB";
         }   
         mensaje_error.style.display = "block";
+        mensaje_error.style.opacity = 0;
+        requestAnimationFrame(() => {
+            mensaje_error.style.opacity = 1; 
+        });
     }
 });
 
@@ -110,9 +127,25 @@ textarea.addEventListener("input", (e) => {
 
 anonimo_checkbox.addEventListener("change", (e) => {
     if (e.target.checked){
+        mensaje_aviso.style.opacity = 0;
         mensaje_aviso.style.display = "block";
+        requestAnimationFrame(() => {
+            mensaje_aviso.style.opacity = 1; 
+        });
     }
     else{
-        mensaje_aviso.style.display = "none";
+        mensaje_aviso.style.opacity = 0;
     }
+});
+
+mensaje_error.addEventListener('transitionend', e=>{
+  if (e.propertyName === "opacity" && getComputedStyle(mensaje_error).opacity === "0") {
+    mensaje_error.style.display = "none";
+  }
+});
+
+mensaje_aviso.addEventListener('transitionend', e=>{
+  if (e.propertyName === 'opacity' && getComputedStyle(mensaje_aviso).opacity === "0") {
+    mensaje_aviso.style.display = "none";
+  }
 });
