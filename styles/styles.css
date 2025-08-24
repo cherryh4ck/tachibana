@@ -856,13 +856,11 @@ header h1{
 .contenido-subir-formulario-error p{
     color: rgb(211, 199, 199);
     font-size: 18px;
-    transition: all 200ms;
 }
 
 .contenido-subir-formulario-error p span{
     color: rgb(219, 64, 64);
     font-size: 18px;
-    transition: all 200ms;
 }
 
 #mensaje-aviso2{
