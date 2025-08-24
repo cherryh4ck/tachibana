@@ -203,11 +203,19 @@
                 <div class="perfil-banner-parte1-modificado">
                 <script src="js/perfil/editar.js" defer></script>
                 <form action="php/account/editar.php" method="POST" enctype="multipart/form-data" onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
+                <div class="perfil-banner-parte1-fila">
                 <div class="perfil-banner-parte1-modificado-input">
                 <p>Nickname</p>
                 EOM;
                 echo "<input type='text' name='nickname' id='nickname-input' value='$nickname' placeholder='Nickname...'>";
                 echo <<<EOM
+                </div>
+                <div class="perfil-banner-parte1-modificado-input perfil-banner-parte1-modificado-input-username">
+                <p>Username</p>
+                EOM;
+                echo "<input type='text' value='$nombre_usuario' disabled>";
+                echo <<<EOM
+                </div>
                 </div>
                 <div class="perfil-banner-parte1-modificado-input">
                 <p>Descripción</p>
