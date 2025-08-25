@@ -47,3 +47,4 @@ base de datos:
 
 diseño:
 - hacer todo responsive
+- futura optimizacion: procesar comentarios del lado backend
