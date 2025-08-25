@@ -472,6 +472,10 @@ header h1{
     color: rgb(62, 175, 100);
 }
 
+#post-comentarios-respuesta{
+    color: rgb(29, 108, 211);
+    text-decoration: underline;
+}
 
 .post-comentarios-comentar{
     display: flex;
