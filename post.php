@@ -269,14 +269,29 @@
                                 echo "<p id='post-comentarios-comentario-fecha'>$comentario_fecha_creacion</p>";
                                 echo "</div>";
                                 echo "<div class='post-comentarios-comentario-texto'>";
+                                // es mejor hacer esto cuando se comenta pq si no, le da mucha carga al servidor
                                 $comentario_texto = str_replace(["<br>", "<br />"], "</p><p>", $comentario_texto);
                                 $comentario_texto = "<p>$comentario_texto</p>";
-                                $comentario_texto = preg_replace(
-                                    '/<p>\s*(&gt;|>)(.*)<\/p>/',
-                                    '<p id="post-comentarios-greentext">&gt;$2</p>',
-                                    $comentario_texto
-                                );
-                                echo $comentario_texto;
+
+                                $lineas = explode("</p><p>", $comentario_texto);
+                                $salida = "";
+
+                                foreach ($lineas as $linea) {
+                                    $linea = preg_replace("/^<p>/", "", $linea);
+                                    $linea = preg_replace("/<\/p>$/", "", $linea);
+                                    $contenido = trim($linea);
+
+                                    if (preg_match("/^(?:&gt;&gt;|>>)\s*(\d+)\s*$/", $contenido, $m)) {
+                                        $salida .= "<p id='post-comentarios-respuesta'>&gt;&gt;" . $m[1] . "</p>";
+                                    }
+                                    elseif (preg_match("/^(?:&gt;|>)(.*)$/", $contenido, $m)) {
+                                        $salida .= "<p id='post-comentarios-greentext'>$contenido</p>";
+                                    }
+                                    else {
+                                        $salida .= "<p>$contenido</p>";
+                                    }
+                                }
+                                echo $salida;
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
