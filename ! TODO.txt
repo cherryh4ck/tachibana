@@ -4,17 +4,19 @@ General:
 - añadir funciones para los administradores
 - añadir config para solo anonimato ? (o más bien, un config general)
 
-login.php:
-- añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
-
 index.php:
 - añadir sistema de búsqueda
 - añadir un sistema de tags seleccionados
 - mostrar info de los posts
+- trabajar en el concepto de scroll "infinito" (osea, que no exista un sistema de páginas, si no que se carguen posts a medida que el usuario scrollea)
+
+login.php:
+- añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
 
 post.php:
 - añadir info de la imagen al adjuntar imagen + funcionalidad
-- añadir id a los comentarios
+- añadir id a los comentarios 
+- trabajar en el concepto de respuestas (>> (ID) del comentario correspondiente)
 - añadir soporte para las imagenes en los comentarios
 - añadir mensaje visual de que no se puede comentar cuando no hay sesión
 
@@ -42,3 +44,6 @@ setup.php:
 
 base de datos:
 - optimizar búsqueda de tags (ordenar tags de manera alfabética y usar comas para separar la busqueda)
+
+diseño:
+- hacer todo responsive
