@@ -2,7 +2,7 @@
 
 General:
 - añadir funciones para los administradores
-- añadir config para solo anonimato ? (o más bien, un config general)
+- hacer el config.ini totalmente funcional (y d paso, agregar más parametros, aunque tendría que ver)
 
 index.php:
 - añadir sistema de búsqueda
@@ -14,10 +14,6 @@ login.php:
 - añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
 
 post.php:
-- añadir info de la imagen al adjuntar imagen + funcionalidad
-- añadir id a los comentarios 
-- trabajar en el concepto de respuestas (>> (ID) del comentario correspondiente)
-- añadir soporte para las imagenes en los comentarios
 - añadir mensaje visual de que no se puede comentar cuando no hay sesión
 
 perfil.php:
@@ -48,3 +44,4 @@ base de datos:
 diseño:
 - hacer todo responsive
 - futura optimizacion: procesar comentarios del lado backend
+- futura optimizacion: optimizar la ventana modal (capaz con un require ya esté, aparte lo hace mas fácil de modificar)
