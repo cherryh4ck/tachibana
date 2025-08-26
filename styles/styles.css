@@ -430,6 +430,17 @@ header h1{
     background-color: transparent;
 }
 
+.post-comentarios-comentario-avatar-div{
+    display: block;
+}
+
+.post-comentarios-comentario-avatar-div p{
+    text-align: center;
+    font-size: 12px;
+    color: rgb(136, 131, 131) !important;
+    margin-top: 0.2em;
+}
+
 .post-comentarios-comentario-autor {
     display: flex;
     gap: 0.5em;
@@ -450,6 +461,17 @@ header h1{
 .post-comentarios-comentario-comentario p {
     display: block;
     margin: 0;
+}
+
+#post-comentarios-comentario-imagen{
+    display: block;
+    max-width: 400px;
+    margin-top: 0.5em;
+    border-radius: 4px;
+}
+
+#post-comentarios-comentario-imagen-data{
+    color: rgb(81, 76, 76);
 }
 
 .post-comentarios-comentario p {
@@ -494,6 +516,22 @@ header h1{
 
 .post-comentarios-comentar-botones{
     display: flex;
+}
+
+.post-comentarios-comentar-botones-imagen-data{
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.post-comentarios-comentar-botones-imagen-data p{
+    color: rgb(81, 76, 76);
+}
+
+#imagen-nombre-data{
+    color: rgb(226, 219, 219);
 }
 
 #post-comentarios-textarea{
