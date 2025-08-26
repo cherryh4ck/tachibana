@@ -8,8 +8,16 @@
             $comentario_autor_id = $_SESSION["cuenta_id"];
             $comentario_texto = nl2br(htmlspecialchars($_POST["comentario"]));
             $comentario_anonimo = $_POST["anonimo"];
-            // desarrollar imagen adjuntada
-            $comentario_imagen = 0;
+
+            $imagen = $_FILES["imagen"];
+            $info = pathinfo($imagen["name"]);
+            if (!empty($info["extension"])){
+                $comentario_imagen = 1;
+            }
+            else{
+                $comentario_imagen = 0;
+            }
+
             if ($comentario_anonimo == "on"){
                 $comentario_anonimo = 1;
                 $comentario_autor_id = 0;
@@ -37,6 +45,18 @@
 
                     $sql = $conn->prepare("INSERT INTO posts_comentarios(id_post, id_autor, comentario, imagen_adjuntada, original_poster) VALUES (?, ?, ?, ?, ?);");
                     $sql->execute([$comentario_id, $comentario_autor_id, $comentario_texto, $comentario_imagen, $original_poster]);
+                    $ultimo_insert = $conn->lastInsertId();
+                    if ($comentario_imagen == 1){
+                        if (!($info["extension"] == "png")){
+                            $imagen_nueva = imagecreatefromjpeg($imagen["tmp_name"]);
+                        }
+
+                        if (!(file_exists("../../resources/posts/$comentario_id/"))){
+                            mkdir("../../resources/posts/$comentario_id/");
+                        }
+                        imagepng($imagen_nueva, "../../resources/posts/$comentario_id/$ultimo_insert.png");
+                    }
+
                     header("Location: ../../post.php?id=$comentario_id");
                 }
             }
