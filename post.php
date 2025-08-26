@@ -115,6 +115,7 @@
     ?>
     <script src="js/post/comentar.js" defer></script>
     <script src="js/post/anonimo.js" defer></script>
+    <script src="js/post/adjuntar_imagen.js" defer></script>
     <script src="js/subir_modal.js" defer></script>
 
     <link rel="stylesheet" href="styles/styles.css">
@@ -207,6 +208,7 @@
                     }
                     else{
                         foreach ($fetch as $comentario){
+                            $comentario_id = $comentario["id"];
                             $comentario_autor_id = $comentario["id_autor"];
                             $comentario_fecha_creacion = $comentario["fecha_creacion"];
                             $comentario_texto = $comentario["comentario"];
@@ -246,12 +248,15 @@
                                 }
 
                                 echo "<div class='post-comentarios-comentario'>";
+                                echo "<div class='post-comentarios-comentario-avatar-div'>";
                                 if (file_exists($avatar)){
                                     echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
                                 }
                                 else{
                                     echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
                                 }
+                                echo "<p>#$comentario_id</p>";
+                                echo "</div>";
                                 echo "<div class='post-comentarios-comentario-info'>";
                                 echo "<div class='post-comentarios-comentario-autor'>";
                                 echo "<div class='post-autor-info-nickname'>";
@@ -270,6 +275,7 @@
                                 echo "</div>";
                                 echo "<div class='post-comentarios-comentario-texto'>";
                                 // es mejor hacer esto cuando se comenta pq si no, le da mucha carga al servidor
+                                // aparte ayuda a no tener que hacer chequeos extras (como por ej si se referencia a un comentario que no existe todavia)
                                 $comentario_texto = str_replace(["<br>", "<br />"], "</p><p>", $comentario_texto);
                                 $comentario_texto = "<p>$comentario_texto</p>";
 
@@ -282,7 +288,21 @@
                                     $contenido = trim($linea);
 
                                     if (preg_match("/^(?:&gt;&gt;|>>)\s*(\d+)\s*$/", $contenido, $m)) {
-                                        $salida .= "<p id='post-comentarios-respuesta'>&gt;&gt;" . $m[1] . "</p>";
+                                        $id_salida = (int)$m[1];
+                                        $sql = $conn->prepare("SELECT * FROM posts_comentarios WHERE id = ?");
+                                        $sql->execute([$id_salida]);
+                                        $newFetch = $sql->fetch(PDO::FETCH_ASSOC);
+                                        if (($newFetch) && !($comentario_id < $id_salida)){
+                                            if ($newFetch["id_post"] == $id){
+                                                $salida .= "<p id='post-comentarios-respuesta'>&gt;&gt;" . $m[1] . "</p>";
+                                            }
+                                            else{
+                                                $salida .= "<p>>>Referencia inválida</p>";
+                                            }
+                                        }
+                                        else{
+                                            $salida .= "<p>>>Referencia inválida</p>";
+                                        }
                                     }
                                     elseif (preg_match("/^(?:&gt;|>)(.*)$/", $contenido, $m)) {
                                         $salida .= "<p id='post-comentarios-greentext'>$contenido</p>";
@@ -292,6 +312,23 @@
                                     }
                                 }
                                 echo $salida;
+                                if ($comentario_imagen_adjuntada == 1){
+                                    $archivo_existe = file_exists("resources/posts/$id/$comentario_id.png");
+                                    if ($chequeo_estricto_imagen == 1){
+                                        if ($archivo_existe){
+                                            echo "<img src='resources/posts/$id/$comentario_id.png' id='post-comentarios-comentario-imagen'>";
+                                        }
+                                    }
+                                    else{
+                                        echo "<img src='resources/posts/$id/$comentario_id.png' id='post-comentarios-comentario-imagen'>";
+                                    }
+
+                                    if ($archivo_existe){
+                                        $imagen_tamano = filesize("resources/posts/$id/$comentario_id.png");
+                                        $imagen_tamano = round($imagen_tamano / 1024, 2);
+                                        echo "<p id='post-comentarios-comentario-imagen-data'>$imagen_tamano KB</p>";
+                                    }
+                                }
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -323,10 +360,16 @@
                 </div>
                 <form action="php/post/comentar.php" enctype="multipart/form-data" method="POST">
                     <input type="hidden" name="id_comentario" value="<?php echo $id; ?>">
+                    <input type="file" accept=".png, .jpg, .jpeg" name="imagen" id="post-comentarios-adjuntar-imagen" style="display: none;">
+                    <img src="" id="post-comentarios-imagen" style="display: none;">
                     <textarea name="comentario" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required></textarea>
                     <div class="post-comentarios-comentar-botones">
                         <input type="submit" value="Comentar" id="post-comentarios-enviar" disabled>
-                        <input type="button" value="Adjuntar imagen">
+                        <input type="button" id="post-comentarios-adjuntar-imagen-falso" value="Adjuntar imagen">
+                        <div class="post-comentarios-comentar-botones-imagen-data" style="display: none;">
+                            <p id="imagen-nombre-data"></p>
+                            <p id="imagen-tamano-res-data">ss</p>
+                        </div>
                         <div class="post-comentarios-comentar-botones-checkbox">
                             <input type="checkbox" id="anonimo-checkbox" name="anonimo">
                             <label for="anonimo">Comentar como anónimo</label>
