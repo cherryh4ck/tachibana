@@ -25,11 +25,9 @@ perfiles.php:
 - reworkear la búsqueda pq lit anda como quiere
 - añadir chequeos de sanidad
 
-ventana modal de publicar:
-- pensar si es necesario si o si incluir tags? la verdad, no se ve necesario
-
 php/subida.php:
 - añadir chequeos de sanidad
+- hacer andar los tags
 
 php/post/comentar.php:
 - añadir chequeos de sanidad
