@@ -37,7 +37,8 @@
             $descripcion = $fetch["descripcion"];
             $rol = $fetch["rol"];
             $fecha_creacion = $fetch["fecha_creacion"];
-            $ultima_actividad = $fetch["ultima_actividad"];
+            $ultima_actividad = $fetch["ult_act"];
+            $ultima_actividad_activo = $fetch["ult_act_activo"];
             $avatar = "resources/avatars/" . $_GET["id"] . ".png";
         }
         else{
