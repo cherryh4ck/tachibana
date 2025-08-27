@@ -106,7 +106,4 @@ tags_input.addEventListener('keyup', function (e) {
 
 formulario.addEventListener("submit", function (e) {
     tagsValue.value = tags.join(",");
-    if (!tags_introducidos > 0){
-        e.preventDefault();
-    }
 });
