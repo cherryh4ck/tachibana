@@ -359,12 +359,12 @@
                         $avatar = "resources/avatars/" . $_SESSION["cuenta_id"] . ".png";
                         if (file_exists($avatar)){
                             echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar' class='comentar-avatar'>";
-                            if ($post_id_autor == $_SESSION["cuenta_id"]){
-                                echo "<span id='input-tag-op' class='comentar-input-tag-op'>OP</span>";
-                            }
                         }
                         else{
                             echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar' class='comentar-avatar'>";
+                        }
+                        if ($post_id_autor == $_SESSION["cuenta_id"]){
+                            echo "<span id='input-tag-op' class='comentar-input-tag-op'>OP</span>";
                         }
                     }
                     else{
