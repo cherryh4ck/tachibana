@@ -82,12 +82,29 @@
             }
 
             try{
-                // usar last insert id y explode para la separación de tags (?
                 $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 $sql = $conn->prepare("INSERT INTO posts(id_autor, id_categoria, titulo, descripcion, anonimo) VALUES (?, ?, ?, ?, ?);");
                 $sql->execute([$post_autor_id, $post_categoria, $post_titulo, $post_descripcion, $post_anonimo]);
+
+                $last_insert = $conn->lastInsertId();
+                $tags = explode(",", $post_tags);
+                foreach ($tags as $tag){
+                    $sql = $conn->prepare("SELECT * from tags WHERE nombre = ?");
+                    $sql->execute([$tag]);
+                    $fetch = $sql->fetch(PDO::FETCH_ASSOC);
+                    if (!$fetch){
+                        $sql = $conn->prepare("INSERT INTO tags(usos, nombre) VALUES (?, ?)");
+                        $sql->execute([1, $tag]);
+                        $last_insert_tag = $conn->lastInsertId();
+                    }
+                    else{
+                        $last_insert_tag = $fetch["id"];
+                    }
+                    $sql = $conn->prepare("INSERT INTO posts_tags(id_post, id_tag) VALUES (?, ?)");
+                    $sql->execute([$last_insert, $last_insert_tag]);
+                }
             }
             catch (PDOException $e){
                 header("Location: ../error.php?id=9");
