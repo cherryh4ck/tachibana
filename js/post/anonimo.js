@@ -13,6 +13,9 @@ if (comentar_op != null && es_anonimo == 1){
 if (avatar.src.endsWith("resources/avatar.png") == false && avatar_actual == ""){
     avatar_actual = avatar.src;
 }
+else if (avatar.src.endsWith("resources/avatar.png") == true ){
+    avatar_actual = "resources/avatar.png";
+}
 
 anonimo_checkbox.addEventListener("change", function(e) {
     if (anonimo_checkbox.checked){
