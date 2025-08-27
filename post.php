@@ -60,6 +60,11 @@
                 $post_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
             }
 
+            // buscar tags del post
+            $sql = $conn->prepare("SELECT * FROM posts_tags WHERE id_post = ?;");
+            $sql->execute([$id]);
+            $tags_fetch = $sql->fetchAll(PDO::FETCH_ASSOC);
+
             // buscar datos del OP
             $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
             $sql->execute([$post_id_autor]);
@@ -158,10 +163,19 @@
                 echo "<h2 id='post-id'>ID #" . $id . "</h2>";
                 echo "<div class='post-contenido-tags'>";
                 echo "<span id='input-tag-rojo'>$post_categoria</span>";
-                echo "<span id='input-tag2'>tag1</span>";
-                echo "<span id='input-tag2'>tag2</span>";
-                echo "<span id='input-tag2'>asfsafafafafagg</span>";
-                echo "<span id='input-tag2'>test tes test t eststst</span>";
+                if ($tags_fetch) {
+                    foreach ($tags_fetch as $tag){
+                        $tag_id = $tag["id_tag"];
+                        $sql = $conn->prepare("SELECT * FROM tags WHERE id = ?");
+                        $sql->execute([$tag_id]);
+                        $tag_fetch = $sql->fetch(PDO::FETCH_ASSOC);
+                        if ($tag_fetch){
+                            $tag_nombre = $tag_fetch["nombre"];
+                            $tag_usos = $tag_fetch["usos"];
+                             echo "<span id='input-tag2'>$tag_nombre</span>";
+                        }
+                    }
+                }
                 echo "</div>";
                 echo "<div class='post-autor'>";
                 if ((file_exists($avatar)) && !($post_anonimo == 1)){
@@ -297,11 +311,11 @@
                                                 $salida .= "<p id='post-comentarios-respuesta'>&gt;&gt;" . $m[1] . "</p>";
                                             }
                                             else{
-                                                $salida .= "<p>>>Referencia inválida</p>";
+                                                $salida .= "<p id='post-comentarios-respuesta-invalida'>>>Respuesta inválida</p>";
                                             }
                                         }
                                         else{
-                                            $salida .= "<p>>>Referencia inválida</p>";
+                                            $salida .= "<p id='post-comentarios-respuesta-invalida'>>>Respuesta inválida</p>";
                                         }
                                     }
                                     elseif (preg_match("/^(?:&gt;|>)(.*)$/", $contenido, $m)) {
