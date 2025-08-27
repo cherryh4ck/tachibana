@@ -499,6 +499,10 @@ header h1{
     text-decoration: underline;
 }
 
+#post-comentarios-respuesta-invalida{
+    color: rgb(177, 29, 41);
+}
+
 .post-comentarios-comentar{
     display: flex;
     margin-left: 0.3em;
