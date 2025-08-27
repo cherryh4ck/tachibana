@@ -154,7 +154,7 @@
                     <?php
                         if (file_exists("galeria/" . 1 + (12*($pagina-1)) . ".jpg")){
                             if ($pagina > 1){
-                                echo "<a class='boton' href='galeria.php?pag=" . $pagina-1 . "'>Anterior Pág.</a>";
+                                echo "<a class='boton' href='index.php?pag=" . $pagina-1 . "'>Anterior Pág.</a>";
                             }
                             else{
                                 echo "<button class='boton' disabled>Anterior Pág.</button>";
@@ -166,7 +166,7 @@
                     <?php
                         if (file_exists("galeria/" . 1 + (12*($pagina-1)) . ".jpg")){
                             if (file_exists("galeria/" . 1 + (12*($pagina)) . ".jpg")){
-                                echo "<a class='boton' href='galeria.php?pag=" . $pagina+1 . "'>Siguiente Pág.</a>";      
+                                echo "<a class='boton' href='index.php?pag=" . $pagina+1 . "'>Siguiente Pág.</a>";      
                             }
                             else{
                                 echo "<button class='boton' disabled>Siguiente Pág.</button>";
