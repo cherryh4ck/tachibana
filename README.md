@@ -16,7 +16,7 @@ Crear una cuenta si o si es necesaria para postear o comentar, aun así siempre 
 - ```GD``` debe estar habilitado en la config. de extensiones de PHP
 
 ## Para hostear Tachibana
-1. Modificar el archivo de configuración: ```php\db\config.ini```
+1. Modificar el archivo de configuración ubicado en: ```php\db\config.ini```
 2. Iniciar el servidor Apache o web HTTP
 3. Desde un navegador, ir a la dirección ```php\db\setup.php``` (Ej: ```localhost\php\db\setup.php```) y seguir los pasos
 
