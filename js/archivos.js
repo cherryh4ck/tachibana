@@ -57,7 +57,7 @@ archivo.addEventListener("change", (event) => {
             });
         }
 
-        if (req1 && req2 && req3 && tags_introducidos > 0 && textbox.value.trim() != "" && textarea.value.trim() != "") {
+        if (req1 && req2 && req3 && textbox.value.trim() != "" && textarea.value.trim() != "") {
             enviar.disabled = false;
         } else {
             enviar.disabled = true;
@@ -108,7 +108,7 @@ archivo.addEventListener("change", (event) => {
 });
 
 textbox.addEventListener("input", (e) => {
-    if (req1 && req2 && req3 && tags_introducidos > 0 && e.target.value.trim() != "" && textarea.value.trim() != "") {
+    if (req1 && req2 && req3 && e.target.value.trim() != "" && textarea.value.trim() != "") {
         enviar.disabled = false;
     }
     else{
@@ -117,7 +117,7 @@ textbox.addEventListener("input", (e) => {
 });
 
 textarea.addEventListener("input", (e) => {
-    if (req1 && req2 && req3 && tags_introducidos > 0 && e.target.value.trim() != "" && textbox.value.trim() != "") {
+    if (req1 && req2 && req3 && e.target.value.trim() != "" && textbox.value.trim() != "") {
         enviar.disabled = false;
     }
     else{
