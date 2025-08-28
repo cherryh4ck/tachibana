@@ -389,7 +389,11 @@
                             <label for="anonimo">Comentar como anónimo</label>
                         </div>
                     </div>
-                    <p id="post-comentarios-texto-sesion">Debes iniciar sesión para comentar.</p>
+                    <?php
+                        if (!isset($_SESSION["cuenta_id"])){
+                            echo "<p id='post-comentarios-texto-sesion'>Debes iniciar sesión para comentar</p>";
+                        }
+                    ?>
                 </form>
             </div>
             </div>
