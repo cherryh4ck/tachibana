@@ -3,18 +3,20 @@
     require "php/db/config.php";
 
     if (isset($_GET["q"])){
-        $query = "%" . $_GET["q"] . "%";
-        try{
-            $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if ((strlen($_GET["q"]) > 3) && !(empty($_GET["q"]))){
+            $query = "%" . $_GET["q"] . "%";
+            try{
+                $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = $conn->prepare("SELECT * FROM usuarios WHERE lower(username) LIKE ?");
-            $sql->execute([$query]);
-            $fetch = $sql->fetchAll(PDO::FETCH_ASSOC);
-        }
-        catch(PDOException $e){
-            header("Location: error.php?id=9");
-            exit();
+                $sql = $conn->prepare("SELECT * FROM usuarios WHERE lower(username) LIKE ?");
+                $sql->execute([$query]);
+                $fetch = $sql->fetchAll(PDO::FETCH_ASSOC);
+            }
+            catch(PDOException $e){
+                header("Location: error.php?id=9");
+                exit();
+            }
         }
     }
 ?>
@@ -78,7 +80,12 @@
                             echo "<img src='resources/avatar.png' alt=''>";
                         }
                         echo "<div class='contenido-perfil-bloque-info'>";
+                        echo "<div class='perfil-info-nickname-tags'>";
                         echo "<p><b>" . $usuario["nickname"] . "</b></p>";
+                        if ($usuario["rol"] == "admin"){
+                            echo "<span id='input-tag-admin' class='comentar-input-tag-op'>ADMIN</span>";
+                        }
+                        echo "</div>";
                         echo "<p id='contenido-perfil-bloque-info-username'>@" . htmlspecialchars($usuario["username"]) . "</p>";
                         if (!empty($usuario["descripcion"])){
                             echo "<p>" . strip_tags($usuario["descripcion"]) . "</p>";
