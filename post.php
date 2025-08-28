@@ -376,8 +376,8 @@
                     <input type="hidden" name="id_comentario" value="<?php echo $id; ?>">
                     <input type="file" accept=".png, .jpg, .jpeg" name="imagen" id="post-comentarios-adjuntar-imagen" style="display: none;">
                     <img src="" id="post-comentarios-imagen" style="display: none;">
-                    <textarea name="comentario" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required></textarea>
-                    <div class="post-comentarios-comentar-botones">
+                    <textarea name="comentario" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required <?php if(!isset($_SESSION["cuenta_id"])){echo "disabled";}?>></textarea>
+                    <div class="post-comentarios-comentar-botones" <?php if(!isset($_SESSION["cuenta_id"])){echo "style='display: none;'";}?>>
                         <input type="submit" value="Comentar" id="post-comentarios-enviar" disabled>
                         <input type="button" id="post-comentarios-adjuntar-imagen-falso" value="Adjuntar imagen">
                         <div class="post-comentarios-comentar-botones-imagen-data" style="display: none;">
@@ -389,6 +389,7 @@
                             <label for="anonimo">Comentar como anónimo</label>
                         </div>
                     </div>
+                    <p id="post-comentarios-texto-sesion">Debes iniciar sesión para comentar.</p>
                 </form>
             </div>
             </div>
