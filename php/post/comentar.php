@@ -50,6 +50,9 @@
                         if (!($info["extension"] == "png")){
                             $imagen_nueva = imagecreatefromjpeg($imagen["tmp_name"]);
                         }
+                        else{
+                            $imagen_nueva = imagecreatefrompng($imagen["tmp_name"]);
+                        }
 
                         if (!(file_exists("../../resources/posts/$comentario_id/"))){
                             mkdir("../../resources/posts/$comentario_id/");
