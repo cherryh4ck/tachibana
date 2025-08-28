@@ -101,13 +101,17 @@
                             echo "<img src='resources/avatar.png' alt=''>";
                         }
                         echo "<div class='perfil-info'>";
+                        echo "<div class='perfil-info-nickname-tags'>";
                         echo "<p><b>$nickname</p></b>";
+                        if ($rol == "admin"){
+                            echo "<span id='input-tag-admin' class='comentar-input-tag-op'>ADMIN</span>";
+                        }
+                        echo "</div>";
                         echo "<p id='contenido-perfil-bloque-info-username'>@$nombre_usuario</p>";
                         echo "<div class='perfil-info-avanzada'>";
                         // codigo más largo q no se ke xddd
 
                         // gracias chatgpt, ni sabía de esto kek
-                        // por poco lo hago mucho más complicado :P
                         $tiempo_actual = new DateTime();
                         $tiempo_creado = new DateTime($fecha_creacion);
                         $diferencia = $tiempo_actual->diff($tiempo_creado);
@@ -152,7 +156,12 @@
                             $texto = "Se unió hace unos segundos";
                         }
 
-                        echo "<p>$texto <span id='viñeta'>•</span> Última vez hace ?</p>";
+                        if ($ultima_actividad_activo == 1){
+                            echo "<p>$texto <span id='viñeta'>•</span> Última vez hace ?</p>";
+                        }
+                        else{
+                            echo "<p>$texto</p>";
+                        }
                         echo "</div>";  
                         echo "</div>";
                         echo "</div>";
