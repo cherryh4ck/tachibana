@@ -306,6 +306,7 @@ header h1{
     margin: 0;
     background-color: gray;
     margin-left: 0.3em;
+    border-radius: 6px;
 }
 
 .post-autor-info{
@@ -428,6 +429,7 @@ header h1{
     height: 50px;
     margin: 0;
     background-color: transparent;
+    border-radius: 6px;
 }
 
 .post-comentarios-comentario-avatar-div{
@@ -567,6 +569,11 @@ header h1{
     color: rgb(228, 221, 221);
 }
 
+#post-comentarios-textarea:disabled{
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
 #post-comentarios-enviar, .post-comentarios-comentar-botones input[type=button]{
     display: block;
     width: 100px;
@@ -603,6 +610,12 @@ header h1{
     outline: none !important;
     border: 2px solid #464949;
     box-shadow: 5px 1px 40px rgb(56, 55, 55);
+}
+
+#post-comentarios-texto-sesion{
+    margin-left: 0.3em;
+    margin-top: 0.3em;
+    color: rgb(211, 199, 199);
 }
 
 .post-comentarios-comentar-botones-checkbox{
@@ -1441,6 +1454,7 @@ header h1{
     margin: 0;
     background-color: gray;
     margin-left: 1em;
+    border-radius: 6px;
 }
 
 .contenido-perfil-bloque-info{
@@ -1533,6 +1547,7 @@ header h1{
     max-height: 80px;
     margin: 0;
     background-color: transparent;
+    border-radius: 6px;
 }
 
 .perfil-info{
@@ -1719,6 +1734,7 @@ header h1{
     max-height: 80px;
     background-color: transparent;
     margin-top: 0.25em;
+    border-radius: 6px;
 }
 
 .perfil-banner-parte1-modificado-input-avatar input[type=file]{
