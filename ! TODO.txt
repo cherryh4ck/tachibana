@@ -14,7 +14,7 @@ login.php:
 - añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
 
 post.php:
-- añadir mensaje visual de que no se puede comentar cuando no hay sesión
+- mejorar diseño visual ? (es necesario incluir el id del post?)
 
 perfil.php:
 - trabajar lo de la última actividad
@@ -22,12 +22,12 @@ perfil.php:
 - añadir apartado de seguridad
 
 perfiles.php:
-- reworkear la búsqueda pq lit anda como quiere
-- añadir chequeos de sanidad
+- añadir más chequeos de sanidad
+- reworkear el diseño (está horrendo)
 
 php/subida.php:
 - añadir chequeos de sanidad
-- hacer andar los tags
+- hacer andar los usos de los tags
 
 php/post/comentar.php:
 - añadir chequeos de sanidad
