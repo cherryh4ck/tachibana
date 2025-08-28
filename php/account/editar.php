@@ -1,6 +1,6 @@
 <?php
     require "../db/config.php";
-    error_reporting(E_ERROR | E_PARSE);
+    //error_reporting(E_ERROR | E_PARSE);
     session_start();
 
     // pequeño algoritmo sacado de https://stackoverflow.com/questions/14649645/resize-image-in-php :3
@@ -40,13 +40,16 @@
                     if (!($info["extension"] == "png")){
                         $imagen = imagecreatefromjpeg($avatar["tmp_name"]);
                     }
+                    else{
+                        $imagen = imagecreatefrompng($avatar["tmp_name"]);
+                    }
 
                     if ($imagen){
                         imagepng($imagen, "../../resources/avatars/" . $_SESSION["cuenta_id"] . ".png");
                         resize_image("../../resources/avatars/" . $_SESSION["cuenta_id"] . ".png", 498, 498);
                     }
                     else{
-                        header("Location: ../../error.php?id=3");
+                        echo "no se pudo we xd";
                         exit();
                     }
                 }
