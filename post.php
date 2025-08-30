@@ -116,7 +116,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        echo "<title>" . $post_titulo . "</title>";
+        if ($post_anonimo == 0){
+            echo "<title>$post_autor_nickname - $post_titulo</title>";
+        }
+        else{
+            echo "<title>Anónimo - $post_titulo</title>";
+        }
     ?>
     <script src="js/post/comentar.js" defer></script>
     <script src="js/post/anonimo.js" defer></script>
