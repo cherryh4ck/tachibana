@@ -622,7 +622,7 @@ header h1{
     margin-left: 0.3em;
 }
 
-.post-comentarios-comentar-botones-checkbox input[type=checkbox]{
+.post-comentarios-comentar-botones-checkbox input[type=checkbox], .perfil-banner-parte1-checkbox input[type=checkbox]{
     appearance: none;
     width: 20px;
     height: 20px;
@@ -633,17 +633,17 @@ header h1{
     transition: 200ms all;
 }
 
-.post-comentarios-comentar-botones-checkbox input[type=checkbox]:hover {
+.post-comentarios-comentar-botones-checkbox input[type=checkbox]:hover, .perfil-banner-parte1-checkbox input[type=checkbox]:hover{
     background-color: rgb(37, 35, 35);
     box-shadow: 5px 1px 40px rgb(36, 35, 35);
 }
 
-.post-comentarios-comentar-botones-checkbox input[type=checkbox]:checked {
+.post-comentarios-comentar-botones-checkbox input[type=checkbox]:checked, .perfil-banner-parte1-checkbox input[type=checkbox]:checked{
     background-color: #343636;
     position: relative;
 }
 
-.post-comentarios-comentar-botones-checkbox label{
+.post-comentarios-comentar-botones-checkbox label, .perfil-banner-parte1-checkbox label{
     margin-left: 0.3em;
     color: rgb(211, 199, 199);
 }
@@ -1507,6 +1507,19 @@ header h1{
     align-items: flex-end;
     padding: 1em;
     transition: all 200ms;
+}
+
+.perfil-banner-parte1-checkbox{
+    display: flex;
+}
+
+.perfil-banner-parte1-checkbox input[type=checkbox]{
+    margin-top: 0.25em;
+}
+
+.perfil-banner-parte1-checkbox label{
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .perfil-banner:hover{
