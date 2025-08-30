@@ -977,11 +977,12 @@ header h1{
 
 #input-tag-admin{
     background-color: rgb(219, 147, 64);
-    height: 20px;
+    height: 18px;
     margin-left: 0.5em;
     font-size: 12px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
-
 
 #input-tag-rojo{
     background-color: rgb(219, 64, 64);
@@ -1531,6 +1532,11 @@ header h1{
     transition: all 200ms;
 }
 
+#perfil-descripcion-texto{
+    color: rgb(136, 131, 131);
+    margin-bottom: 0.25em;
+}
+
 .perfil-descripcion:hover{
     transform: scale(1.01);
     border: 2px solid #333535;
@@ -1564,6 +1570,10 @@ header h1{
     font-size: 18px;
 }
 
+.perfil-info-nickname-tags{
+    display: flex;
+}
+
 .perfil-info-avanzada{
     display: block;
     margin-top: 0.35em;
@@ -1579,7 +1589,7 @@ header h1{
     padding: 1em;
     padding-top: 0;
     transition: all 200ms;
-    gap: 1em;
+    gap: 0.5em;
 }
 
 .perfil-banner-parte2 button{
@@ -1592,6 +1602,10 @@ header h1{
     font-size: 16px;
     transition: all 200ms;
     border-radius: 8px;
+}
+
+#boton-cerrar-sesion{
+    margin-left: auto;
 }
 
 .perfil-banner-parte2 button:hover{
