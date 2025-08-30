@@ -26,6 +26,10 @@
             $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             if (isset($_POST["nickname"])){
+                if ((strlen($_POST["nickname"]) < 3) || (strlen($_POST["nickname"]) > 19)){
+                    header("Location: ../../index.php");
+                    exit();
+                }
                 $sql = $conn->prepare("UPDATE usuarios SET nickname = ? WHERE id = ?;");
                 $sql->execute([htmlspecialchars($_POST["nickname"]), $_SESSION["cuenta_id"]]);
             }
