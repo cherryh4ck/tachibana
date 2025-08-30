@@ -165,7 +165,6 @@
                 echo "<div class='post-contenido'>";
                 echo "<div class='post-contenido-titulo'>";
                 echo "<h1 id='post-titulo'>$post_titulo</h1>";
-                echo "<h2 id='post-id'>ID #" . $id . "</h2>";
                 echo "<div class='post-contenido-tags'>";
                 echo "<span id='input-tag-rojo'>$post_categoria</span>";
                 if ($tags_fetch) {
