@@ -252,10 +252,24 @@
                 <input type="file" accept=".png, .jpg, .jpeg" name="avatar" id="avatar-file">
                 </div>
                 <div class="contenido-subir-formulario-error perfil-editar-mensaje">
-                        <!-- div para mostrar errores / avisos mediante js/archivos.js -->
-                        <p style="display: none;" id="mensaje-error"><span>Error al editar el perfil:</span> Test test</p>
-                        <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> El ancho y la altura del avatar no coinciden, por lo que puede verse estirado.</p>
+                    <!-- div para mostrar errores / avisos mediante js/archivos.js -->
+                    <p style="display: none;" id="mensaje-error"><span>Error al editar el perfil:</span> Test test</p>
+                    <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> El ancho y la altura del avatar no coinciden, por lo que puede verse estirado.</p>
                 </div>
+                </div>
+                <div class="perfil-banner-parte1-modificado-input">
+                    <p>Privacidad</p>
+                </div>
+                <div class="perfil-banner-parte1-checkbox">
+                EOM;
+                if ($ultima_actividad_activo == 1){
+                    echo "<input type='checkbox' id='ultima-actividad-checkbox' name='ultima-actividad' checked>";
+                }
+                else{
+                    echo "<input type='checkbox' id='ultima-actividad-checkbox' name='ultima-actividad'>";
+                }
+                echo <<<EOM
+                    <label for="anonimo">Mostrar última actividad</label>
                 </div>   
                 <div class="perfil-banner-parte1-modificado-input perfil-banner-parte1-modificado-input-gap">
                 <input type="submit" value="Guardar cambios" id="guardar-cambios">
