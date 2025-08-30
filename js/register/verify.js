@@ -18,15 +18,21 @@ formulario.addEventListener("submit", function(event) {
     else{
         if (contraseña.value == usernameF.value){
             event.preventDefault();
-            mensaje.innerHTML = "<span>Error:</span> Las contraseñas no coinciden";
+            mensaje.innerHTML = "<span>Error:</span> La contraseña no puede ser igual al usuario";
         }
         else{
-            if (contraseña.value.length < 6){
+            if ((username.value.length < 4) || (username.value.length > 19)){
                 event.preventDefault();
-                mensaje.innerHTML = "<span>Error:</span> La contraseña debe tener al menos 6 caracteres";
+                mensaje.innerHTML = "<span>Error:</span> El usuario es muy corto o es muy largo";
             }
             else{
-                mensaje.innerHTML = "Creando cuenta...";
+                if (contraseña.value.length < 6){
+                    event.preventDefault();
+                    mensaje.innerHTML = "<span>Error:</span> La contraseña debe tener al menos 6 caracteres";
+                }
+                else{
+                    mensaje.innerHTML = "Creando cuenta...";
+                }
             }
         }
     }
