@@ -23,6 +23,9 @@
     if (isset($_GET["editar"])){
         $modo = "editar";
     }
+    else if(isset($_GET["seguridad"])){
+        $modo = "seguridad";
+    }
 
     try{
         $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
@@ -169,7 +172,8 @@
                             if ($_GET["id"] == $_SESSION["cuenta_id"]){
                                 echo "<div class='perfil-banner-parte2'>";
                                 echo '<button onclick="window.location.href=\'perfil.php?editar=1\'">Editar perfil</button>';
-                                echo '<button onclick="window.location.href=\'php/db/logout.php\'">Cerrar sesión</button>';
+                                echo '<button onclick="window.location.href=\'perfil.php?seguridad=1\'">Administrar seguridad</button>';
+                                echo '<button onclick="window.location.href=\'php/db/logout.php\'" id="boton-cerrar-sesion">Cerrar sesión</button>';
                                 echo "</div>";
                             }
                         }
@@ -191,6 +195,7 @@
             if ($modo == "ver"){
                 echo "<div class='perfil-div perfil-div-separacion'>";
                 echo "<div class='perfil-descripcion'>";
+                echo "<p id='perfil-descripcion-texto'>Descripción</p>";
                 if (!empty($descripcion)){
                     $descripcion = str_replace(["<br>", "<br />"], "</p><p>", $descripcion);
                     $descripcion = "<p>$descripcion</p>";
@@ -206,7 +211,7 @@
                 }
                 echo "</div>";
             }
-            else{
+            else if ($modo == "editar"){
                 echo <<<EOM
                 <div class="perfil-div">
                 <div class="perfil-banner">
@@ -262,7 +267,35 @@
                 </div>
                 EOM;
             }
-            // quitar descripcion
+            else{
+                echo <<<EOM
+                <div class="perfil-div">
+                <div class="perfil-banner">
+                <div class="perfil-banner-parte1-modificado">
+                <script src="js/perfil/editar.js" defer></script>
+                <form action="php/account/editar.php" method="POST" enctype="multipart/form-data" id='formulario-editar-perfil' onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
+                <div class="perfil-banner-parte1-fila">
+                <div class="perfil-banner-parte1-modificado-input">
+                <p>Contraseña</p>
+                EOM;
+                echo "<input type='text' name='nickname' id='nickname-input' value='???' placeholder='Nickname...'>";
+                echo <<<EOM
+                </div>
+                <div class="contenido-subir-formulario-error perfil-editar-mensaje">
+                        <!-- div para mostrar errores / avisos mediante js/archivos.js -->
+                        <p style="display: none;" id="mensaje-error"><span>Error al editar el perfil:</span> Test test</p>
+                        <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> El ancho y la altura del avatar no coinciden, por lo que puede verse estirado.</p>
+                </div>
+                </div>   
+                <div class="perfil-banner-parte1-modificado-input perfil-banner-parte1-modificado-input-gap">
+                <input type="button" value="Volver" onclick="window.location.href='perfil.php'">
+                </div>
+                </form>
+                </div>
+                </div>
+                </div>
+                EOM;
+            }
         ?>
 
         <dialog style="display: none;" class="contenido-subir">
