@@ -5,10 +5,9 @@
 </div>
 
 ## Descripción
-Tachibana es un tablón de imágenes semi anónimo en el que los usuarios pueden postear imágenes o gifs acompañados de un tópico y una descripción sobre el tema.
-Los usuarios pueden ver los posteos y debatir sobre el tema, también pueden adjuntar una imagen si es que lo desean. 
+Tachibana es un tablón de imágenes semi anónimo fuertemente inspirado en sitios como 4chan y Devox.
 
-Crear una cuenta si o si es necesaria para postear o comentar, aun así siempre se puede postear o comentar de forma anónima.
+Por el momento, crear una cuenta si o si es necesaria para postear o comentar, aun así siempre está la posibilidad de postear o comentar de manera anónima.
 
 ## Requisitos para hostear
 - ```Apache``` o otro servidor web HTTP
