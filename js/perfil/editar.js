@@ -34,21 +34,31 @@ avatar_input.addEventListener("change", (event) => {
 });
 
 imagen_estirada_aviso.addEventListener('transitionend', e=>{
-  if (e.propertyName === 'opacity' && getComputedStyle(imagen_estirada_aviso).opacity === "0") {
-    imagen_estirada_aviso.style.display = "none";
-  }
+    if (e.propertyName === 'opacity' && getComputedStyle(imagen_estirada_aviso).opacity === "0") {
+      imagen_estirada_aviso.style.display = "none";
+    }
 });
 
 mensaje_error.addEventListener('transitionend', e=>{
-  if (e.propertyName === 'opacity' && getComputedStyle(mensaje_error).opacity === "0") {
-    mensaje_error.style.display = "none";
-  }
+    if (e.propertyName === 'opacity' && getComputedStyle(mensaje_error).opacity === "0") {
+      mensaje_error.style.display = "none";
+    }
 });
 
 formulario.addEventListener("submit", function(e) {
+    let contieneEspaciosDeMas = /\s\s+/.test(nickname_input.value)
     if ((nickname_input.value.length < 3) || (nickname_input.value.length > 19)){
         e.preventDefault();
-        mensaje_error.innerHTML = "<span>Error al editar el perfil:</span> El nickname es muy corto o largo";
+        mensaje_error.innerHTML = "<span>Error al guardar los cambios:</span> El nickname es muy corto o largo";
+        mensaje_error.style.opacity = 0;
+        mensaje_error.style.display = "block";
+        requestAnimationFrame(() => {
+            mensaje_error.style.opacity = 1; 
+        });
+    }
+    else if (contieneEspaciosDeMas == true){
+        e.preventDefault();
+        mensaje_error.innerHTML = "<span>Error al guardar los cambios:</span> El nickname no puede contener espacios de más";
         mensaje_error.style.opacity = 0;
         mensaje_error.style.display = "block";
         requestAnimationFrame(() => {
