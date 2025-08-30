@@ -15,18 +15,23 @@
             exit();
         }
 
-        $password = password_hash($password, PASSWORD_BCRYPT);
+        if ((strlen($user) > 3) && (strlen($user) < 20)){
+            $password = password_hash($password, PASSWORD_BCRYPT);
 
-        try{
-            $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            try{
+                $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = $conn->prepare("INSERT INTO usuarios(username, password, nickname) VALUES (?, ?, ?);");
-            $sql->execute([$username, $password, $username]);
-            $mensaje = "Usuario registrado, inicia sesión.";
+                $sql = $conn->prepare("INSERT INTO usuarios(username, password, nickname) VALUES (?, ?, ?);");
+                $sql->execute([$username, $password, $username]);
+                $mensaje = "Usuario registrado, inicia sesión";
+            }
+            catch(PDOException $e){
+                $mensaje = "<span>Error:</span> El usuario ya existe";
+            }
         }
-        catch(PDOException $e){
-            $mensaje = "<span>Error:</span> El usuario ya existe.";
+        else{
+            $mensaje = "<span>Error:</span> El usuario es muy corto o muy largo";
         }
     }
 ?>
