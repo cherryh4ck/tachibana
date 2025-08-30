@@ -18,12 +18,14 @@ post.php:
 
 perfil.php:
 - trabajar lo de la última actividad
-- añadir tags de admin
-- añadir apartado de seguridad
+- terminar apartado de seguridad
 
 perfiles.php:
 - añadir más chequeos de sanidad
 - reworkear el diseño (está horrendo)
+
+register.php:
+- prevenir usuarios con caracteres ilegales
 
 php/subida.php:
 - añadir chequeos de sanidad
@@ -31,6 +33,9 @@ php/subida.php:
 
 php/post/comentar.php:
 - añadir chequeos de sanidad
+
+php/account/editar.php:
+- prevenir nicknames vacios y extremadamente largos
 
 setup.php:
 - mejorar el estilo visual
