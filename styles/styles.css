@@ -284,14 +284,10 @@ header h1{
     display: flex;
     width: 100%;
     margin-top: 0.5em;
+    margin-bottom: 0.2em;
     margin-left: 0.1em;
-}
-
-#post-id{
-    color: rgb(136, 131, 131);
-    margin-left: 0.3em;
-    font-size: 14px;
-    margin-bottom: 0.8em;
+    text-shadow: 3px 4px 4px rgba(17, 17, 17, 0.7);
+    font-weight: bold;
 }
 
 .post-autor{
@@ -347,7 +343,7 @@ header h1{
 }
 
 #post-titulo-descripcion, #post-comentarios-titulo{
-    color: white;
+    color: rgb(233, 224, 224);
     margin-top: 0.5em;
     margin-left: 0.2em;
 }
@@ -363,6 +359,7 @@ header h1{
     padding: 10px 10px;
     border-radius: 8px;
     transition: all 100ms;
+    min-height: 38px;
 }
 
 .post-descripcion:hover{
@@ -371,9 +368,9 @@ header h1{
 }
 
 #post-comentarios-comentar{
-    color: white;
-    margin-left: 0.2em;
+    color: rgb(233, 224, 224);
     margin: 0.2em;
+    margin-top: 0.5em;
 }
 
 .post-comentarios-comentar-seccion-avatar{
@@ -966,6 +963,7 @@ header h1{
     align-items: center;
     justify-content: center;
     white-space: nowrap; 
+    box-shadow: 3px 4px 6px rgba(17, 17, 17, 0.7);
 }
 
 #input-tag-op{
