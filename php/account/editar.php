@@ -1,6 +1,6 @@
 <?php
     require "../db/config.php";
-    //error_reporting(E_ERROR | E_PARSE);
+    error_reporting(E_ERROR | E_PARSE);
     session_start();
 
     // pequeño algoritmo sacado de https://stackoverflow.com/questions/14649645/resize-image-in-php :3
@@ -26,7 +26,8 @@
             $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             if (isset($_POST["nickname"])){
-                if ((strlen($_POST["nickname"]) < 3) || (strlen($_POST["nickname"]) > 19)){
+                $_POST["nickname"] = preg_replace("/\s\s+/", "", $_POST["nickname"]);
+                if ((strlen($_POST["nickname"]) < 3) || (strlen($_POST["nickname"]) > 19) || (empty($_POST["nickname"]))){
                     header("Location: ../../index.php");
                     exit();
                 }
@@ -53,9 +54,20 @@
                         resize_image("../../resources/avatars/" . $_SESSION["cuenta_id"] . ".png", 498, 498);
                     }
                     else{
-                        echo "no se pudo we xd";
+                        header("Location: ../../error.php?id=9");
                         exit();
                     }
+                }
+            }
+            if (isset($_POST["ultima-actividad"])){
+                $ultima_actividad = (int)$_POST["ultima-actividad"];
+                if ($ultima_actividad == 1){
+                    $sql = $conn->prepare("UPDATE usuarios SET ult_act_activo = ? WHERE id = ?;");
+                    $sql->execute([1, $_SESSION["cuenta_id"]]);
+                }
+                else{
+                    $sql = $conn->prepare("UPDATE usuarios SET ult_act_activo = ? WHERE id = ?;");
+                    $sql->execute([0, $_SESSION["cuenta_id"]]);
                 }
             }
 
