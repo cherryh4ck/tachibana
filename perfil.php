@@ -217,7 +217,16 @@
                 <div class="perfil-banner">
                 <div class="perfil-banner-parte1-modificado">
                 <script src="js/perfil/editar.js" defer></script>
+                <script src="js/perfil/ult_act.js" defer></script>
                 <form action="php/account/editar.php" method="POST" enctype="multipart/form-data" id='formulario-editar-perfil' onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
+                EOM;
+                if ($ultima_actividad_activo == 1){
+                    echo "<input type='hidden' name='ultima-actividad' id='ultima-actividad-hidden' value='1'>";
+                }
+                else{
+                    echo "<input type='hidden' name='ultima-actividad' id='ultima-actividad-hidden' value='0'>";
+                }
+                echo <<<EOM
                 <div class="perfil-banner-parte1-fila">
                 <div class="perfil-banner-parte1-modificado-input">
                 <p>Nickname</p>
@@ -263,10 +272,10 @@
                 <div class="perfil-banner-parte1-checkbox">
                 EOM;
                 if ($ultima_actividad_activo == 1){
-                    echo "<input type='checkbox' id='ultima-actividad-checkbox' name='ultima-actividad' checked>";
+                    echo "<input type='checkbox' id='ultima-actividad-checkbox' checked>";
                 }
                 else{
-                    echo "<input type='checkbox' id='ultima-actividad-checkbox' name='ultima-actividad'>";
+                    echo "<input type='checkbox' id='ultima-actividad-checkbox'>";
                 }
                 echo <<<EOM
                     <label for="anonimo">Mostrar última actividad</label>
