@@ -11,5 +11,19 @@
     $pass = $configuracion_ini["network"]["password"];
     $db = $configuracion_ini["network"]["database"];
 
-    require "cookie_auth.php";
+    $conn_test = 0;
+    try{
+        $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $conn_test = 1;
+    }
+    catch (PDOException $e){
+        $conn_test = 0;
+    }
+
+    if ($conn_test == 1){
+        require "cookie_auth.php";
+        require "ult_act.php";
+    }
 ?>
