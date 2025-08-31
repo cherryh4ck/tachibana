@@ -64,10 +64,12 @@
                 if ($ultima_actividad == 1){
                     $sql = $conn->prepare("UPDATE usuarios SET ult_act_activo = ? WHERE id = ?;");
                     $sql->execute([1, $_SESSION["cuenta_id"]]);
+                    setcookie("ult_act", "1", time() + (86400 * 30), "/"); 
                 }
                 else{
                     $sql = $conn->prepare("UPDATE usuarios SET ult_act_activo = ? WHERE id = ?;");
                     $sql->execute([0, $_SESSION["cuenta_id"]]);
+                    setcookie("ult_act", "0", time() + (86400 * 30), "/"); 
                 }
             }
 
