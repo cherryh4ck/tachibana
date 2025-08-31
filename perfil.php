@@ -225,12 +225,25 @@
                 <div class="perfil-banner-parte1-modificado-input">
                 <p>Avatar</p>
                 <div class="perfil-banner-parte1-modificado-input-avatar">
+                <div class="perfil-banner-parte1-modificado-input-avatar-preview">
                 EOM;
                 if (file_exists($avatar)){
                     echo "<img src='$avatar' alt='' id='avatar-img'>";
+                    echo "<p>80px</p>";
+                    echo "</div>";
+                    echo "<div class='perfil-banner-parte1-modificado-input-avatar-preview'>";
+                    echo "<img src='$avatar' alt='' id='avatar-img2' class='perfil-banner-parte1-modificado-input-avatar-preview-chiquito'>";
+                    echo "<p>50px</p>";
+                    echo "</div>";
                 }
                 else{
                     echo "<img src='resources/avatar.png' alt='' id='avatar-img'>";
+                    echo "<p>80px</p>";
+                    echo "</div>";
+                    echo "<div class='perfil-banner-parte1-modificado-input-avatar-preview'>";
+                    echo "<img src='resources/avatar.png' alt='' id='avatar-img2' class='perfil-banner-parte1-modificado-input-avatar-preview-chiquito'>";
+                    echo "<p>50px</p>";
+                    echo "</div>";
                 }
                 echo <<<EOM
                 <input type="file" accept=".png, .jpg, .jpeg" name="avatar" id="avatar-file">
