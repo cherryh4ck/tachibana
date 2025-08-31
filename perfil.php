@@ -28,9 +28,6 @@
     }
 
     try{
-        $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
         $sql->execute([$_GET["id"]]);
         $fetch = $sql->fetch(PDO::FETCH_ASSOC);
@@ -52,6 +49,27 @@
     catch (PDOException $e){
         header("Location: error.php?id=2");
         exit();
+    }
+
+    function calcular_tiempo($fecha) {
+        // gracias chatgpt, ni sabía de esto kek
+        $ahora = new DateTime();
+        $fecha_obj = new DateTime($fecha);
+        $diferencia = $ahora->diff($fecha_obj);
+
+        if ($diferencia->y > 0) {
+            return $diferencia->y . " año" . ($diferencia->y > 1 ? "s" : "");
+        } elseif ($diferencia->m > 0) {
+            return $diferencia->m . " mes" . ($diferencia->m > 1 ? "es" : "");
+        } elseif ($diferencia->d > 0) {
+            return $diferencia->d . " día" . ($diferencia->d > 1 ? "s" : "");
+        } elseif ($diferencia->h > 0) {
+            return $diferencia->h . " hora" . ($diferencia->h > 1 ? "s" : "");
+        } elseif ($diferencia->i > 0) {
+            return $diferencia->i . " minuto" . ($diferencia->i > 1 ? "s" : "");
+        } else {
+            return $diferencia->s . " segundo" . ($diferencia->s > 1 ? "s" : "");
+        }
     }
 ?>
 
@@ -112,58 +130,15 @@
                         echo "</div>";
                         echo "<p id='contenido-perfil-bloque-info-username'>@$nombre_usuario</p>";
                         echo "<div class='perfil-info-avanzada'>";
-                        // codigo más largo q no se ke xddd
 
-                        // gracias chatgpt, ni sabía de esto kek
-                        $tiempo_actual = new DateTime();
-                        $tiempo_creado = new DateTime($fecha_creacion);
-                        $diferencia = $tiempo_actual->diff($tiempo_creado);
-                        $texto = "";
-
-                        if ($diferencia->y > 0) {
-                            if ($diferencia->y > 1){
-                                $texto = "Se unió hace $diferencia->y años";
-                            }
-                            else{
-                                $texto = "Se unió hace un año";
-                            }
-                        } elseif ($diferencia->m > 0) {
-                            if ($diferencia->m > 1){
-                                $texto = "Se unió hace $diferencia->m meses";
-                            }
-                            else{
-                                $texto = "Se unió hace un mes";
-                            }
-                        } elseif ($diferencia->d > 0) {
-                            if ($diferencia->d > 1){
-                                $texto = "Se unió hace $diferencia->d días";
-                            }
-                            else{
-                                $texto = "Se unió hace un día";
-                            }
-                        } elseif ($diferencia->h > 0) {
-                            if ($diferencia->h > 1){
-                                $texto = "Se unió hace $diferencia->h horas";
-                            }
-                            else{
-                                $texto = "Se unió hace una hora";
-                            }
-                        } elseif ($diferencia->i > 0) {
-                            if ($diferencia->i > 1){
-                                $texto = "Se unió hace $diferencia->i minutos";
-                            }
-                            else{
-                                $texto = "Se unió hace un minuto";
-                            }
-                        } else {
-                            $texto = "Se unió hace unos segundos";
-                        }
+                        $se_unio = "Se unió hace " . calcular_tiempo($fecha_creacion);
+                        $ult_vez = "Última vez hace " . calcular_tiempo($ultima_actividad);
 
                         if ($ultima_actividad_activo == 1){
-                            echo "<p>$texto <span id='viñeta'>•</span> Última vez hace ?</p>";
+                            echo "<p>$se_unio <span id='viñeta'>•</span> $ult_vez</p>";
                         }
                         else{
-                            echo "<p>$texto</p>";
+                            echo "<p>$se_unio</p>";
                         }
                         echo "</div>";  
                         echo "</div>";
