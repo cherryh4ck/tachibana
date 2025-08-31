@@ -89,7 +89,7 @@
                 $sql->execute([$post_autor_id, $post_categoria, $post_titulo, $post_descripcion, $post_anonimo]);
 
                 $last_insert = $conn->lastInsertId();
-                if (!(empty($tags))){
+                if (!(empty($post_tags))){
                     $tags = explode(",", $post_tags);
                     foreach ($tags as $tag){
                         $sql = $conn->prepare("SELECT * from tags WHERE nombre = ?");
