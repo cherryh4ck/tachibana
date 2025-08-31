@@ -2,7 +2,7 @@
 
 General:
 - añadir funciones para los administradores
-- hacer el config.ini totalmente funcional (y d paso, agregar más parametros, aunque tendría que ver)
+- añadir más parametros al config.ini
 
 index.php:
 - añadir sistema de búsqueda
@@ -11,13 +11,9 @@ index.php:
 - trabajar en el concepto de scroll "infinito" (osea, que no exista un sistema de páginas, si no que se carguen posts a medida que el usuario scrollea)
 
 login.php:
-- añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
-
-post.php:
-- mejorar diseño visual (no me convence del todo)
+- prevenir login en usuarios ilegales + vacios mediante javascript (tmb del lado frontend no?)
 
 perfil.php:
-- trabajar lo de la última actividad
 - incluir un preview chiquito del avatar (indicar los pixeles en un texto pequeño, como en steam)
 - terminar apartado de seguridad
 
@@ -41,7 +37,6 @@ php/account/editar.php:
 
 setup.php:
 - mejorar el estilo visual
-- hacer accesible la cuenta root
 
 base de datos:
 - optimizar búsqueda de tags (ordenar tags de manera alfabética y usar comas para separar la busqueda)
