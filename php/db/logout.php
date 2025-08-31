@@ -17,7 +17,9 @@
         session_unset();
         session_destroy();
         unset($_COOKIE["auth"]);
-        setcookie("auth", ""); 
+        unset($_COOKIE["ult_act"]);
+        setcookie("auth", "", 1, "/");
+        setcookie("ult_act", "", 1, "/"); 
     }
     header("Location: ../../index.php");
 ?>
