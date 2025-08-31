@@ -1,5 +1,6 @@
 const avatar_input = document.getElementById("avatar-file");
 const avatar_preview = document.getElementById("avatar-img");
+const avatar_preview2 = document.getElementById("avatar-img2");
 
 const imagen_estirada_aviso = document.getElementById("mensaje-aviso");
 const mensaje_error = document.getElementById("mensaje-error");
@@ -19,6 +20,7 @@ avatar_input.addEventListener("change", (event) => {
     avatar_preview.onload = () => {
         const width = avatar_preview.naturalWidth;
         const height = avatar_preview.naturalHeight;
+        avatar_preview2.src = URL.createObjectURL(imagen);
 
         if (width !== height) {
             imagen_estirada_aviso.style.opacity = 0;
