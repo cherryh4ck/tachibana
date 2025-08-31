@@ -14,10 +14,11 @@ login.php:
 - añadir chequeos de sanidad mediante javascript (aunque tampoco estaría mal revisar el frontend)
 
 post.php:
-- mejorar diseño visual ? (es necesario incluir el id del post?)
+- mejorar diseño visual (no me convence del todo)
 
 perfil.php:
 - trabajar lo de la última actividad
+- incluir un preview chiquito del avatar (indicar los pixeles en un texto pequeño, como en steam)
 - terminar apartado de seguridad
 
 perfiles.php:
@@ -28,8 +29,9 @@ register.php:
 - prevenir usuarios con caracteres ilegales
 
 php/subida.php:
-- añadir chequeos de sanidad
+- añadir chequeos de sanidad (titulo y descripción)
 - hacer andar los usos de los tags
+- prevenir tags ilegales 
 
 php/post/comentar.php:
 - añadir chequeos de sanidad
