@@ -354,8 +354,8 @@ header h1{
     border: 2px solid #282b2b;
     color: rgb(214, 212, 212);
     box-sizing: content-box;
-    margin-left: 0.2em;
-    margin-top: 0.6em;
+    margin-left: 0.3em;
+    margin-top: 0.5em;
     padding: 10px 10px;
     border-radius: 8px;
     transition: all 100ms;
@@ -442,7 +442,7 @@ header h1{
 
 .post-comentarios-comentario-autor {
     display: flex;
-    gap: 0.5em;
+    gap: 0.3em;
     flex-wrap: wrap; 
 }
 
@@ -510,6 +510,13 @@ header h1{
     border-radius: 8px;
     margin-bottom: 1em;
     margin-top: 0.5em;
+    transition: all 200ms;
+}
+
+.post-comentarios-comentar:hover{
+    transform: scale(1.03);
+    border: 2px solid #333535;
+    box-shadow: 5px 1px 40px rgb(51, 50, 50);
 }
 
 .post-comentarios-comentar form{
