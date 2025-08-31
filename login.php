@@ -14,9 +14,6 @@
             exit();
         }
         try{
-            $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             $sql = $conn->prepare("SELECT * FROM usuarios WHERE username = ?");
             $sql->execute([$username]);
             $fetch = $sql->fetch(PDO::FETCH_ASSOC);
@@ -27,6 +24,9 @@
                 $sql = $conn->prepare("UPDATE usuarios SET auth_cookie = ? WHERE id = ?");
                 $sql->execute([$auth_cookie, $fetch["id"]]);
 
+                $ult_act_activado = (int)$fetch["ult_act_activo"];
+
+                setcookie("ult_act", $ult_act_activado, time() + (86400 * 30), "/"); 
                 setcookie("auth", $auth_cookie, time() + (86400 * 30), "/"); 
                 $_SESSION["cuenta_id"] = $fetch["id"];
                 $_SESSION["cuenta_usuario"] = $fetch["username"];
