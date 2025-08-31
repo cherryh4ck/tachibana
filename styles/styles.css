@@ -1763,16 +1763,31 @@ header h1{
 
 .perfil-banner-parte1-modificado-input-avatar{
     display: flex;
-    gap: 1em;
+    gap: 0.5em;
 }
 
-.perfil-banner-parte1-modificado-input-avatar img{
+.perfil-banner-parte1-modificado-input-avatar-preview{
+    display: block;
+}
+
+.perfil-banner-parte1-modificado-input-avatar-preview p{
+    color: rgb(98, 100, 98) !important;
+    font-size: 13px !important;
+}
+
+.perfil-banner-parte1-modificado-input-avatar-preview img{
     display: block;
     max-width: 80px;
     max-height: 80px;
     background-color: transparent;
     margin-top: 0.25em;
     border-radius: 6px;
+}
+
+.perfil-banner-parte1-modificado-input-avatar-preview-chiquito{
+    max-width: 50px !important;
+    max-height: 50px !important;
+    margin-top: 2.15em !important;
 }
 
 .perfil-banner-parte1-modificado-input-avatar input[type=file]{
