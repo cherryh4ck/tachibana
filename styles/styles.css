@@ -452,6 +452,12 @@ header h1{
     margin-top: 0.1em;
 }
 
+.post-comentarios-comentario-texto p{
+    overflow-wrap: break-word;
+    word-break: break-word; 
+    white-space: normal;
+}
+
 .post-comentarios-comentario-comentario {
     display: block;
     margin-top: 0.2em;
