@@ -3,6 +3,7 @@
 General:
 - añadir funciones para los administradores
 - añadir más parametros al config.ini
+- trabajar en un motd (?)
 
 index.php:
 - terminar funcionamiento
@@ -10,11 +11,9 @@ index.php:
 - añadir un sistema de tags seleccionados
 - trabajar en el concepto de scroll "infinito" (osea, que no exista un sistema de páginas, si no que se carguen posts a medida que el usuario scrollea)
 
-login.php:
-- prevenir login en usuarios ilegales + vacios mediante javascript (tmb del lado frontend no?)
-
 perfil.php:
 - terminar apartado de seguridad
+- mostrar caracteres restantes en perfil.php
 
 perfiles.php:
 - añadir más chequeos de sanidad
