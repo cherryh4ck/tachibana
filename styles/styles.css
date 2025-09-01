@@ -1365,13 +1365,13 @@ header h1{
     cursor: pointer;
 }
 
-#formulario-mensaje{
+#formulario-mensaje, #formulario-mensaje2{
     margin-top: 1em;
     margin-bottom: 1em;
     font-size: 17px;
 }
 
-#formulario-mensaje span{
+#formulario-mensaje span, #formulario-mensaje2 span{
     color: rgb(219, 64, 64);
 }
 
