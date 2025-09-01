@@ -5,16 +5,15 @@ General:
 - añadir más parametros al config.ini
 
 index.php:
+- terminar funcionamiento
 - añadir sistema de búsqueda
 - añadir un sistema de tags seleccionados
-- mostrar info de los posts
 - trabajar en el concepto de scroll "infinito" (osea, que no exista un sistema de páginas, si no que se carguen posts a medida que el usuario scrollea)
 
 login.php:
 - prevenir login en usuarios ilegales + vacios mediante javascript (tmb del lado frontend no?)
 
 perfil.php:
-- incluir un preview chiquito del avatar (indicar los pixeles en un texto pequeño, como en steam)
 - terminar apartado de seguridad
 
 perfiles.php:
@@ -33,7 +32,7 @@ php/post/comentar.php:
 - añadir chequeos de sanidad
 
 php/account/editar.php:
-- prevenir nicknames vacios y extremadamente largos
+- prevenir descripciones muy largas
 
 setup.php:
 - mejorar el estilo visual
