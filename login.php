@@ -11,34 +11,36 @@
         $password = $_POST["password"];
 
         if (empty($user) || empty($password)){
-            exit();
+            $mensaje = "<span>Error:</span> Los campos están vacios.";
         }
-        try{
-            $sql = $conn->prepare("SELECT * FROM usuarios WHERE username = ?");
-            $sql->execute([$username]);
-            $fetch = $sql->fetch(PDO::FETCH_ASSOC);
+        else{
+            try{
+                $sql = $conn->prepare("SELECT * FROM usuarios WHERE username = ?");
+                $sql->execute([$username]);
+                $fetch = $sql->fetch(PDO::FETCH_ASSOC);
 
-            if ($fetch && password_verify($password, $fetch["password"])){
-                // crear auth cookie
-                $auth_cookie = bin2hex(random_bytes(128));
-                $sql = $conn->prepare("UPDATE usuarios SET auth_cookie = ? WHERE id = ?");
-                $sql->execute([$auth_cookie, $fetch["id"]]);
+                if ($fetch && password_verify($password, $fetch["password"])){
+                    // crear auth cookie
+                    $auth_cookie = bin2hex(random_bytes(128));
+                    $sql = $conn->prepare("UPDATE usuarios SET auth_cookie = ? WHERE id = ?");
+                    $sql->execute([$auth_cookie, $fetch["id"]]);
 
-                $ult_act_activado = (int)$fetch["ult_act_activo"];
+                    $ult_act_activado = (int)$fetch["ult_act_activo"];
 
-                setcookie("ult_act", $ult_act_activado, time() + (86400 * 30), "/"); 
-                setcookie("auth", $auth_cookie, time() + (86400 * 30), "/"); 
-                $_SESSION["cuenta_id"] = $fetch["id"];
-                $_SESSION["cuenta_usuario"] = $fetch["username"];
-                header("Location: index.php");
+                    setcookie("ult_act", $ult_act_activado, time() + (86400 * 30), "/"); 
+                    setcookie("auth", $auth_cookie, time() + (86400 * 30), "/"); 
+                    $_SESSION["cuenta_id"] = $fetch["id"];
+                    $_SESSION["cuenta_usuario"] = $fetch["username"];
+                    header("Location: index.php");
+                }
+                else{
+                    $mensaje = "<span>Error:</span> Usuario o contraseña incorrecta";
+                }
             }
-            else{
-                $mensaje = "<span>Error:</span> Usuario o contraseña incorrecta";
+            catch(PDOException $e){
+                $mensaje = "<span>Error:</span> Ha ocurrido un error, intente más tarde";
+                // mostrar error de manera más visual (base de datos caida)
             }
-        }
-        catch(PDOException $e){
-            $mensaje = "<span>Error:</span> Ha ocurrido un error, intente más tarde";
-            // mostrar error de manera más visual (base de datos caida)
         }
     }
 ?>
@@ -51,6 +53,8 @@
     <title>Iniciar sesión</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="shortcut icon" href="favicon.ico" />
+
+    <script src="js/login/sanidad.js" defer></script>
 </head>
 <body>
     <nav>
@@ -64,14 +68,15 @@
         </div>
     </nav>
     <div class="contenido-menu">
-        <form action="login.php" method="post">
+        <form action="login.php" method="post" id="formulario-login">
             <p id="texto-centrado">Iniciar sesión</p>
-            <input type="text" name="user" placeholder="Nombre de usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="text" name="user" placeholder="Nombre de usuario" id="user-input" required>
+            <input type="password" name="password" placeholder="Contraseña" id="password-input" required>
             <?php
                 if (isset($mensaje)){
-                    echo "<p id='formulario-mensaje'>$mensaje</p>";
+                    echo "<p id='formulario-mensaje2'>$mensaje</p>";
                 }
+                echo "<p id='formulario-mensaje' style='display: none;'></p>";
             ?>
             <input type="submit" value="Iniciar sesión">
         </form>
