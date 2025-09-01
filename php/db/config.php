@@ -11,6 +11,9 @@
     $pass = $configuracion_ini["network"]["password"];
     $db = $configuracion_ini["network"]["database"];
 
+    // seguridad
+    $mantenimiento = $configuracion_ini["seguridad"]["mantenimiento"];
+
     $conn_test = 0;
     try{
         $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
