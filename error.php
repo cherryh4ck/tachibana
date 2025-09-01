@@ -1,7 +1,5 @@
 <?php
-    $mantenimiento = false;
-
-    if (!$mantenimiento){
+    if ($mantenimiento == 0){
         session_start();
     }
 
@@ -42,7 +40,7 @@
         </ul>
         <div class="nav-cuenta">
             <?php
-                if (!$mantenimiento){
+                if ($mantenimiento == 0){
                     if (!isset($_SESSION["cuenta_usuario"])){
                         echo "<a href='php/cuenta.php' id='cuenta'>Anónimo</a>"; 
                     }
@@ -56,7 +54,7 @@
     <header>
         <h1>Ups, hubo un problema...</h1>
         <?php
-            if ($mantenimiento) {
+            if ($mantenimiento == 1) {
                 echo "<p id='error'>" . $errores[10] . "</p>";
             } else {
                 echo "<p id='error'>" . $errores[$_GET["id"] - 1] . "</p>";
