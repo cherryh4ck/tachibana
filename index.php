@@ -22,7 +22,7 @@
             $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
         }
         else{
-            $categoria = "any";
+            $categoria = "todo";
             $sql = $conn->prepare("SELECT * from posts");
             $sql->execute();
             $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -86,6 +86,7 @@
                 <h4>Categoría</h4>
                 <div class="galeria-categoria-seleccionada">
                     <select name="categoria" id="categoria-input-index" size="1">
+                                <option value="todo" <?php if ($categoria == "todo"){ echo "selected";} ?>>Todos los posts</option>
                                 <option value="any" <?php if ($categoria == "any"){ echo "selected";} ?>>General - /any/</option>
                                 <option value="anime" <?php if ($categoria == "anime"){ echo "selected";} ?>>Anime - /anime/</option>
                                 <option value="manga" <?php if ($categoria == "manga"){ echo "selected";} ?>>Manga - /manga/</option>
@@ -96,7 +97,11 @@
                                 <option value="movie" <?php if ($categoria == "movie"){ echo "selected";} ?>>Películas - /movie/</option>
                                 <option value="coding" <?php if ($categoria == "coding"){ echo "selected";} ?>>Programación - /coding/</option>
                     </select>
-                    <span id="input-tag-rojo-index">/any/</span>
+                    <?php
+                        if ($categoria != "todo"){
+                            echo "<span id='input-tag-rojo-index'>/$categoria/</span>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>
