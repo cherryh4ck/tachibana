@@ -5,23 +5,28 @@
     session_start();
     require "php/db/config.php";
 
-    if (!isset($_GET["pag"])){
-        $pagina = 1;
-    }
-    else{
-        $pagina = $_GET['pag'];
-    }
-
-    if ($pagina != 1){
-        if (is_numeric($pagina) == false or $pagina < 1 or file_exists("galeria/" . 1 + (12*($pagina-1)) . ".jpg") == false){
-            header("Location: error.php?id=2");
-            exit();
-        }
-    }
-
     try{
-        $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if (isset($_GET["categoria"])){
+            $categoria = $_GET["categoria"];
+            $sql = $conn->prepare("SELECT * from categorias WHERE nombre = ?");
+            $sql->execute([$categoria]);
+            $fetch_categoria = $sql->fetch(PDO::FETCH_ASSOC);
+            if ($fetch_categoria){
+                $id_categoria = $fetch_categoria["id"];
+            }
+            else{
+                $id_categoria = 1;
+            }
+            $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ?");
+            $sql->execute([$id_categoria]);
+            $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else{
+            $categoria = "any";
+            $sql = $conn->prepare("SELECT * from posts");
+            $sql->execute();
+            $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
     catch (PDOException $e){
         // mostrar error
@@ -44,7 +49,7 @@
     <nav>
         <p id="nav-logo">Tachibana</p>
         <ul>
-            <li><a href="index.php?pag=1">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
             <?php
                 if (isset($_SESSION["cuenta_usuario"])){
                     echo "<li><a href='#' id='subir-boton-modal'>Publicar</a></li>";
@@ -81,15 +86,15 @@
                 <h4>Categoría</h4>
                 <div class="galeria-categoria-seleccionada">
                     <select name="categoria" id="categoria-input-index" size="1">
-                                <option value="any">General - /any/</option>
-                                <option value="anime">Anime - /anime/</option>
-                                <option value="manga">Manga - /manga/</option>
-                                <option value="games">Videojuegos - /games/</option>
-                                <option value="pol">Política - /pol/</option>
-                                <option value="tech">Tecnología - /tech/</option>
-                                <option value="music">Música - /music/</option>
-                                <option value="movie">Películas - /movie/</option>
-                                <option value="coding">Programación - /coding/</option>
+                                <option value="any" <?php if ($categoria == "any"){ echo "selected";} ?>>General - /any/</option>
+                                <option value="anime" <?php if ($categoria == "anime"){ echo "selected";} ?>>Anime - /anime/</option>
+                                <option value="manga" <?php if ($categoria == "manga"){ echo "selected";} ?>>Manga - /manga/</option>
+                                <option value="games" <?php if ($categoria == "games"){ echo "selected";} ?>>Videojuegos - /games/</option>
+                                <option value="pol" <?php if ($categoria == "pol"){ echo "selected";} ?>>Política - /pol/</option>
+                                <option value="tech" <?php if ($categoria == "tech"){ echo "selected";} ?>>Tecnología - /tech/</option>
+                                <option value="music" <?php if ($categoria == "music"){ echo "selected";} ?>>Música - /music/</option>
+                                <option value="movie" <?php if ($categoria == "movie"){ echo "selected";} ?>>Películas - /movie/</option>
+                                <option value="coding" <?php if ($categoria == "coding"){ echo "selected";} ?>>Programación - /coding/</option>
                     </select>
                     <span id="input-tag-rojo-index">/any/</span>
                 </div>
@@ -98,20 +103,11 @@
         <div class="galeria-panel2">
             <div class="galeria-imagenes">
                 <?php
-                    $imagenes = scandir("galeria/");
-                    if (file_exists("galeria/Test.txt")){
-                        $end_id = count($imagenes) - 4;
-                    }
-                    else{
-                        $end_id = count($imagenes) - 3;
-                    }
-
-                    for ($i = 0; $i < 12; $i++){
-                        $id = 1 + (12*($pagina-1)) + $i;
-                        if (file_exists("galeria/" . $id . ".jpg")){
+                    foreach ($fetch_posts as $post){
+                        if (file_exists("galeria/" . $post["id"] . ".jpg")){
                             try {
                                 $sql = $conn->prepare("SELECT * FROM posts WHERE id = ?");
-                                $sql->execute([$id]);
+                                $sql->execute([$post["id"]]);
                                 $fetch = $sql->fetch(PDO::FETCH_ASSOC);
                                 if ($fetch){
                                     $post_id_categoria = $fetch["id_categoria"];
@@ -128,52 +124,26 @@
                             catch (PDOException $e){
                                 echo "<div class='contenido-bloque contenido-bloque-phantom'>";
                                 echo "<a href='error.php?id=4'><img src='resources/notfound.jpg' alt=''></a>";
-                                echo "<p>Post #" . $id . " (Eliminado)</p>";
+                                echo "<p>(Eliminado)</p>";
                                 echo "</div>";
+                                // ?????? que es esto
                             }
                             echo "<div class='contenido-bloque'>";
-                            // acá iría el tag
                             echo "<div class='contenido-bloque-categoria'>";
                             echo "<span id='input-tag-rojo'>/$post_categoria/</span>";
                             echo "</div>";
-                            echo "<a href='post.php?id=" . $id . "'><img src='galeria/" . $id . ".jpg' alt=''></a>";
+                            echo "<a href='post.php?id=" . $post["id"] . "'><img src='galeria/" . $post["id"] . ".jpg' alt=''></a>";
                             echo "<p>$post_titulo</p>";
                             echo "</div>";
                         }
-                        else if ($id <= $end_id){
+                        /*else if ($id <= $end_id){
                             echo "<div class='contenido-bloque contenido-bloque-phantom'>";
                             echo "<a href='error.php?id=4'><img src='resources/notfound.jpg' alt=''></a>";
                             echo "<p>Post #" . $id . " (Eliminado)</p>";
                             echo "</div>";
-                        }
+                        }*/
                     }
                 ?>
-            </div>
-            <div class="galeria-botones">
-                <div class="galeria-botones-izquierda">
-                    <?php
-                        if (file_exists("galeria/" . 1 + (12*($pagina-1)) . ".jpg")){
-                            if ($pagina > 1){
-                                echo "<a class='boton' href='index.php?pag=" . $pagina-1 . "'>Anterior Pág.</a>";
-                            }
-                            else{
-                                echo "<button class='boton' disabled>Anterior Pág.</button>";
-                            }
-                        }
-                    ?>
-                </div>
-                <div class="galeria-botones-derecha">
-                    <?php
-                        if (file_exists("galeria/" . 1 + (12*($pagina-1)) . ".jpg")){
-                            if (file_exists("galeria/" . 1 + (12*($pagina)) . ".jpg")){
-                                echo "<a class='boton' href='index.php?pag=" . $pagina+1 . "'>Siguiente Pág.</a>";      
-                            }
-                            else{
-                                echo "<button class='boton' disabled>Siguiente Pág.</button>";
-                            }
-                        }
-                    ?>
-                </div>
             </div>
         </div>
 
