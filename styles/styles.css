@@ -1569,6 +1569,9 @@ header h1{
 
 .perfil-descripcion p{
     color: rgb(214, 212, 212);
+    overflow-wrap: break-word;
+    word-break: break-word; 
+    white-space: normal;
 }
 
 .perfil-banner-parte1 img{
@@ -1689,6 +1692,12 @@ header h1{
     transition: all 200ms;
     font-size: 16px;
     color: rgb(211, 199, 199);
+}
+
+#perfil-banner-parte1-modificado-input-caracteres{
+    color: rgb(98, 100, 98) !important;
+    font-size: 14px !important;
+    margin-top: 0.25em !important;
 }
 
 .perfil-banner-parte1-modificado-input input[type=text]:disabled{
