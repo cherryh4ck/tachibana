@@ -2,6 +2,11 @@
     session_start();
     session_unset();
     session_destroy();
+
+    unset($_COOKIE["auth"]);
+    unset($_COOKIE["ult_act"]);
+    setcookie("auth", "", 1, "/");
+    setcookie("ult_act", "", 1, "/"); 
     require "config.php";
     $paso = "conexion";
 
