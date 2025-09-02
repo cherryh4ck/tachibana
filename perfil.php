@@ -193,6 +193,7 @@
                 <div class="perfil-banner-parte1-modificado">
                 <script src="js/perfil/editar.js" defer></script>
                 <script src="js/perfil/ult_act.js" defer></script>
+                <script src="js/perfil/caracteres.js" defer></script>
                 <form action="php/account/editar.php" method="POST" enctype="multipart/form-data" id='formulario-editar-perfil' onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
                 EOM;
                 if ($ultima_actividad_activo == 1){
@@ -219,7 +220,8 @@
                 <div class="perfil-banner-parte1-modificado-input">
                 <p>Descripción</p>
                 EOM;
-                echo "<textarea name='descripcion' id='descripcion-input' placeholder='Descripción...'>" . strip_tags($descripcion) . "</textarea>";
+                echo "<textarea name='descripcion' id='descripcion-input' class='descripcion-input-perfil' placeholder='Descripción...' max-length='400'>" . strip_tags($descripcion) . "</textarea>";
+                echo "<p style='display: none;' id='perfil-banner-parte1-modificado-input-caracteres'>ad</p>";
                 echo <<<EOM
                 </div>
                 <div class="perfil-banner-parte1-modificado-input">
