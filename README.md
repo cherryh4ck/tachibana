@@ -10,8 +10,8 @@ Tachibana es un tablón de imágenes semi anónimo fuertemente inspirado en siti
 Por el momento, crear una cuenta si o si es necesaria para postear o comentar, aun así siempre está la posibilidad de postear o comentar de manera anónima.
 
 ## Requisitos para hostear
-- Servidor ```Apache``` o otro servidor web HTTP
-- Servidor ```MariaDB``` para la base de datos
+- Un servidor ```Apache``` o otro servidor web HTTP
+- un servidor ```MariaDB``` para la base de datos
 - La extensión ```GD``` debe estar habilitado en la configuración de extensiones de PHP
 
 ## Para hostear Tachibana
