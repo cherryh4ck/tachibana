@@ -5,31 +5,33 @@
     session_start();
     require "php/db/config.php";
 
-    try{
-        if (isset($_GET["categoria"])){
-            $categoria = $_GET["categoria"];
-            $sql = $conn->prepare("SELECT * from categorias WHERE nombre = ?");
-            $sql->execute([$categoria]);
-            $fetch_categoria = $sql->fetch(PDO::FETCH_ASSOC);
-            if ($fetch_categoria){
-                $id_categoria = $fetch_categoria["id"];
+    if ($conn_test == 1){
+        try{
+            if (isset($_GET["categoria"])){
+                $categoria = $_GET["categoria"];
+                $sql = $conn->prepare("SELECT * from categorias WHERE nombre = ?");
+                $sql->execute([$categoria]);
+                $fetch_categoria = $sql->fetch(PDO::FETCH_ASSOC);
+                if ($fetch_categoria){
+                    $id_categoria = $fetch_categoria["id"];
+                }
+                else{
+                    $id_categoria = 1;
+                }
+                $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ?");
+                $sql->execute([$id_categoria]);
+                $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                $id_categoria = 1;
+                $categoria = "todo";
+                $sql = $conn->prepare("SELECT * from posts");
+                $sql->execute();
+                $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
             }
-            $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ?");
-            $sql->execute([$id_categoria]);
-            $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
         }
-        else{
-            $categoria = "todo";
-            $sql = $conn->prepare("SELECT * from posts");
-            $sql->execute();
-            $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+        catch (PDOException $e){
+            // mostrar error
         }
-    }
-    catch (PDOException $e){
-        // mostrar error
     }
 ?>
 
