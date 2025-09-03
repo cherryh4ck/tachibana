@@ -68,6 +68,9 @@
         } elseif ($diferencia->i > 0) {
             return $diferencia->i . " minuto" . ($diferencia->i > 1 ? "s" : "");
         } else {
+            if ($diferencia->s < 1) {
+                $diferencia->s = 1;
+            }
             return $diferencia->s . " segundo" . ($diferencia->s > 1 ? "s" : "");
         }
     }
