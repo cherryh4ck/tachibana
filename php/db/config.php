@@ -13,6 +13,11 @@
 
     // seguridad
     $mantenimiento = $configuracion_ini["seguridad"]["mantenimiento"];
+    $debug = $configuracion_ini["seguridad"]["debug"];
+
+    if ($debug == 0){
+        error_reporting(E_ERROR | E_PARSE);
+    }
 
     $conn_test = 0;
     try{
