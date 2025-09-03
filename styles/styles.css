@@ -977,6 +977,7 @@ header h1{
     justify-content: center;
     white-space: nowrap; 
     box-shadow: 3px 4px 6px rgba(17, 17, 17, 0.7);
+    transition: opacity 0.3s ease;
 }
 
 #input-tag-op{
