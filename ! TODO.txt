@@ -13,7 +13,11 @@ index.php:
 
 perfil.php:
 - terminar apartado de seguridad
-- mostrar caracteres restantes en perfil.php
+- deshabilitar el botón de guardar cambios si es que no hay ningún cambio
+
+post.php:
+- al clickear un avatar, lo tiene que llevar al perfil del op
+- incluir vínculo a register cuando no hay sesión (d paso, estaría bueno cambiar el mensaje)
 
 perfiles.php:
 - añadir más chequeos de sanidad
