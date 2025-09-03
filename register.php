@@ -24,7 +24,8 @@
 
                 $sql = $conn->prepare("INSERT INTO usuarios(username, password, nickname) VALUES (?, ?, ?);");
                 $sql->execute([$username, $password, $username]);
-                $mensaje = "Usuario registrado, inicia sesión";
+                header("Location: login.php?reg=1");
+                exit();
             }
             catch(PDOException $e){
                 $mensaje = "<span>Error:</span> El usuario ya existe";
