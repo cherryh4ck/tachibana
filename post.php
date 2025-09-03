@@ -268,7 +268,12 @@
                                 echo "<div class='post-comentarios-comentario'>";
                                 echo "<div class='post-comentarios-comentario-avatar-div'>";
                                 if (file_exists($avatar)){
-                                    echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
+                                    if ($comentario_autor_id != 0){
+                                        echo "<a href='perfil.php?id=$comentario_autor_id'><img src='$avatar' alt='' id='post-comentarios-comentario-avatar'></a>";
+                                    }
+                                    else{
+                                        echo "<img src='$avatar' alt='' id='post-comentarios-comentario-avatar'>";
+                                    }
                                 }
                                 else{
                                     echo "<img src='resources/avatar.png' alt='' id='post-comentarios-comentario-avatar'>";
@@ -395,7 +400,7 @@
                     </div>
                     <?php
                         if (!isset($_SESSION["cuenta_id"])){
-                            echo "<p id='post-comentarios-texto-sesion'>Debes iniciar sesión para comentar</p>";
+                            echo "<p id='post-comentarios-texto-sesion'><a href='register.php'>Debes crear una cuenta para comentar en este post</a></p>";
                         }
                     ?>
                 </form>
