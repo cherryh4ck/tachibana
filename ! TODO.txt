@@ -6,18 +6,14 @@ General:
 - trabajar en un motd (?)
 
 index.php:
-- terminar funcionamiento
-- añadir sistema de búsqueda
-- añadir un sistema de tags seleccionados
+- terminar funcionamiento (en progreso)
+- añadir sistema de búsqueda (en progreso)
+- añadir un sistema de tags seleccionados (en progreso)
 - trabajar en el concepto de scroll "infinito" (osea, que no exista un sistema de páginas, si no que se carguen posts a medida que el usuario scrollea)
 
 perfil.php:
 - terminar apartado de seguridad
 - deshabilitar el botón de guardar cambios si es que no hay ningún cambio
-
-post.php:
-- al clickear un avatar, lo tiene que llevar al perfil del op
-- incluir vínculo a register cuando no hay sesión (d paso, estaría bueno cambiar el mensaje)
 
 perfiles.php:
 - añadir más chequeos de sanidad
@@ -28,7 +24,6 @@ register.php:
 
 php/subida.php:
 - añadir chequeos de sanidad (titulo y descripción)
-- hacer andar los usos de los tags
 - prevenir tags ilegales 
 
 php/post/comentar.php:
