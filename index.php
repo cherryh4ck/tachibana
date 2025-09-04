@@ -7,7 +7,7 @@
 
     if ($conn_test == 1){
         try{
-            if (isset($_GET["categoria"])){
+            if (isset($_GET["categoria"]) && !($_GET["categoria"] == "all")){
                 $categoria = $_GET["categoria"];
                 $sql = $conn->prepare("SELECT * from categorias WHERE nombre = ?");
                 $sql->execute([$categoria]);
@@ -23,11 +23,14 @@
                 $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                $categoria = "todo";
+                $categoria = "all";
                 $sql = $conn->prepare("SELECT * from posts");
                 $sql->execute();
                 $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
             }
+            $sql = $conn->prepare("SELECT * FROM tags ORDER BY usos DESC LIMIT 5");
+            $sql->execute();
+            $fetch_tags = $sql->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e){
             // mostrar error
@@ -75,20 +78,20 @@
             <div class="galeria-herramientas">
                 <h2>Búsqueda</h2>
                 <input type="text" placeholder="Buscar...">
-                <h4>Tags populares</h4>
-                <div class="galeria-tags-populares">
-                    <span id="input-tag">csgo<b>7</b></span>
-                    <span id="input-tag">counter strike<b>6</b></span>
-                    <span id="input-tag">dark souls<b>5</b></span>
-                    <span id="input-tag">left 4 dead 2<b>4</b></span>
-                    <span id="input-tag">bocchi the rock<b>3</b></span>
-                    <span id="input-tag">asfafasgasgagasfasf<b>2</b></span>
-                    <span id="input-tag">counter strike 2<b>1</b></span>
-                </div>
+                <?php
+                    if ($fetch_tags){
+                        echo "<h4>Tags populares</h4>";
+                        echo "<div class='galeria-tags-populares'>";
+                        foreach ($fetch_tags as $tag){
+                            echo "<span id='input-tag'>" . $tag["nombre"] . "<b>" . $tag["usos"] . "</b></span>";
+                        }
+                        echo "</div>";
+                    }
+                ?>
                 <h4>Categoría</h4>
                 <div class="galeria-categoria-seleccionada">
                     <select name="categoria" id="categoria-input-index" size="1">
-                                <option value="todo" <?php if ($categoria == "todo"){ echo "selected";} ?>>Todos los posts</option>
+                                <option value="all" <?php if ($categoria == "all"){ echo "selected";} ?>>Todos los posts</option>
                                 <option value="any" <?php if ($categoria == "any"){ echo "selected";} ?>>General - /any/</option>
                                 <option value="anime" <?php if ($categoria == "anime"){ echo "selected";} ?>>Anime - /anime/</option>
                                 <option value="manga" <?php if ($categoria == "manga"){ echo "selected";} ?>>Manga - /manga/</option>
@@ -100,9 +103,7 @@
                                 <option value="coding" <?php if ($categoria == "coding"){ echo "selected";} ?>>Programación - /coding/</option>
                     </select>
                     <?php
-                        if ($categoria != "todo"){
-                            echo "<span id='input-tag-rojo-index'>/$categoria/</span>";
-                        }
+                        echo "<span id='input-tag-rojo-index'>/$categoria/</span>";
                     ?>
                 </div>
             </div>
