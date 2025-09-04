@@ -8,4 +8,5 @@ selector_categorias.addEventListener("change", function() {
 
     categoria = valorSeleccionado;
     tag_categoria.textContent = "/" + valorSeleccionado + "/"; 
+    window.location.replace("?categoria=" + categoria); 
 });
