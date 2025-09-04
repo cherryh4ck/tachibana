@@ -1113,6 +1113,7 @@ header h1{
     display: block;
     background-color: rgb(24, 23, 23);
     border-radius: 8px;
+    width: 340px;
     min-height: 400px;
 }
 
