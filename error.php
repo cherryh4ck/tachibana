@@ -1,5 +1,6 @@
 <?php
-    if ($mantenimiento == 0){
+    require "php/db/config.php";
+    if ($mantenimiento == 0 && $conn_test == 1){
         session_start();
     }
 
