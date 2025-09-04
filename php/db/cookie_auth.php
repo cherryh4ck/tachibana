@@ -8,11 +8,12 @@
             if ($fetch_auth){
                 $_SESSION["cuenta_id"] = $fetch_auth["id"];
                 $_SESSION["cuenta_usuario"] = $fetch_auth["username"];
+                $_SESSION["cuenta_rol"] = $fetch_auth["rol"];
             }
             else{
                 // simplemente eliminamos el cookie auth para prevenir más solicitudes
                 unset($_COOKIE["auth"]);
-                setcookie("auth", ""); 
+                setcookie("auth", "", 1, "/"); 
             }
         }
         catch (PDOException $e){
