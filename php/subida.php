@@ -92,6 +92,11 @@
                 if (!(empty($post_tags))){
                     $tags = explode(",", $post_tags);
                     foreach ($tags as $tag){
+                        $tag = strtolower(trim($tag));
+                        if (empty($tag) || strlen($tag) > 20 || strlen($tag) < 4){
+                            continue;
+                        }
+
                         $sql = $conn->prepare("SELECT * from tags WHERE nombre = ?");
                         $sql->execute([$tag]);
                         $fetch = $sql->fetch(PDO::FETCH_ASSOC);
@@ -101,7 +106,10 @@
                             $last_insert_tag = $conn->lastInsertId();
                         }
                         else{
+                            $tag_usos = $fetch["usos"];
                             $last_insert_tag = $fetch["id"];
+                            $sql = $conn->prepare("UPDATE tags SET usos = ? WHERE id = ?");
+                            $sql->execute([1 + (int)$tag_usos, $last_insert_tag]);
                         }
                         $sql = $conn->prepare("INSERT INTO posts_tags(id_post, id_tag) VALUES (?, ?)");
                         $sql->execute([$last_insert, $last_insert_tag]);
