@@ -35,6 +35,7 @@
                     setcookie("auth", $auth_cookie, time() + (86400 * 30), "/"); 
                     $_SESSION["cuenta_id"] = $fetch["id"];
                     $_SESSION["cuenta_usuario"] = $fetch["username"];
+                    $_SESSION["cuenta_rol"] = $fetch["rol"];
                     header("Location: index.php");
                 }
                 else{
