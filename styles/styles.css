@@ -360,6 +360,9 @@ header h1{
     border-radius: 8px;
     transition: all 100ms;
     min-height: 38px;
+    overflow-wrap: break-word;
+    word-break: break-word; 
+    white-space: normal;
 }
 
 .post-descripcion:hover{
@@ -988,6 +991,16 @@ header h1{
     transition: opacity 0.3s ease;
 }
 
+#input-tag2{
+    transition: all 200ms;
+}
+
+#input-tag2:hover{
+    box-shadow: 0px 1px 12px rgb(39, 138, 66);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
 #input-tag-op{
     background-color: rgb(64, 100, 219);
     height: 20px;
@@ -1057,7 +1070,7 @@ header h1{
 /* Página con mensaje de error */
 /* /////////////////////////// */
 
-#input-tag b{
+#input-tag b, #input-tag2 b{
     color: rgb(56, 56, 54);
     font-size: 11px;
     margin-left: 0.5em;
