@@ -1,6 +1,10 @@
 <?php
     $configuracion_ini = parse_ini_file(__DIR__ . "\config.ini", true);
 
+    // configuracion
+    $settings_id = $configuracion_ini["general"]["settings_id"];
+    $motd_activado = $configuracion_ini["general"]["motd_activado"];
+
     // posts
     $chequeo_estricto_imagen = $configuracion_ini["posts"]["chequeo_estricto_imagen"];
 
@@ -33,5 +37,6 @@
     if ($conn_test == 1){
         require "cookie_auth.php";
         require "ult_act.php";
+        session_start();
     }
 ?>
