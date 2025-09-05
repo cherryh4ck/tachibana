@@ -1,4 +1,4 @@
-# Tachibana
+# Tachibana 🍀
 ![](resources/banner.png)
 <div align="center">
 <a href="https://www.pixiv.net/en/artworks/117630077")>pixiv</a> - shampuru
@@ -28,4 +28,7 @@ Refierase al documento ```! TODO.txt```, ya que es la lista oficial de desarroll
 - ```PHP```
 - ```JavaScript```
 - ```MySQL```
+
+## Estadísticas
+![Alt](https://repobeats.axiom.co/api/embed/450a7ee036785e968cd57b62ed935df1559b81c3.svg "Repobeats analytics image")
 
