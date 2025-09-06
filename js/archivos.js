@@ -31,6 +31,7 @@ archivo.addEventListener("change", (event) => {
         imagen_tamano.textContent = "";
         imagen_res.textContent = "";
         image.src = "";
+        enviar.disabled = true;
         return;
     }
 
