@@ -119,7 +119,7 @@
                     if ($modo == "ver"){
                         echo "<div class='perfil-banner-parte1'>";
                         if (file_exists($avatar)){
-                            echo "<img src='$avatar' alt=''>";
+                            echo "<img src='$avatar?v=" . filemtime($avatar) . "alt=''>";
                         }
                         else{
                             echo "<img src='resources/avatar.png' alt=''>";
@@ -233,11 +233,11 @@
                 <div class="perfil-banner-parte1-modificado-input-avatar-preview">
                 EOM;
                 if (file_exists($avatar)){
-                    echo "<img src='$avatar' alt='' id='avatar-img'>";
+                    echo "<img src='$avatar?v=" . filemtime($avatar) . "alt='' id='avatar-img'>";
                     echo "<p>80px</p>";
                     echo "</div>";
                     echo "<div class='perfil-banner-parte1-modificado-input-avatar-preview'>";
-                    echo "<img src='$avatar' alt='' id='avatar-img2' class='perfil-banner-parte1-modificado-input-avatar-preview-chiquito'>";
+                    echo "<img src='$avatar?v=" . filemtime($avatar) . "alt='' id='avatar-img2' class='perfil-banner-parte1-modificado-input-avatar-preview-chiquito'>";
                     echo "<p>50px</p>";
                     echo "</div>";
                 }
@@ -252,11 +252,6 @@
                 }
                 echo <<<EOM
                 <input type="file" accept=".png, .jpg, .jpeg" name="avatar" id="avatar-file">
-                </div>
-                <div class="contenido-subir-formulario-error perfil-editar-mensaje">
-                    <!-- div para mostrar errores / avisos mediante js/archivos.js -->
-                    <p style="display: none;" id="mensaje-error"><span>Error al editar el perfil:</span> Test test</p>
-                    <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> El ancho y la altura del avatar no coinciden, por lo que puede verse estirado.</p>
                 </div>
                 </div>
                 <div class="perfil-banner-parte1-modificado-input">
@@ -273,8 +268,13 @@
                 echo <<<EOM
                     <label for="anonimo">Mostrar última actividad</label>
                 </div>   
+                <div class="contenido-subir-formulario-error perfil-editar-mensaje">
+                    <!-- div para mostrar errores / avisos mediante js/archivos.js -->
+                    <p style="display: none;" id="mensaje-error"><span>Error al editar el perfil:</span> Test test</p>
+                    <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> El ancho y la altura del avatar no coinciden, por lo que puede verse estirado.</p>
+                </div>
                 <div class="perfil-banner-parte1-modificado-input perfil-banner-parte1-modificado-input-gap">
-                <input type="submit" value="Guardar cambios" id="guardar-cambios">
+                <input type="submit" value="Guardar cambios" id="guardar-cambios" disabled>
                 <input type="button" value="Volver" onclick="window.location.href='perfil.php'">
                 </div>
                 </form>
