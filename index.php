@@ -18,15 +18,33 @@
                 else{
                     $id_categoria = 1;
                 }
-                $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ?");
-                $sql->execute([$id_categoria]);
-                $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+                if (isset($_GET["q"]) && !(empty($_GET["q"]))){
+                    $query = "%" . $_GET["q"] . "%";
+                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ? AND lower(titulo) LIKE ?");
+                    $sql->execute([$id_categoria, $query]);
+                    $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+                }
+                else{
+                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ?");
+                    $sql->execute([$id_categoria]);
+                    $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+                }
             }
             else{
                 $categoria = "all";
-                $sql = $conn->prepare("SELECT * from posts");
-                $sql->execute();
-                $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+                if (isset($_GET["q"]) && !(empty($_GET["q"]))){
+                    $query = "%" . $_GET["q"] . "%";
+                    $sql = $conn->prepare("SELECT * from posts WHERE lower(titulo) LIKE ?");
+                    $sql->execute([$query]);
+                    $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+                }
+                else{
+                    $sql = $conn->prepare("SELECT * from posts");
+                    $sql->execute();
+                    $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
+                }
             }
             $sql = $conn->prepare("SELECT * FROM tags ORDER BY usos DESC LIMIT 5");
             $sql->execute();
@@ -77,7 +95,10 @@
         <div class="galeria-panel">
             <div class="galeria-herramientas">
                 <h2>Búsqueda</h2>
-                <input type="text" placeholder="Buscar...">
+                <form action="index.php" method="GET">
+                    <input type="hidden" name="categoria" value="<?php echo $categoria; ?>">
+                    <input type="text" name="q" placeholder="Buscar..." id="input-busqueda" <?php if (isset($_GET["q"]) && !(empty($_GET["q"]))){ echo "value='" . htmlspecialchars($_GET["q"]) . "'";} ?>>
+                </form>
                 <?php
                     if ($fetch_tags){
                         echo "<h4>Tags populares</h4>";
@@ -88,7 +109,7 @@
                         echo "</div>";
                     }
                 ?>
-                <h4>Categoría</h4>
+                <h4>Categoría seleccionada</h4>
                 <div class="galeria-categoria-seleccionada">
                     <select name="categoria" id="categoria-input-index" size="1">
                                 <option value="all" <?php if ($categoria == "all"){ echo "selected";} ?>>Todos los posts</option>
