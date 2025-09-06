@@ -25,6 +25,15 @@ mensaje_aviso.style.opacity = 0;
 archivo.addEventListener("change", (event) => {
     const imagen = event.target.files[0];
     mensaje_error.style.opacity = 0;
+    if (!imagen) {
+        req1 = false;
+        imagen_texto.textContent = "Imagen no seleccionada";
+        imagen_tamano.textContent = "";
+        imagen_res.textContent = "";
+        image.src = "";
+        return;
+    }
+
     if (imagen.type == "image/gif"){    
         maxSize = 26228792;
     }
