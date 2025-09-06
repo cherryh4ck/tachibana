@@ -7,13 +7,12 @@ General:
 
 index.php:
 - terminar funcionamiento (en progreso)
-- añadir sistema de búsqueda (en progreso)
+- añadir sistema de búsqueda (casi terminado)
 - añadir un sistema de tags seleccionados (en progreso)
 - trabajar en el concepto de scroll "infinito" (osea, que no exista un sistema de páginas, si no que se carguen posts a medida que el usuario scrollea)
 
 perfil.php:
 - terminar apartado de seguridad
-- deshabilitar el botón de guardar cambios si es que no hay ningún cambio
 
 perfiles.php:
 - añadir más chequeos de sanidad
