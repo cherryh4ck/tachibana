@@ -13,9 +13,17 @@ mensaje_error.style.opacity = 0;
 
 const formulario = document.getElementById("formulario-editar-perfil");
 const nickname_input = document.getElementById("nickname-input");
+const desc_input = document.getElementById("descripcion-input");
+
+const submit = document.getElementById("guardar-cambios");
 
 avatar_input.addEventListener("change", (event) => {
     const imagen = event.target.files[0];
+    if (!imagen){
+        return;
+    }
+
+    submit.disabled = false;
     avatar_preview.src = URL.createObjectURL(imagen);
     avatar_preview.onload = () => {
         const width = avatar_preview.naturalWidth;
@@ -67,4 +75,12 @@ formulario.addEventListener("submit", function(e) {
             mensaje_error.style.opacity = 1; 
         });
     }
+});
+
+nickname_input.addEventListener("input", function() {
+    submit.disabled = false;
+});
+
+desc_input.addEventListener("input", function() {
+    submit.disabled = false;
 });
