@@ -1,5 +1,7 @@
 const selector_categorias = document.getElementById("categoria-input-index");
 const tag_categoria = document.getElementById("input-tag-rojo-index")
+const input_busqueda = document.getElementById("input-busqueda");
+
 let categoria = "any";
 
 selector_categorias.addEventListener("change", function() {
@@ -8,5 +10,10 @@ selector_categorias.addEventListener("change", function() {
 
     categoria = valorSeleccionado;
     tag_categoria.textContent = "/" + valorSeleccionado + "/"; 
-    window.location.replace("?categoria=" + categoria); 
+    if (input_busqueda.value.length > 0){
+        window.location.replace("?categoria=" + categoria + "&q=" + input_busqueda.value);
+    }
+    else{
+        window.location.replace("?categoria=" + categoria);
+    }
 });
