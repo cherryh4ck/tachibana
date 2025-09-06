@@ -74,7 +74,7 @@
                         $avatar = "resources/avatars/" . $usuario["id"] . ".png";
                         echo "<div class='contenido-perfil-bloque' onclick=\"location.href='perfil.php?id=" . $usuario["id"] . "'\">";
                         if (file_exists($avatar)){
-                            echo "<img src='$avatar' alt=''>";
+                            echo "<img src='$avatar?v=" . filemtime($avatar) . "alt=''>";
                         }
                         else{
                             echo "<img src='resources/avatar.png' alt=''>";
