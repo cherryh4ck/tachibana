@@ -28,9 +28,6 @@ php/subida.php:
 php/post/comentar.php:
 - añadir chequeos de sanidad
 
-php/account/editar.php:
-- prevenir descripciones muy largas
-
 setup.php:
 - mejorar el estilo visual
 
