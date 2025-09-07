@@ -103,8 +103,13 @@
                     if ($fetch_tags){
                         echo "<h4>Tags populares</h4>";
                         echo "<div class='galeria-tags-populares'>";
-                        foreach ($fetch_tags as $tag){
-                            echo "<span id='input-tag'>" . $tag["nombre"] . "<b>" . $tag["usos"] . "</b></span>";
+                        if ($fetch_tags){
+                            foreach ($fetch_tags as $tag){
+                                echo "<span id='input-tag'>" . $tag["nombre"] . "<b>" . $tag["usos"] . "</b></span>";
+                            }
+                        }
+                        else{
+                            echo "<p id='sin-resultados'>No hay resultados</p>";
                         }
                         echo "</div>";
                     }
@@ -130,8 +135,13 @@
             </div>
         </div>
         <div class="galeria-panel2">
-            <div class="galeria-imagenes">
-                <?php
+            <?php
+                if (!$fetch_posts){
+                    echo "<div class='galeria-imagenes-sin-posts'>";
+                    echo "<p id='sin-resultados-post'>No se han encontrado resultados</p>";
+                }
+                else{
+                    echo "<div class='galeria-imagenes'>";
                     foreach ($fetch_posts as $post){
                         if (file_exists("galeria/" . $post["id"] . ".jpg")){
                             try {
@@ -172,7 +182,8 @@
                             echo "</div>";
                         }*/
                     }
-                ?>
+                }
+            ?>
             </div>
         </div>
 
