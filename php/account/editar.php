@@ -35,8 +35,10 @@
                 $sql->execute([htmlspecialchars($_POST["nickname"]), $_SESSION["cuenta_id"]]);
             }
             if (isset($_POST["descripcion"])){
-                $sql = $conn->prepare("UPDATE usuarios SET descripcion = ? WHERE id = ?;");
-                $sql->execute([nl2br(htmlspecialchars($_POST["descripcion"])), $_SESSION["cuenta_id"]]);
+                if (strlen($_POST["descripcion"]) <= 500){
+                    $sql = $conn->prepare("UPDATE usuarios SET descripcion = ? WHERE id = ?;");
+                    $sql->execute([nl2br(htmlspecialchars($_POST["descripcion"])), $_SESSION["cuenta_id"]]);
+                }
             }
             if (isset($_FILES["avatar"])){
                 $avatar = $_FILES["avatar"];
