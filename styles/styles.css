@@ -1206,6 +1206,16 @@ header h1{
     margin-bottom: auto;
 }
 
+#sin-resultados{
+    color: rgb(136, 131, 131);
+}
+
+#sin-resultados-post{
+    color: rgb(185, 178, 178);
+    margin-top: 1em;
+    font-size: 20px;
+}
+
 .galeria-panel2{
     display: block;
     height: 100%;
@@ -1224,6 +1234,13 @@ header h1{
     grid-gap: 1.5em;
     width: 98%;
     height: 100%;
+}
+
+.galeria-imagenes-sin-posts{
+    margin: 0;
+    margin-left: 0em;
+    display: block;
+    width: 100%;
 }
 
 .galeria-botones{
