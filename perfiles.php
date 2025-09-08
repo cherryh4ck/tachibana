@@ -3,7 +3,7 @@
     require "php/db/config.php";
 
     if (isset($_GET["q"])){
-        if ((strlen($_GET["q"]) > 3) && !(empty($_GET["q"]))){
+        if ((strlen($_GET["q"]) > 2) && !(empty($_GET["q"]))){
             $query = "%" . $_GET["q"] . "%";
             try{
                 $conn = new PDO("mysql:host=$host:$puerto;dbname=$db", $user, $pass);
@@ -28,6 +28,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
     <script src="js/subir_modal.js" defer></script>
+    <script src="js/perfiles/q_check.js" defer></script>
 
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="shortcut icon" href="favicon.ico" />
@@ -57,7 +58,7 @@
     </nav>
     <div class="contenido-perfiles">
         <p>Buscar un usuario</p>
-        <form action="perfiles.php" method="GET">
+        <form action="perfiles.php" method="GET" id="formulario-buscar-usuario">
             <input type="text" name="q" placeholder="Introducir el nombre de usuario..." id="nombreUsuario">
         </form>
     </div>
