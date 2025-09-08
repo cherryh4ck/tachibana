@@ -1,6 +1,6 @@
 <?php
-    require "php/db/config.php";
     session_start();
+    require "php/db/config.php";
 
     // para el formateo de fecha
     $año_actual = (int)date("Y");
