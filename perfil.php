@@ -1,8 +1,8 @@
 <?php
+    session_start();
+    
     require "php/db/config.php";
     date_default_timezone_set('America/Argentina/Buenos_Aires');
-
-    session_start();
     $modo = "ver";
     if (isset($_GET["id"])){
         if (!is_numeric($_GET["id"])){
