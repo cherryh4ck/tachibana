@@ -317,7 +317,12 @@
                                         $newFetch = $sql->fetch(PDO::FETCH_ASSOC);
                                         if (($newFetch) && !($comentario_id < $id_salida)){
                                             if ($newFetch["id_post"] == $id){
-                                                $salida .= "<p id='post-comentarios-respuesta'>&gt;&gt;" . $m[1] . "</p>";
+                                                if ($newFetch["original_poster"] == 1){
+                                                    $salida .= "<p id='post-comentarios-respuesta'>&gt;&gt;" . $m[1] . " (OP)</p>";
+                                                }
+                                                else{
+                                                    $salida .= "<p id='post-comentarios-respuesta'>&gt;&gt;" . $m[1] . "</p>";
+                                                }
                                             }
                                             else{
                                                 $salida .= "<p id='post-comentarios-respuesta-invalida'>>>Respuesta inválida</p>";
