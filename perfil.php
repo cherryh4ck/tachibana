@@ -127,8 +127,8 @@
                         echo "<div class='perfil-info'>";
                         echo "<div class='perfil-info-nickname-tags'>";
                         echo "<p><b>$nickname</p></b>";
-                        if ($rol == "admin"){
-                            echo "<span id='input-tag-admin' class='comentar-input-tag-op'>ADMIN</span>";
+                        if ($rol == "admin" || $rol == "mod"){
+                            echo "<span id='input-tag-" . $rol . "'class='comentar-input-tag-op'>" . strtoupper($rol) . "</span>";
                         }
                         echo "</div>";
                         echo "<p id='contenido-perfil-bloque-info-username'>@$nombre_usuario</p>";
