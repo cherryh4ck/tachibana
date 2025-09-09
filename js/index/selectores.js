@@ -12,9 +12,18 @@ selector_categorias.addEventListener("change", function() {
     categoria = valorSeleccionado;
     tag_categoria.textContent = "/" + valorSeleccionado + "/"; 
     if (input_busqueda.value.length > 0){
-        window.location.replace("?categoria=" + categoria + "&q=" + input_busqueda.value + "&orden=" + selector_orden.value);
+        window.location.replace("?categoria=" + categoria + "&orden=" + selector_orden.value.toUpperCase() + "&q=" + input_busqueda.value);
     }
     else{
-        window.location.replace("?categoria=" + categoria + "&orden=" + selector_orden.value);
+        window.location.replace("?categoria=" + categoria + "&orden=" + selector_orden.value.toUpperCase());
+    }
+});
+
+selector_orden.addEventListener("change", function() {
+    if (input_busqueda.value.length > 0){
+        window.location.replace("?categoria=" + selector_categorias.value + "&orden=" + selector_orden.value.toUpperCase() + "&q=" + input_busqueda.value);
+    }
+    else{
+        window.location.replace("?categoria=" + selector_categorias.value + "&orden=" + selector_orden.value.toUpperCase());
     }
 });
