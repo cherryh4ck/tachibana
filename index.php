@@ -21,12 +21,12 @@
 
                 if (isset($_GET["q"]) && !(empty($_GET["q"]))){
                     $query = "%" . $_GET["q"] . "%";
-                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ? AND lower(titulo) LIKE ?");
+                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ? AND lower(titulo) LIKE ? ORDER BY id DESC");
                     $sql->execute([$id_categoria, $query]);
                     $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
                 }
                 else{
-                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ?");
+                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ? ORDER BY id DESC");
                     $sql->execute([$id_categoria]);
                     $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
                 }
@@ -36,12 +36,12 @@
 
                 if (isset($_GET["q"]) && !(empty($_GET["q"]))){
                     $query = "%" . $_GET["q"] . "%";
-                    $sql = $conn->prepare("SELECT * from posts WHERE lower(titulo) LIKE ?");
+                    $sql = $conn->prepare("SELECT * from posts WHERE lower(titulo) LIKE ? ORDER BY id DESC");
                     $sql->execute([$query]);
                     $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
                 }
                 else{
-                    $sql = $conn->prepare("SELECT * from posts");
+                    $sql = $conn->prepare("SELECT * from posts ORDER BY id DESC");
                     $sql->execute();
                     $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
                 }
@@ -131,6 +131,13 @@
                     <?php
                         echo "<span id='input-tag-rojo-index'>/$categoria/</span>";
                     ?>
+                </div>
+                <h4>Ordenar por</h4>
+                <div class="galeria-categoria-seleccionada">
+                    <select name="ordenar" id="categoria-input-categoria" size="1">
+                            <option value="desc">Más reciente</option>
+                            <option value="asc">Más antiguo</option>
+                    </select>
                 </div>
             </div>
         </div>
