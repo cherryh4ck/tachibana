@@ -976,7 +976,7 @@ header h1{
     user-select: none;
 }
 
-#input-tag, #input-tag2, #input-tag-rojo, #input-tag-op, #input-tag-admin{
+#input-tag, #input-tag2, #input-tag-rojo, #input-tag-op, #input-tag-admin, #input-tag-mod{
     background-color: rgb(49, 168, 79);
     border-radius: 8px;
     height: 25px;
@@ -1010,6 +1010,15 @@ header h1{
 
 #input-tag-admin{
     background-color: rgb(219, 147, 64);
+    height: 18px;
+    margin-left: 0.5em;
+    font-size: 12px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#input-tag-mod{
+    background-color: rgb(219, 64, 116);
     height: 18px;
     margin-left: 0.5em;
     font-size: 12px;
@@ -1172,7 +1181,7 @@ header h1{
     gap: 0.5em;
 }
 
-#categoria-input-index{
+#categoria-input-index, #categoria-input-categoria{
     background-color: rgb(20, 20, 19);
     height: 32px;
     box-sizing: border-box;
@@ -1185,7 +1194,7 @@ header h1{
     transition: all 200ms;
 }
 
-#categoria-input-index:hover{
+#categoria-input-index:hover, #categoria-input-categoria:hover{
     background-color: rgb(27, 26, 26);
     box-shadow: 5px 1px 40px rgb(53, 52, 52);
     opacity: .6;
