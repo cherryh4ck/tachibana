@@ -7,6 +7,19 @@
 
     if ($conn_test == 1){
         try{
+            if (isset($_GET["orden"])){
+                $_GET["orden"] = strtoupper($_GET["orden"]);
+                if ($_GET["orden"] == "ASC"){
+                    $orden = "ASC";
+                }
+                else{
+                    $orden = "DESC";
+                }
+            }
+            else{
+                $orden = "DESC";
+            }
+
             if (isset($_GET["categoria"]) && !($_GET["categoria"] == "all")){
                 $categoria = $_GET["categoria"];
                 $sql = $conn->prepare("SELECT * from categorias WHERE nombre = ?");
@@ -21,12 +34,12 @@
 
                 if (isset($_GET["q"]) && !(empty($_GET["q"]))){
                     $query = "%" . $_GET["q"] . "%";
-                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ? AND lower(titulo) LIKE ? ORDER BY id DESC");
+                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ? AND lower(titulo) LIKE ? ORDER BY id $orden");
                     $sql->execute([$id_categoria, $query]);
                     $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
                 }
                 else{
-                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ? ORDER BY id DESC");
+                    $sql = $conn->prepare("SELECT * from posts WHERE id_categoria = ? ORDER BY id $orden");
                     $sql->execute([$id_categoria]);
                     $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
                 }
@@ -36,12 +49,12 @@
 
                 if (isset($_GET["q"]) && !(empty($_GET["q"]))){
                     $query = "%" . $_GET["q"] . "%";
-                    $sql = $conn->prepare("SELECT * from posts WHERE lower(titulo) LIKE ? ORDER BY id DESC");
+                    $sql = $conn->prepare("SELECT * from posts WHERE lower(titulo) LIKE ? ORDER BY id $orden");
                     $sql->execute([$query]);
                     $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
                 }
                 else{
-                    $sql = $conn->prepare("SELECT * from posts ORDER BY id DESC");
+                    $sql = $conn->prepare("SELECT * from posts ORDER BY id $orden");
                     $sql->execute();
                     $fetch_posts = $sql->fetchAll(PDO::FETCH_ASSOC);
                 }
@@ -62,7 +75,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <script src="js/index/categorias.js" defer></script>
+    <script src="js/index/selectores.js" defer></script>
+    <script src="js/index/query.js" defer></script>
+
     <script src="js/subir_modal.js" defer></script>
 
     <link rel="stylesheet" href="styles/styles.css">
@@ -95,8 +110,9 @@
         <div class="galeria-panel">
             <div class="galeria-herramientas">
                 <h2>Búsqueda</h2>
-                <form action="index.php" method="GET">
+                <form action="index.php" method="GET" id="formulario-busqueda">
                     <input type="hidden" name="categoria" value="<?php echo $categoria; ?>">
+                    <input type="hidden" name="orden" value="<?php echo $orden; ?>">
                     <input type="text" name="q" placeholder="Buscar..." id="input-busqueda" <?php if (isset($_GET["q"]) && !(empty($_GET["q"]))){ echo "value='" . htmlspecialchars($_GET["q"]) . "'";} ?>>
                 </form>
                 <?php
@@ -135,8 +151,8 @@
                 <h4>Ordenar por</h4>
                 <div class="galeria-categoria-seleccionada">
                     <select name="ordenar" id="categoria-input-categoria" size="1">
-                            <option value="desc">Más reciente</option>
-                            <option value="asc">Más antiguo</option>
+                            <option value="desc" <?php if ($orden == "DESC") { echo "selected";} ?>>Más reciente</option>
+                            <option value="asc" <?php if ($orden == "ASC") { echo "selected";} ?>>Más antiguo</option>
                     </select>
                 </div>
             </div>
