@@ -126,6 +126,8 @@
     <script src="js/post/comentar.js" defer></script>
     <script src="js/post/anonimo.js" defer></script>
     <script src="js/post/adjuntar_imagen.js" defer></script>
+    <script src="js/post/respuestas.js" defer></script>
+
     <script src="js/subir_modal.js" defer></script>
 
     <link rel="stylesheet" href="styles/styles.css">
@@ -135,7 +137,7 @@
     <nav>
         <p id="nav-logo">Tachibana</p>
         <ul>
-            <li><a href="index.php?pag=1">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
             <?php
                 if (isset($_SESSION["cuenta_usuario"])){
                     echo "<li><a href='#' id='subir-boton-modal'>Publicar</a></li>";
@@ -158,6 +160,8 @@
         <!-- datos enviados por php -->
         <span style="display: none;" id="es_anonimo"><?=$post_anonimo?></span>
         <!-- fin -->
+
+        <div id="preview" class="preview"></div>
 
         <div class="contenido-post">
             <?php
@@ -315,13 +319,36 @@
                                         $sql = $conn->prepare("SELECT * FROM posts_comentarios WHERE id = ?");
                                         $sql->execute([$id_salida]);
                                         $newFetch = $sql->fetch(PDO::FETCH_ASSOC);
-                                        if (($newFetch) && !($comentario_id < $id_salida)){
+                                        if (($newFetch) && !($comentario_id <= $id_salida)){
                                             if ($newFetch["id_post"] == $id){
-                                                if ($newFetch["original_poster"] == 1){
-                                                    $salida .= "<p id='post-comentarios-respuesta'>&gt;&gt;" . $m[1] . " (OP)</p>";
+                                                if (!($newFetch["id_autor"] == 0)){
+                                                    $sql = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
+                                                    $sql->execute([$newFetch["id_autor"]]);
+                                                    $infoAutor = $sql->fetch(PDO::FETCH_ASSOC);
+                                                }
+                                                
+                                                $dateTime = new DateTime($newFetch["fecha_creacion"]);
+                                                $año_comentario = (int)$dateTime->format('Y');
+                                                if ($año_comentario == $año_actual){
+                                                    $comentario_fecha_creacion = $dateTime->format("d/m \a \l\a\s H:i");
                                                 }
                                                 else{
-                                                    $salida .= "<p id='post-comentarios-respuesta'>&gt;&gt;" . $m[1] . "</p>";
+                                                    $comentario_fecha_creacion = $dateTime->format("d/m/Y \a \l\a\s H:i");
+                                                }
+
+                                                if ($newFetch["id_autor"] == 0){
+                                                    $contenido = "<div class='post-preview-username'><p><b>Anónimo</b><span id='post-preview-username-fecha2'>" . $comentario_fecha_creacion . "</span></p></div><div class='post-preview-comentario'>" . str_replace(["<br>", "<br />"], "</p><p>", nl2br(htmlspecialchars($newFetch["comentario"]))) . "</div>";
+                                                }
+                                                else{
+                                                    $contenido = "<div class='post-preview-username'><p><b>" . $infoAutor["nickname"] . "</b><span id='post-preview-username-nickname'>@" . $infoAutor["username"] . "</span><span id='post-preview-username-fecha'>" . $comentario_fecha_creacion . "</span></p></div><div class='post-preview-comentario'>" . str_replace(["<br>", "<br />"], "</p><p>", nl2br(htmlspecialchars($newFetch["comentario"]))) . "</div>";
+                                                }
+
+
+                                                if ($newFetch["original_poster"] == 1){
+                                                    $salida .= "<p class='respuesta' id='post-comentarios-respuesta' data-id='$m[1]' data-content='" . htmlspecialchars($contenido, ENT_QUOTES) . "'>&gt;&gt;" . $m[1] . " (OP)</p>";
+                                                }
+                                                else{
+                                                    $salida .= "<p class='respuesta' id='post-comentarios-respuesta' data-id='$m[1]' data-content='" . htmlspecialchars($contenido, ENT_QUOTES) . "'>&gt;&gt;" . $m[1] . "</p>";
                                                 }
                                             }
                                             else{
