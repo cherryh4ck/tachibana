@@ -21,6 +21,10 @@ perfiles.php:
 register.php:
 - prevenir usuarios con caracteres ilegales
 
+post.php:
+- pasar la carga a php/post/comentar.php
+- hover con soporte de imagenes??
+
 php/subida.php:
 - añadir chequeos de sanidad (titulo y descripción)
 - prevenir tags ilegales 
