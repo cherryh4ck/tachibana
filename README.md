@@ -8,6 +8,7 @@
 Tachibana es un tablón de imágenes semi anónimo fuertemente inspirado en sitios como 4chan y Devox.
 
 El proyecto sigue en desarrollo, por lo que faltan muchas cosas, pero las funciones principales funcionan correctamente.
+Aun así, hay algunas funciones que no están optimizadas para manejar cargas pesadas, por lo que puede ocupar muchos recursos.
 
 ## Requisitos para hostear
 - Un servidor ```Apache``` o otro servidor web HTTP
