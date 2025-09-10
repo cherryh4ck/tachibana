@@ -254,6 +254,56 @@ header h1{
 
 /* Posts */
 
+.preview {
+    position: absolute;
+    display: none;
+    max-width: 300px;
+    background: #191b1b;
+    border: 2px solid #282b2b;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    z-index: 1000;
+    pointer-events: none;
+    color: rgb(211, 199, 199);
+}
+
+.post-preview-username{
+    display: flex;
+}
+
+.post-preview-username p b{
+    color: rgb(226, 219, 219);
+    font-size: 16px;
+    margin-right: 0.3em;
+}
+
+#post-preview-username-nickname{
+    color: rgb(98, 100, 98);
+    font-size: 12px;
+    margin-bottom: 0.30em;
+}
+
+#post-preview-username-fecha, #post-preview-username-fecha2{
+    color: rgb(136, 131, 131);
+    font-size: 12px;
+    margin-top: 0.1em;
+    margin-left: 0.3em;
+}
+
+#post-preview-username-fecha2{
+    margin-left: 0;
+}
+
+.post-preview-comentario{
+    display: block;
+    overflow-wrap: break-word;
+    word-break: break-word; 
+    white-space: normal;
+}
+
 .contenido-post img{
     display: block;
     max-width: 700px;
@@ -505,6 +555,7 @@ header h1{
 #post-comentarios-respuesta{
     color: rgb(29, 108, 211);
     text-decoration: underline;
+    cursor: default;
 }
 
 #post-comentarios-respuesta-invalida{
