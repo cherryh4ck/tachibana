@@ -24,6 +24,7 @@ register.php:
 post.php:
 - pasar la carga a php/post/comentar.php
 - hover con soporte de imagenes??
+- incluir máximo de caracteres al comentar
 
 php/subida.php:
 - añadir chequeos de sanidad (titulo y descripción)
