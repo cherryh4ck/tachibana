@@ -1245,6 +1245,7 @@ header h1{
     padding: 0.05em;
     cursor: pointer;
     transition: all 200ms;
+    min-width: 150px;
 }
 
 #categoria-input-index:hover, #categoria-input-categoria:hover{
@@ -1661,12 +1662,17 @@ header h1{
 #perfil-descripcion-texto{
     color: rgb(136, 131, 131);
     margin-bottom: 0.25em;
+    transition: all 200ms;
 }
 
 .perfil-descripcion:hover{
     transform: scale(1.01);
     border: 2px solid #333535;
     box-shadow: 5px 1px 40px rgb(51, 50, 50);
+}
+
+.perfil-descripcion:hover #perfil-descripcion-texto{
+    color: rgb(211, 199, 199);
 }
 
 .perfil-descripcion p{
