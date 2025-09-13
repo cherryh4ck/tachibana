@@ -3,7 +3,7 @@
     session_start();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        if (isset($_SESSION["cuenta_id"])){
+        if (isset($_SESSION["cuenta_id"]) && isset($_POST["id_comentario"]) && isset($_POST["comentario"])){
             $comentario_id = $_POST["id_comentario"];
             $comentario_autor_id = $_SESSION["cuenta_id"];
             $comentario_texto = nl2br(htmlspecialchars($_POST["comentario"]));
@@ -61,6 +61,7 @@
                     }
 
                     header("Location: ../../post.php?id=$comentario_id");
+                    exit();
                 }
             }
             catch (PDOException $e){
@@ -68,11 +69,6 @@
                 exit();
             }
         }
-        else{
-            header("Location: ../../index.php");
-        }
     }
-    else{
-        header("Location: ../../index.php");
-    }
+    header("Location: ../../index.php");
 ?>
