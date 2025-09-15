@@ -1,9 +1,10 @@
 /// LISTA DE TODO GENERAL ///
 
-General:
+Conceptos generales:
 - añadir funciones para los administradores
 - añadir más parametros al config.ini
 - trabajar en un motd (?)
+- id personalizada de usuario (?)
 
 index.php:
 - terminar funcionamiento (en progreso)
