@@ -1,9 +1,4 @@
 # 🍀 Tachibana 
-![](resources/banner.png)
-<div align="center">
-<a href="https://www.pixiv.net/en/artworks/117630077")>pixiv</a> - shampuru
-</div>
-
 ## 📖 Descripción
 Tachibana es un tablón de imágenes semi anónimo fuertemente inspirado en sitios como 4chan y Devox.
 
@@ -26,8 +21,8 @@ Consulte el documento ```! TODO.txt```, el cual contiene todas las funciones que
 ## 🧩 Lenguajes de programación usados
 - ```HTML5```
 - ```CSS3```
-- ```PHP```
 - ```JavaScript```
+- - ```PHP```
 - ```MySQL```
 
 ## 📊 Estadísticas del repositorio
