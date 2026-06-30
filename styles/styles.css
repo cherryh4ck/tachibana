@@ -588,6 +588,8 @@ header h1{
 
 .post-comentarios-comentar-botones{
     display: flex;
+    flex-wrap: wrap;
+    row-gap: 0.5em;
 }
 
 .post-comentarios-comentar-botones-imagen-data{
@@ -596,6 +598,9 @@ header h1{
     margin-bottom: auto;
     margin-left: 0.5em;
     margin-right: 0.5em;
+    min-width: 0;
+    max-width: 150px;
+    flex: 1 1 auto;
 }
 
 .post-comentarios-comentar-botones-imagen-data p{
@@ -604,6 +609,10 @@ header h1{
 
 #imagen-nombre-data{
     color: rgb(226, 219, 219);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 #post-comentarios-textarea{
@@ -652,6 +661,8 @@ header h1{
     border-radius: 8px;
     margin-left: 0.3em;
     margin-top: 0.5em;
+    flex: 1 1 auto;
+    min-width: 90px;
 }
 
 .post-comentarios-comentar-botones input[type=button]{
