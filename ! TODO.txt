@@ -1,0 +1,46 @@
+/// LISTA DE TODO GENERAL ///
+
+Conceptos generales:
+- añadir funciones para los administradores
+- añadir más parametros al config.ini
+- trabajar en un motd (?)
+- id personalizada de usuario (?)
+
+index.php:
+- terminar funcionamiento (en progreso)
+- añadir sistema de búsqueda (casi terminado)
+- añadir un sistema de tags seleccionados (en progreso)
+- trabajar en el concepto de scroll "infinito" (osea, que no exista un sistema de páginas, si no que se carguen posts a medida que el usuario scrollea)
+
+perfil.php:
+- terminar apartado de seguridad
+
+perfiles.php:
+- añadir más chequeos de sanidad
+- reworkear el diseño (está horrendo)
+
+register.php:
+- prevenir usuarios con caracteres ilegales
+
+post.php:
+- pasar la carga a php/post/comentar.php
+- hover con soporte de imagenes??
+- incluir máximo de caracteres al comentar
+
+php/subida.php:
+- añadir chequeos de sanidad (titulo y descripción)
+- prevenir tags ilegales 
+
+php/post/comentar.php:
+- añadir chequeos de sanidad
+
+setup.php:
+- mejorar el estilo visual
+
+base de datos:
+- optimizar búsqueda de tags (ordenar tags de manera alfabética y usar comas para separar la busqueda)
+
+diseño:
+- hacer todo responsive
+- futura optimizacion: procesar comentarios del lado backend
+- futura optimizacion: optimizar la ventana modal (capaz con un require ya esté, aparte lo hace mas fácil de modificar)
