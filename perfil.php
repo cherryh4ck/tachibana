@@ -288,22 +288,48 @@
                 <div class="perfil-div">
                 <div class="perfil-banner">
                 <div class="perfil-banner-parte1-modificado">
-                <script src="js/perfil/editar.js" defer></script>
-                <form action="php/account/editar.php" method="POST" enctype="multipart/form-data" id='formulario-editar-perfil' onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
-                <div class="perfil-banner-parte1-fila">
+                <script src="js/perfil/seguridad.js" defer></script>
+                <form action="php/account/seguridad.php" method="POST" id='formulario-seguridad-perfil' onkeydown="if (event.keyCode === 13 && event.target.tagName !== 'TEXTAREA') {return false;}">
                 <div class="perfil-banner-parte1-modificado-input">
-                <p>Contraseña</p>
+                <p>Contraseña actual</p>
                 EOM;
-                echo "<input type='text' name='nickname' id='nickname-input' value='???' placeholder='Nickname...'>";
+                echo "<input type='password' name='actual' id='actual-input' placeholder='Contraseña actual...'>";
+                echo <<<EOM
+                </div>
+                <div class="perfil-banner-parte1-modificado-input">
+                <p>Contraseña nueva</p>
+                EOM;
+                echo "<input type='password' name='nueva' id='nueva-input' placeholder='Contraseña nueva...'>";
+                echo <<<EOM
+                </div>
+                <div class="perfil-banner-parte1-modificado-input">
+                <p>Repetir contraseña nueva</p>
+                EOM;
+                echo "<input type='password' name='repetir' id='repetir-input' placeholder='Repetir contraseña nueva...'>";
                 echo <<<EOM
                 </div>
                 <div class="contenido-subir-formulario-error perfil-editar-mensaje">
-                        <!-- div para mostrar errores / avisos mediante js/archivos.js -->
-                        <p style="display: none;" id="mensaje-error"><span>Error al editar el perfil:</span> Test test</p>
-                        <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> El ancho y la altura del avatar no coinciden, por lo que puede verse estirado.</p>
+                        <p style="display: none;" id="mensaje-error"><span>Error al cambiar la contraseña:</span> Test test</p>
+                        <p style="display: none;" id="mensaje-aviso"><span id="mensaje-aviso2">Aviso:</span> La contraseña se cambió correctamente.</p>
                 </div>
-                </div>   
+                EOM;
+                if (isset($_GET["error"])){
+                    $errores_seguridad = [
+                        1 => "Los campos están vacíos",
+                        2 => "Las contraseñas nuevas no coinciden",
+                        3 => "La contraseña nueva debe tener entre 6 y 72 caracteres",
+                        4 => "La contraseña actual es incorrecta",
+                    ];
+                    if (isset($errores_seguridad[$_GET["error"]])){
+                        echo "<script>window.addEventListener('DOMContentLoaded', () => { mostrarErrorSeguridad('" . $errores_seguridad[$_GET["error"]] . "'); });</script>";
+                    }
+                }
+                if (isset($_GET["ok"])){
+                    echo "<script>window.addEventListener('DOMContentLoaded', () => { mostrarAvisoSeguridad(); });</script>";
+                }
+                echo <<<EOM
                 <div class="perfil-banner-parte1-modificado-input perfil-banner-parte1-modificado-input-gap">
+                <input type="submit" value="Cambiar contraseña" id="guardar-cambios-seguridad">
                 <input type="button" value="Volver" onclick="window.location.href='perfil.php'">
                 </div>
                 </form>

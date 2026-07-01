@@ -1843,7 +1843,7 @@ header h1{
     gap: 1em;
 }
 
-.perfil-banner-parte1-modificado-input input[type=text]{
+.perfil-banner-parte1-modificado-input input[type=text], .perfil-banner-parte1-modificado-input input[type=password]{
     display: block;
     box-sizing: border-box;
     width: 180px;
@@ -1919,6 +1919,10 @@ header h1{
     font-size: 16px;
     transition: all 200ms;
     border-radius: 8px;
+}
+
+#guardar-cambios-seguridad{
+    width: 180px;
 }
 
 .perfil-banner-parte1-modificado-input input[type=submit]:not([disabled]):hover, .perfil-banner-parte1-modificado-input input[type=button]:hover{
