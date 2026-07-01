@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="contenido-subir-formulario-fila-subir">
-                <input type="file" accept=".png, .jpg, .jpeg, .gif, .jfif" name="archivo" id="archivo-file" class="subir-archivo">
+                <input type="file" accept=".png, .jpg, .jpeg, .gif, .jfif, .webp" name="archivo" id="archivo-file" class="subir-archivo">
                 <div class="contenido-subir-formulario-fila-subir-textos">
                     <p id="imagen-texto">Imagen no seleccionada</p>
                     <div class="contenido-subir-formulario-fila-subir-textos-estado">
