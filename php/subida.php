@@ -66,6 +66,9 @@
         else if ($info["extension"] == "jpg" or $info["extension"] == "jpeg" or $info["extension"] == "jfif"){
             $imagen = imagecreatefromjpeg($archivo["tmp_name"]);
         }
+        else if ($info["extension"] == "webp"){
+            $imagen = imagecreatefromwebp($archivo["tmp_name"]);
+        }
         else if ($info["extension"] == "gif"){
             $imagen = imagecreatefromgif($archivo["tmp_name"]);
             $maxSize = 26228792;
