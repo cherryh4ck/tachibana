@@ -415,7 +415,7 @@
                 </div>
                 <form action="php/post/comentar.php" enctype="multipart/form-data" method="POST">
                     <input type="hidden" name="id_comentario" value="<?php echo $id; ?>">
-                    <input type="file" accept=".png, .jpg, .jpeg" name="imagen" id="post-comentarios-adjuntar-imagen" style="display: none;">
+                    <input type="file" accept=".png, .jpg, .jpeg, .jfif, .webp" name="imagen" id="post-comentarios-adjuntar-imagen" style="display: none;">
                     <img src="" id="post-comentarios-imagen" style="display: none;">
                     <textarea name="comentario" id="post-comentarios-textarea" rows="2" placeholder="Tu comentario..." required <?php if(!isset($_SESSION["cuenta_id"])){echo "disabled";}?>></textarea>
                     <div class="post-comentarios-comentar-botones" <?php if(!isset($_SESSION["cuenta_id"])){echo "style='display: none;'";}?>>

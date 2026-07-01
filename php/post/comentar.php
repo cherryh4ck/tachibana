@@ -48,7 +48,12 @@
                     $ultimo_insert = $conn->lastInsertId();
                     if ($comentario_imagen == 1){
                         if (!($info["extension"] == "png")){
-                            $imagen_nueva = imagecreatefromjpeg($imagen["tmp_name"]);
+                            if ($info["extension"] == "jpg" or $info["extension"] == "jpeg" or $info["extension"] == "jfif"){
+                                $imagen_nueva = imagecreatefromjpeg($imagen["tmp_name"]);
+                            }
+                            else if ($info["extension"] == "webp") {
+                                $imagen_nueva = imagecreatefromwebp($imagen["tmp_name"]);
+                            }
                         }
                         else{
                             $imagen_nueva = imagecreatefrompng($imagen["tmp_name"]);
